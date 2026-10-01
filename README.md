@@ -13,7 +13,7 @@ New installs run as a 14-day trial. To get a license, email the device code show
 
 ## Manual
 
-The illustrated user manual is in [`docs/`](docs/index.html). It covers offline imagery, drawing missions, mission settings, Shizuku setup and sending missions to DJI Fly.
+Read the illustrated user manual at **<https://leobarua.github.io/liteflight/>** (source in [`docs/`](docs/)). It covers offline imagery, drawing missions, mission settings, Shizuku setup and sending missions to DJI Fly.
 
 ## Shizuku
 
