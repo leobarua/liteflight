@@ -306,7 +306,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <li><a href="#export">Export screen</a></li>
     <li><a href="#help">Troubleshooting</a></li>
   </ol>
-  <p class="meta">Version 1.0 · captured on a DJI&nbsp;RC&nbsp;Pro&nbsp;2 (Android&nbsp;11). Demo missions are over the IRRI rice paddies in Los&nbsp;Baños, Laguna.</p>
+  <p class="meta">Version 1.0 <span id="dl-wrap" hidden>(downloads: <span id="dl-count"></span>)</span> · captured on a DJI&nbsp;RC&nbsp;Pro&nbsp;2 (Android&nbsp;11). Demo missions are over the IRRI rice paddies in Los&nbsp;Baños, Laguna.</p>
 </nav>
 
 <main>
@@ -962,6 +962,34 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     });
   });
   sync();
+
+  // Release download count: Lite Flight APK downloads summed over every
+  // release, read from GitHub's public API (60 calls/hour per visitor, so
+  // the figure is cached for the browser session). Stays hidden on failure.
+  (function () {
+    var wrap = document.getElementById("dl-wrap");
+    var out = document.getElementById("dl-count");
+    function show(n) { out.textContent = n.toLocaleString("en-US"); wrap.hidden = false; }
+    try {
+      var cached = sessionStorage.getItem("liteflight-downloads");
+      if (cached !== null) { show(Number(cached)); return; }
+    } catch (e) {}
+    if (!window.fetch) return;
+    fetch("https://api.github.com/repos/leobarua/liteflight/releases?per_page=100", {
+      headers: { Accept: "application/vnd.github+json" }
+    }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (releases) {
+        var total = 0;
+        releases.forEach(function (rel) {
+          (rel.assets || []).forEach(function (a) {
+            if (/^LiteFlight.*\.apk$/i.test(a.name)) total += a.download_count || 0;
+          });
+        });
+        try { sessionStorage.setItem("liteflight-downloads", String(total)); } catch (e) {}
+        show(total);
+      })
+      .catch(function () {});
+  })();
 
   // Pre-flight checklist, remembered per browser.
   var KEY = "liteflight-manual-checklist";
