@@ -235,7 +235,7 @@ td:first-child { font-weight: 600; white-space: nowrap; }
 /* ---- Mode cards ----------------------------------------------------- */
 .modes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
 .mode { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; text-decoration: none; color: inherit; }
-.mode img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; max-width: 100%; border-bottom: 1px solid var(--line); }
+.mode img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; height: auto; max-width: 100%; border-bottom: 1px solid var(--line); }
 .mode div { padding: 0.8rem 0.9rem 1rem; display: grid; gap: 0.25rem; align-content: start; }
 .mode b { font-family: var(--display); font-size: 1.2rem; font-weight: 600; }
 .mode span { font-size: 0.88rem; color: var(--muted); line-height: 1.45; }
@@ -586,10 +586,10 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <p class="lede">Pick the type from the tabs before you draw. Each one lays out its flight lines differently.</p>
   </div>
   <div class="modes wide">
-    <a class="mode" href="#mode-area"><img width="1920" height="1100" src="img/config_area_map.webp" alt="" loading="lazy"><div><b>Area</b><span>Any field or plot. Back-and-forth lines over a shape you draw corner by corner.</span></div></a>
-    <a class="mode" href="#mode-corridor"><img width="1920" height="1100" src="img/config_corridor_map.webp" alt="" loading="lazy"><div><b>Corridor</b><span>Roads, canals, rivers, fences. Parallel lines along a path you trace.</span></div></a>
-    <a class="mode" href="#mode-circle"><img width="1920" height="1100" src="img/config_circle_map.webp" alt="" loading="lazy"><div><b>Circle</b><span>Buildings and tall objects. Overlapping orbits with the camera tilted inwards.</span></div></a>
-    <a class="mode" href="#mode-quick"><img width="1920" height="1100" src="img/config_quick_map.webp" alt="" loading="lazy"><div><b>Quick</b><span>Field work in a hurry. Drag a box, rotate it, fly, with fewer settings.</span></div></a>
+    <a class="mode" href="#mode-area"><img width="640" height="400" src="img/tile_area.webp" alt="" loading="lazy"><div><b>Area</b><span>Any field or plot. Back-and-forth lines over a shape you draw corner by corner.</span></div></a>
+    <a class="mode" href="#mode-corridor"><img width="640" height="400" src="img/tile_corridor.webp" alt="" loading="lazy"><div><b>Corridor</b><span>Roads, canals, rivers, fences. Parallel lines along a path you trace.</span></div></a>
+    <a class="mode" href="#mode-circle"><img width="640" height="400" src="img/tile_circle.webp" alt="" loading="lazy"><div><b>Circle</b><span>Buildings and tall objects. Overlapping orbits with the camera tilted inwards.</span></div></a>
+    <a class="mode" href="#mode-quick"><img width="640" height="400" src="img/tile_quick.webp" alt="" loading="lazy"><div><b>Quick</b><span>Field work in a hurry. Drag a box, rotate it, fly, with fewer settings.</span></div></a>
   </div>
 
   <!-- Area -->
