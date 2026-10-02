@@ -284,7 +284,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <div class="in">
     <p><b>Lite Flight v1.0</b> <span>· for the DJI RC Pro 2, RC 2 and Android 11+ phones · 14-day free trial</span></p>
     <div class="acts">
-      <a class="alt" href="https://github.com/leobarua/liteflight/releases/latest">Shizuku APK is on the same page</a>
+      <a class="alt" href="https://github.com/leobarua/liteflight/releases/latest">Shizuku and MTP Mission Injector APKs are on the same page</a>
       <a class="btn" href="https://github.com/leobarua/liteflight/releases/latest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m6 11 6 6 6-6"/><path d="M4 21h16"/></svg>Download APK</a>
     </div>
   </div>
@@ -305,6 +305,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <li><a href="#library">My missions</a></li>
     <li><a href="#export">Export screen</a></li>
     <li><a href="#help">Troubleshooting</a></li>
+    <li><a href="#rc2">DJI RC 2</a></li>
   </ol>
   <p class="meta">Version 1.0 <span id="dl-wrap" hidden>(downloads: <span id="dl-count"></span>)</span> · captured on a DJI&nbsp;RC&nbsp;Pro&nbsp;2 (Android&nbsp;11). Demo missions are over the IRRI rice paddies in Los&nbsp;Baños, Laguna.</p>
 </nav>
@@ -317,7 +318,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <h1>Plan mapping flights <em>offline</em>, fly them in DJI&nbsp;Fly.</h1>
     <p class="lede">Lite Flight lets you draw aerial-imaging waypoint missions on saved satellite imagery and drop them straight into DJI Fly's waypoint list. It works even off-grid.</p>
     <div class="strip">
-      <span>Built for the <b>DJI RC Pro 2</b> and <b>Android 11+</b> smartphones on <b>DJI RC&#8209;N2/RC&#8209;N3</b> controllers. Also works with the <b>DJI RC 2</b> through a companion app on an Android device connected by OTG.</span>
+      <span>Built for the <b>DJI RC Pro 2</b> and <b>Android 11+</b> smartphones on <b>DJI RC&#8209;N2/RC&#8209;N3</b> controllers. Also works with the <b>DJI RC 2</b> through <a href="#rc2">a companion app</a> on an Android device connected by OTG.</span>
       <span>Compatible with current-generation DJI drones: <b>Mini 4 Pro · Mini 5 Pro · Air 3S · Mavic 4 Pro</b></span>
     </div>
   </div>
@@ -854,7 +855,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <li><span><b>File name</b> of the exported <code>.kmz</code>.</span></li>
       <li><span><b>Save to Downloads</b> puts a copy in <code>Download/LiteFlight</code>.</span></li>
       <li><span><b>Load KMZ</b> adds DJI mission files from elsewhere to the list.</span></li>
-      <li><span><b>Mission Injector</b> hands the file to the companion app that loads a DJI RC&nbsp;2 over USB.</span></li>
+      <li><span><b>Mission Injector</b> hands the file to the companion app that loads a DJI RC&nbsp;2 over USB. See <a href="#rc2">Missions on the DJI RC&nbsp;2</a>.</span></li>
       <li><span><b>Home</b> returns to the map.</span></li>
       <li><span><b>Missions</b> ready to send. Tap one to select it.</span></li>
       <li><span><b>DJI Fly slots.</b> Tap one to send the selected mission.</span></li>
@@ -880,8 +881,136 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <details class="faq"><summary>My tap moved the launch point instead of adding a corner</summary><p>Taps close to the green launch dot select it. Tap a little further away, or zoom in so there's more room.</p></details>
   <details class="faq"><summary>Terrain follow says there's no elevation data</summary><p>The site's elevation wasn't saved. Connect to the internet and pick Ground again, or re-download the area with <b>Include elevation data</b> ticked.</p></details>
 
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="rc2">
+  <div class="ch-head">
+    <p class="eyebrow">12 · DJI RC 2</p>
+    <h2>Missions on the DJI RC&nbsp;2</h2>
+    <p class="lede">DJI Fly on the RC&nbsp;2 is locked away from other apps, so Lite Flight can't put a mission into its slots directly. Plan the mission in Lite Flight on the RC&nbsp;2 as usual, then let an Android phone running <b>MTP Mission Injector</b> copy it into a DJI Fly slot over USB.</p>
+  </div>
+
+  <div class="fig wide">
+    <figure class="shot"><img src="img/rc2_kit.webp" width="1280" height="951" loading="lazy" alt="An Android phone, a black USB-A to USB-C cable and a small USB-C OTG adapter on a desk."></figure>
+    <div>
+      <p><b>What you need</b></p>
+      <ul class="steps">
+        <li>An <b>Android phone</b> (Android 8 or newer, arm64, with USB OTG) with <b>MTP Mission Injector</b> installed. It's on the <a href="https://github.com/leobarua/liteflight/releases/latest">download page</a> next to Lite Flight.</li>
+        <li>A <b>USB-A to USB-C cable</b>.</li>
+        <li>A <b>USB-C OTG adapter</b> (USB-C plug, USB-A socket). A plain USB-C to USB-C cable didn't connect reliably in testing.</li>
+        <li>The <b>DJI RC&nbsp;2</b> with Lite Flight installed (see below) and a few throwaway waypoint missions saved in DJI Fly. They're made the same way as on the RC Pro&nbsp;2; see <a href="#slots">Prepare DJI Fly slots</a>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub" id="rc2-install">
+    <h3>First time: install Lite Flight on the RC&nbsp;2</h3>
+    <p>Out of the box the RC&nbsp;2 has no file manager and won't install apps. The helper apps from <a href="https://github.com/doesthings/FreeFCC">FreeFCC</a> (free and open source) add both. Follow the RC&nbsp;2 instructions on its GitHub page, then use the file manager to install the Lite Flight APK. You only need FreeFCC's helper apps, not its FCC-mode feature.</p>
+    <div class="note warn"><span class="tag">Unofficial</span><p>FreeFCC isn't made by or affiliated with DJI, and its authors warn that using it may void your warranty.</p></div>
+  </div>
+
+  <div class="sub">
+    <h3>1 · Plan and save the mission on the RC&nbsp;2</h3>
+    <div class="fig half wide">
+      <figure class="shot"><img src="img/rc2_liteflight.webp" width="1280" height="740" loading="lazy" alt="Lite Flight's map screen running on the DJI RC 2."><figcaption>Lite Flight works the same on the RC&nbsp;2: draw the mission and check its settings.</figcaption></figure>
+      <figure class="shot"><img src="img/rc2_export.webp" width="1280" height="771" loading="lazy" alt="Lite Flight's Export KMZ screen on the RC 2 after saving Quick Mission RC2 to Download/LiteFlight."><figcaption>On the Export screen, tap <b>Save to Downloads</b>. The line under the title confirms <code>Download/LiteFlight/…kmz</code>.</figcaption></figure>
+    </div>
+    <p>Ignore the <i>DJI Fly slots</i> column on the RC&nbsp;2: Lite Flight can't reach DJI Fly there, which is why the phone does that step. The file name you give the mission is the name the injector shows.</p>
+  </div>
+
+  <div class="sub">
+    <h3>2 · Connect the phone</h3>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/rc2_connected.webp" width="1280" height="925" loading="lazy" alt="The RC 2 connected by cable to the phone, with the OTG adapter plugged into the phone."></figure>
+      <ol class="steps">
+        <li>Plug the <b>OTG adapter into the phone</b>.</li>
+        <li>Plug the cable's USB-A end into the adapter and its USB-C end into the RC&nbsp;2.</li>
+        <li>Turn the RC&nbsp;2 on.</li>
+        <li>If the phone asks which app to open for the USB device, close that prompt (tap <b>Back</b>) and open MTP Mission Injector.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="sub">
+    <h3>3 · First time: grant folder access</h3>
+    <p>On the injector's first start, tap <b>Grant folder access</b> under <i>Missions</i>. The folder picker opens at <code>Download/LiteFlight</code>, where Lite Flight saves missions. You only do this once.</p>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/inj_picker.webp" width="1920" height="800" loading="lazy" alt="Android's folder picker open at Download / LiteFlight with a Use this folder button."></figure>
+      <ol class="legend">
+        <li><span><b>LiteFlight</b> is already open. Leave it.</span></li>
+        <li><span><b>Use this folder</b>, then <b>Allow</b> on the next prompt.</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="sub">
+    <h3>4 · Read the RC&nbsp;2 and import the mission</h3>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/inj_usb.webp" width="1920" height="800" loading="lazy" alt="Android asking to allow MTP Mission Injector to access the RC 2, with the serial number blurred."></figure>
+      <ol class="steps">
+        <li>Under <b>RC 2 Slots</b>, tap <b>Read slots</b>.</li>
+        <li>The first time, Android asks to let the injector use the RC&nbsp;2. Tap <b>OK</b> <span class="mono">①</span>.</li>
+        <li>After a few seconds the RC&nbsp;2's DJI Fly slots are listed.</li>
+        <li>Tap <b>Import</b>. Missions you saved on the RC&nbsp;2 are copied to the phone and appear under <i>Missions</i>.</li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/inj_main.webp" width="1920" height="800" loading="lazy" alt="MTP Mission Injector with four missions, four RC 2 slots and a Device Slots column."></figure>
+      <ol class="legend">
+        <li><span><b>Status line.</b> Says what the last action did, or what went wrong.</span></li>
+        <li><span><b>Folder</b> picks a different missions folder; <b>Refresh</b> re-reads it.</span></li>
+        <li><span><b>Missions.</b> Tap one to select it. Green names were imported from the RC&nbsp;2. <b>Delete</b> removes the file from the phone.</span></li>
+        <li><span><b>Read slots</b> lists the RC&nbsp;2's DJI Fly waypoint missions.</span></li>
+        <li><span><b>Import</b> copies <code>.kmz</code> files from the RC&nbsp;2's <code>Download</code> and <code>Download/LiteFlight</code> folders. Files already on the phone are skipped.</span></li>
+        <li><span><b>RC 2 slots.</b> Tap one to send the selected mission to it.</span></li>
+        <li><span><b>Device Slots</b> is for DJI Fly on the phone itself. You don't need it for the RC&nbsp;2.</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="sub">
+    <h3>5 · Send it to a slot</h3>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/inj_overwrite.webp" width="1920" height="800" loading="lazy" alt="The Overwrite warning dialog asking to push Quick Mission RC2 into DJI Waypoint Mission No. 4."></figure>
+      <ol class="steps">
+        <li>Tap the mission under <i>Missions</i> <span class="mono">①</span>.</li>
+        <li>Tap the RC&nbsp;2 slot to fill.</li>
+        <li>Every send asks first. Tap <b>Force overwrite</b> <span class="mono">②</span>. If the injector filled that slot before, the dialog names the mission that's in it now.</li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/inj_swapped.webp" width="1920" height="800" loading="lazy" alt="Slot No. 4 now labelled Swap: Quick Mission RC2, and the Missions list down to three."></figure>
+      <ol class="legend">
+        <li><span>The slot now reads <b>Swap: "mission name"</b>.</span></li>
+        <li><span>The sent mission leaves the phone's list. The copy on the RC&nbsp;2 stays; tap <b>Import</b> to bring it back if you want to send it again.</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="sub">
+    <h3>6 · Fly it from the RC&nbsp;2</h3>
+    <ol class="steps">
+      <li>Unplug the phone.</li>
+      <li>On the RC&nbsp;2, open DJI Fly's waypoint list and tap the slot you filled. The new flight path loads straight away.</li>
+      <li>Check the route on the map, then fly it as usual. See <a href="#send">Find it in DJI Fly</a>.</li>
+    </ol>
+    <div class="fig half wide">
+      <figure class="shot"><img src="img/rc2_djifly_list.webp" width="1280" height="748" loading="lazy" alt="DJI Fly's waypoint History on the RC 2; the top tile reads Quick Mission RC2."><figcaption>The filled slot in DJI Fly's History. The tile's distance and waypoint count can still be the old ones until DJI Fly's cache is cleared.</figcaption></figure>
+      <figure class="shot"><img src="img/rc2_djifly_map.webp" width="1280" height="753" loading="lazy" alt="The Quick Mission RC2 route open in DJI Fly on the RC 2: 22 waypoints at 80 m, 1.66 km."><figcaption>Opened, it shows the injected route: 22 waypoints, 1.66&nbsp;km, at 80&nbsp;m.</figcaption></figure>
+    </div>
+    <div class="note"><span class="tag">Updating the slot's name and picture</span><p>DJI Fly caches each slot's thumbnail, so the tile can keep showing the old picture and name. With FreeFCC's helper apps on the RC&nbsp;2 you can fix this yourself: open DJI Fly's app info, tap <b>Force stop</b>, clear its cache, and reopen DJI Fly. Your saved missions aren't affected.</p></div>
+    <div class="note"><span class="tag">Good to know</span><p>Slot labels and the send history live on the phone, not on the RC&nbsp;2. If every slot is taken, the injector says so: make another throwaway mission in DJI Fly on the RC&nbsp;2 and tap <b>Read slots</b> again.</p></div>
+  </div>
+
+  <details class="faq"><summary>&ldquo;No RC 2 (MTP device) found&rdquo;</summary><p>Check the OTG adapter is on the phone side and you're not using a USB-C to USB-C cable. Make sure the RC&nbsp;2 is on, then unplug it and plug it back in.</p></details>
+  <details class="faq"><summary>&ldquo;USB permission denied&rdquo;</summary><p>Unplug and replug the RC&nbsp;2, tap <b>Read slots</b> again and tap <b>OK</b> on the prompt.</p></details>
+  <details class="faq"><summary>Import says there are no .kmz files</summary><p>Save the mission on the RC&nbsp;2 with <b>Save to Downloads</b> on Lite Flight's Export screen first, then tap <b>Import</b> again.</p></details>
+  <details class="faq"><summary>&ldquo;Connected — no waypoint mission slots found&rdquo;</summary><p>DJI Fly on the RC&nbsp;2 has no saved waypoint missions yet. Make a throwaway one (see <a href="#slots">Prepare DJI Fly slots</a>), then tap <b>Read slots</b> again.</p></details>
+  <details class="faq"><summary>DJI Fly on the RC&nbsp;2 still shows the old picture</summary><p>The route has already been replaced. Using FreeFCC's helper apps, force-stop DJI Fly, clear its cache and reopen it to refresh the thumbnail and name.</p></details>
+
   <footer>
-    Lite Flight 1.0 by LeoBar. Screens captured on a DJI RC Pro 2; device code, contact address, network address and device name are blurred. Demo missions are over the IRRI experimental paddies in Los Baños, Laguna. Imagery: Esri World Imagery.
+    Lite Flight 1.0 by LeoBar. Screens captured on a DJI RC Pro 2, and the injector on a Samsung Galaxy A73; device code, contact address, network address and device name are blurred. Demo missions are over the IRRI experimental paddies in Los Baños, Laguna. Imagery: Esri World Imagery.
   </footer>
 </section>
 
