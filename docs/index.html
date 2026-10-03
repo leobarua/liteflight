@@ -322,7 +322,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   </div>
   <figure class="hero-shot shot">
     <img src="img/hero_mission.webp" width="1280" height="1100" alt="A finished area mission: orange flight lines zig-zag across rice paddies, with the green launch point beside the field road.">
-    <figcaption>Area mission · UPLB CAFS paddies, Los Baños · 26 waypoints at 80&nbsp;m</figcaption>
+    <figcaption>Area mission · UPLB CAFS paddies, Los Baños · 18 waypoints at 80&nbsp;m</figcaption>
   </figure>
 </header>
 
@@ -656,7 +656,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <li><span><b>Circle overlap.</b> 25&nbsp;% is the lowest value tested in published research. Go higher, not lower.</span></li>
       <li><span><b>Waypoints per circle.</b> More points turn the camera more smoothly but use up the waypoint budget faster.</span></li>
     </ol>
-    <div class="note warn"><span class="tag">Watch the waypoint count</span><p>Circle missions get large quickly. This 2.3&nbsp;ha block already needs 99 waypoints. The more waypoints a mission has, the more DJI Fly lags while loading and editing it. Lite Flight suggests staying under <b>150 waypoints</b>, but that's a guideline, not a limit: missions of over 300 waypoints still load and work on the RC Pro 2, just more slowly. Above 150, the <b>Send to DJI Fly…</b> shortcut points you to the Export screen, which warns you and lets you send anyway.</p></div>
+    <div class="note warn"><span class="tag">Watch the waypoint count</span><p>Circle missions get large quickly. This 1.4&nbsp;ha block already needs 99 waypoints. The more waypoints a mission has, the more DJI Fly lags while loading and editing it. Lite Flight suggests staying under <b>150 waypoints</b>, but that's a guideline, not a limit: missions of over 300 waypoints still load and work on the RC Pro 2, just more slowly. Above 150, the <b>Send to DJI Fly…</b> shortcut points you to the Export screen, which warns you and lets you send anyway.</p></div>
   </div>
 
   <!-- Quick -->
@@ -756,7 +756,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <p class="lede">From the settings panel, <b>Send to DJI Fly…</b> puts the current mission into a DJI Fly slot in one tap.</p>
   </div>
   <div class="fig wide">
-    <figure class="shot clip"><video src="video/send_djifly.mp4" poster="video/send_djifly.webp" width="1280" height="732" muted loop playsinline preload="none" aria-label="Clip: tapping slot No. 26; DJI Fly opens moments later."></video></figure>
+    <figure class="shot clip"><video src="video/send_djifly.mp4" poster="video/send_djifly.webp" width="1280" height="732" muted loop playsinline preload="none" aria-label="Clip: tapping slot No. 26 and confirming the overwrite; DJI Fly opens moments later."></video></figure>
     <ol class="steps">
       <li>Tap <b>Send to DJI Fly…</b> under the settings.</li>
       <li>Tap a slot. <i>DJI Waypoint Mission No.&nbsp;N</i> is unused; <i>Swap: Mission</i> already holds one of yours and asks before overwriting.</li>
@@ -771,7 +771,6 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <li><span><b>Allow in Shizuku</b> (or <b>Start Shizuku</b>) fixes it from here.</span></li>
       <li><span><b>Refresh</b> after making new slots in DJI Fly.</span></li>
       <li><span><b>Swap: Mission</b> is a slot you filled before. It's safe to overwrite, but the app asks first.</span></li>
-      <li><span><b>DJI Waypoint Mission No.&nbsp;N</b> is an unused placeholder.</span></li>
     </ol>
   </div>
 
@@ -784,6 +783,9 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
         <li>Open it and check the route on the map.</li>
         <li>Switch the camera to <b>Timed Shot</b> at the interval Lite Flight showed, start shooting, and press <b>GO</b>.</li>
       </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/djifly_map.webp" width="1920" height="1200" loading="lazy" alt="The Manual Farm Road corridor open on DJI Fly's map: green flight lines along the road, 30 waypoints at 60 m."><figcaption>Opened in DJI Fly: the Manual Farm Road corridor, 30 waypoints at 60&nbsp;m.</figcaption></figure>
     </div>
   </div>
 
@@ -1147,5 +1149,6 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   update();
 })();
 </script>
+<script data-goatcounter="https://liteflight.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
