@@ -446,12 +446,18 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <h3>Prepare DJI Fly slots</h3>
     <p>DJI Fly on the RC can't import mission files, so Lite Flight writes into missions DJI Fly already has. Make a few throwaway missions first. Each one becomes a slot you can fill later.</p>
     <div class="fig wide">
-      <figure class="shot"><img src="img/djifly_wp.webp" width="1920" height="1200" loading="lazy" alt="DJI Fly camera view with the waypoint panel open, showing two placeholder waypoints."></figure>
+      <figure class="shot"><img src="img/djifly_wp.webp" width="1920" height="1200" loading="lazy" alt="DJI Fly's waypoint map view with a throwaway two-waypoint mission, waypoints 1 and 2 joined by a green line."></figure>
       <ol class="steps">
-        <li>In DJI Fly, open the camera view and tap the waypoint icon <span class="mono">①</span> on the left.</li>
-        <li>Add two waypoints anywhere and save the mission. It doesn't matter where they are.</li>
+        <li>In DJI Fly, open the camera view and tap the waypoint icon <span class="mono">①</span> on the left. No aircraft needs to be connected.</li>
+        <li>Add two waypoints anywhere <span class="mono">②</span> and save the mission. It doesn't matter where they are.</li>
         <li>Repeat until you have one per mission you'll fly that day. Five or six is plenty.</li>
-        <li>The list icon <span class="mono">②</span> shows every saved mission. These are the slots Lite Flight lists as <i>DJI Waypoint Mission No.&nbsp;N</i>.</li>
+        <li>The list icon <span class="mono">③</span> opens DJI Fly's waypoint list, where every saved mission shows up.</li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/djifly_slot_list.webp" width="1920" height="1200" loading="lazy" alt="DJI Fly's waypoint History list with a single throwaway mission, 295 m and two waypoints."></figure>
+      <ol class="legend">
+        <li><span><b>A throwaway mission</b> in DJI Fly's list. Each one is a slot: Lite Flight lists it as <i>DJI Waypoint Mission No.&nbsp;N</i> and can fill it with your real mission.</span></li>
       </ol>
     </div>
     <div class="note"><span class="tag">Reusing slots</span><p>Once Lite Flight has filled a slot it's labelled <b>Swap: Mission</b>. You can overwrite it with the next mission; the app asks first. Deleting the mission inside DJI Fly removes the slot.</p></div>
