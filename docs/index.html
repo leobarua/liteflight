@@ -330,7 +330,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <h1>Plan mapping flights <em>offline</em>, fly them in DJI&nbsp;Fly.</h1>
     <p class="lede">Lite Flight lets you draw aerial-imaging waypoint missions on saved satellite imagery and drop them straight into DJI Fly's waypoint list. It works even off-grid.</p>
     <div class="strip">
-      <span>Built for the <b>DJI RC Pro 2</b> and <b>Android 11+</b> smartphones on <b>DJI RC&#8209;N2/RC&#8209;N3</b> controllers. Also works on the original <b>DJI RC Pro</b> with <a href="#refresher">DJI Fly Refresher</a>, and with the <b>DJI RC 2</b> through <a href="#rc2">a companion app</a> on an Android device connected by OTG.</span>
+      <span>Built for the <b>DJI RC Pro 2</b> and <b>Android 11+</b> smartphones on <b>DJI RC&#8209;N2/RC&#8209;N3</b> controllers. Also works on the original <b>DJI RC Pro</b> with <a href="#refresher">DJI Fly Refresher</a>, and on the <b>DJI RC 2</b> once <a href="#rc2">FreeFCC's helper apps</a> are installed.</span>
       <span>Compatible with current-generation DJI drones: <b>Mini 4 Pro · Mini 5 Pro · Air 3S · Mavic 4 Pro</b></span>
     </div>
   </div>
@@ -492,7 +492,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <thead><tr><th>Device</th><th>Put the mission into a slot</th><th>Refresh DJI Fly (new name and thumbnail)</th><th>Install</th></tr></thead>
       <tbody>
         <tr><td><b>DJI RC Pro 2</b>, original <b>DJI RC Pro</b></td><td><b>Folder access</b>, a one-time grant. No helper needed.</td><td><b>DJI Fly Refresher</b> (no Wi-Fi needed) <i>or</i> <b>Shizuku</b></td><td>Lite Flight + Refresher is the simplest. Shizuku also works.</td></tr>
-        <tr><td><b>DJI RC 2</b></td><td colspan="3">See <a href="#rc2">Missions on the DJI RC&nbsp;2</a>.</td></tr>
+        <tr><td><b>DJI RC 2</b></td><td><b>Folder access</b>, once <a href="#rc2">FreeFCC's helper apps</a> are installed</td><td><b>DJI Fly Refresher only.</b> Shizuku can't run there.</td><td>FreeFCC's helper apps, then Lite Flight + Refresher. See <a href="#rc2">chapter 12</a>.</td></tr>
         <tr><td><b>Android phone</b> on an RC&#8209;N2/RC&#8209;N3</td><td><b>Shizuku only.</b> Android keeps other apps out of DJI Fly's folder.</td><td><b>Shizuku</b>, already running for the send</td><td>Lite Flight + Shizuku. <b>Skip the Refresher</b>: a phone doesn't need it, and newer Android versions put it behind extra security warnings.</td></tr>
       </tbody>
     </table>
@@ -939,7 +939,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <li><span><b>File name</b> of the exported <code>.kmz</code>.</span></li>
       <li><span><b>Save to Downloads</b> puts a copy in <code>Download/LiteFlight</code>.</span></li>
       <li><span><b>Load KMZ</b> adds DJI mission files from elsewhere to the list.</span></li>
-      <li><span><b>Mission Injector</b> hands the file to the companion app that loads a DJI RC&nbsp;2 over USB. See <a href="#rc2">Missions on the DJI RC&nbsp;2</a>.</span></li>
+      <li><span><b>Mission Injector</b> hands the file to the phone app Lite Flight 1.0 used for the DJI RC&nbsp;2. With 1.1 you don't need it; see <a href="#rc2">Missions on the DJI RC&nbsp;2</a>.</span></li>
       <li><span><b>Home</b> returns to the map.</span></li>
       <li><span><b>Missions</b> ready to send. Tap one to select it.</span></li>
       <li><span><b>DJI Fly slots.</b> Tap one to send the selected mission.</span></li>
@@ -976,129 +976,180 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <div class="ch-head">
     <p class="eyebrow">12 · DJI RC 2</p>
     <h2>Missions on the DJI RC&nbsp;2</h2>
-    <p class="lede">DJI Fly on the RC&nbsp;2 is locked away from other apps, so Lite Flight can't put a mission into its slots directly. Plan the mission in Lite Flight on the RC&nbsp;2 as usual, then let an Android phone running <b>MTP Mission Injector</b> copy it into a DJI Fly slot over USB.</p>
+    <p class="lede">With Lite Flight 1.1 the RC&nbsp;2 works on its own, with no phone or cable. Lite Flight sends missions straight into DJI Fly's slots, and DJI Fly Refresher makes DJI Fly show them. Out of the box, though, the RC&nbsp;2 can't install apps. <b>FreeFCC's helper apps come first</b>; everything else builds on them.</p>
   </div>
 
   <div class="fig wide">
-    <figure class="shot"><img src="img/rc2_kit.webp" width="1280" height="951" loading="lazy" alt="An Android phone, a black USB-A to USB-C cable and a small USB-C OTG adapter on a desk."></figure>
+    <figure class="shot"><img src="img/rc2_kit.webp" width="1280" height="960" loading="lazy" alt="A DJI RC 2 on a desk with a microSD card and a USB-C cable."></figure>
     <div>
       <p><b>What you need</b></p>
       <ul class="steps">
-        <li>An <b>Android phone</b> (Android 8 or newer, arm64, with USB OTG) with <b>MTP Mission Injector</b> installed. It's on the <a href="https://github.com/leobarua/liteflight/releases/tag/v1.0">v1.0 download page</a>.</li>
-        <li>A <b>USB-A to USB-C cable</b>.</li>
-        <li>A <b>USB-C OTG adapter</b> (USB-C plug, USB-A socket). A plain USB-C to USB-C cable didn't connect reliably in testing.</li>
-        <li>The <b>DJI RC&nbsp;2</b> with Lite Flight installed (see below) and a few throwaway waypoint missions saved in DJI Fly. They're made the same way as on the RC Pro&nbsp;2; see <a href="#slots">Prepare DJI Fly slots</a>.</li>
+        <li>The <b>DJI RC&nbsp;2</b>.</li>
+        <li>A <b>microSD card</b>. It gets formatted, so copy off anything on it first.</li>
+        <li>A computer or phone that can copy files onto the card.</li>
+        <li><b>FreeFCC's helper apps:</b> <a href="https://freefcc.pages.dev/downloads/freefcc-helpers.zip"><code>freefcc-helpers.zip</code></a>.</li>
+        <li><code>LiteFlight_v1.1.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> from the <a href="https://github.com/leobarua/liteflight/releases/latest">download page</a>.</li>
       </ul>
     </div>
   </div>
 
-  <div class="sub" id="rc2-install">
-    <h3>First time: install Lite Flight on the RC&nbsp;2</h3>
-    <p>Out of the box the RC&nbsp;2 has no file manager and won't install apps. The helper apps from <a href="https://github.com/doesthings/FreeFCC">FreeFCC</a> (free and open source) add both. Follow the RC&nbsp;2 instructions on its GitHub page, then use the file manager to install the Lite Flight APK. You only need FreeFCC's helper apps, not its FCC-mode feature.</p>
-    <div class="note warn"><span class="tag">Unofficial</span><p>FreeFCC isn't made by or affiliated with DJI, and its authors warn that using it may void your warranty.</p></div>
+  <div class="note warn"><span class="tag">FreeFCC is unofficial. You only need its helper apps.</span><p><a href="https://github.com/doesthings/FreeFCC">FreeFCC</a> is a free, open-source project (AGPL-3.0) that isn't made by or affiliated with DJI. Its authors warn that using it may void your warranty and DJI Care Refresh. Its main app switches the controller's radio to FCC mode, which may be illegal where you fly. <b>Lite Flight doesn't need that app.</b> The steps below install only the four helper apps that let the RC&nbsp;2 install and open other apps. Thanks to the FreeFCC authors for making them; the steps follow their guide.</p></div>
+
+  <div class="table-wrap wide">
+    <table>
+      <thead><tr><th>Helper app</th><th>What it adds to the RC&nbsp;2</th></tr></thead>
+      <tbody>
+        <tr><td><code>01_PackageInstaller</code></td><td>Lets the RC&nbsp;2 install apps.</td></tr>
+        <tr><td><code>02_FileManager</code></td><td>A <b>Files</b> app to find APKs on the card.</td></tr>
+        <tr><td><code>03_ATVLauncher</code></td><td>A home screen that lists every app, including Lite Flight.</td></tr>
+        <tr><td><code>04_Edge Gestures</code></td><td>Swipes on the screen edge that open the launcher, or any app.</td></tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="sub">
-    <h3>1 · Plan and save the mission on the RC&nbsp;2</h3>
-    <div class="fig half wide">
-      <figure class="shot"><img src="img/rc2_liteflight.webp" width="1280" height="740" loading="lazy" alt="Lite Flight's map screen running on the DJI RC 2."><figcaption>Lite Flight works the same on the RC&nbsp;2: draw the mission and check its settings.</figcaption></figure>
-      <figure class="shot"><img src="img/rc2_export.webp" width="1280" height="771" loading="lazy" alt="Lite Flight's Export KMZ screen on the RC 2 after saving Quick Mission RC2 to Download/LiteFlight."><figcaption>On the Export screen, tap <b>Save to Downloads</b>. The line under the title confirms <code>Download/LiteFlight/…kmz</code>.</figcaption></figure>
-    </div>
-    <p>Ignore the <i>DJI Fly slots</i> column on the RC&nbsp;2: Lite Flight can't reach DJI Fly there, which is why the phone does that step. The file name you give the mission is the name the injector shows.</p>
-  </div>
-
-  <div class="sub">
-    <h3>2 · Connect the phone</h3>
+  <div class="sub" id="rc2-setup">
+    <h3>First time · 1 · Format the card in the RC&nbsp;2</h3>
+    <p>The RC&nbsp;2 only installs apps from the SD card, and it only lets you browse a card it formatted itself. Do this even if the card is new.</p>
     <div class="fig wide">
-      <figure class="shot"><img src="img/rc2_connected.webp" width="1280" height="925" loading="lazy" alt="The RC 2 connected by cable to the phone, with the OTG adapter plugged into the phone."></figure>
-      <ol class="steps">
-        <li>Leave the RC&nbsp;2 on. You can connect it right after saving the mission.</li>
-        <li>Plug the <b>OTG adapter into the phone</b>.</li>
-        <li>Plug the cable's USB-A end into the adapter and its USB-C end into the RC&nbsp;2.</li>
-        <li>If the phone asks which app to open for the USB device, close that prompt (tap <b>Back</b>) and open the MTP Mission Injector app.</li>
-      </ol>
-    </div>
-  </div>
-
-  <div class="sub">
-    <h3>3 · First time: grant folder access</h3>
-    <p>On the injector's first start, tap <b>Grant folder access</b> under <i>Missions</i>. The folder picker opens at <code>Download/LiteFlight</code>, where Lite Flight saves missions. You only do this once.</p>
-    <div class="fig wide">
-      <figure class="shot"><img src="img/inj_picker.webp" width="1920" height="800" loading="lazy" alt="Android's folder picker open at Download / LiteFlight with a Use this folder button."></figure>
+      <figure class="shot"><img src="img/rc2_sd_setup.webp" width="1280" height="762" loading="lazy" alt="The RC 2's notification shade with an SD card notification reading Tap to set up, and SET UP and EJECT buttons."></figure>
       <ol class="legend">
-        <li><span><b>LiteFlight</b> is already open. Leave it.</span></li>
-        <li><span><b>Use this folder</b>, then <b>Allow</b> on the next prompt.</span></li>
+        <li><span><b>SD card notification.</b> Put the card in, then swipe down from the top of the screen.</span></li>
+        <li><span><b>SET UP</b> starts the format.</span></li>
       </ol>
     </div>
-  </div>
-
-  <div class="sub">
-    <h3>4 · Read the RC&nbsp;2 and import the mission</h3>
     <div class="fig wide">
-      <figure class="shot"><img src="img/inj_usb.webp" width="1920" height="800" loading="lazy" alt="Android asking to allow MTP Mission Injector to access the RC 2, with the serial number blurred."></figure>
+      <figure class="shot"><img src="img/rc2_format.webp" width="1920" height="1020" loading="lazy" alt="Format this SD card? dialog with Cancel and Format SD card buttons."></figure>
       <ol class="steps">
-        <li>Under <b>RC 2 Slots</b>, tap <b>Read slots</b>.</li>
-        <li>The first time, Android asks to let the injector use the RC&nbsp;2. Tap <b>OK</b> <span class="mono">①</span>.</li>
-        <li>After a few seconds the RC&nbsp;2's DJI Fly slots are listed.</li>
-        <li>Tap <b>Import</b>. Missions you saved on the RC&nbsp;2 are copied to the phone and appear under <i>Missions</i>.</li>
-      </ol>
-    </div>
-    <div class="fig wide">
-      <figure class="shot"><img src="img/inj_main.webp" width="1920" height="800" loading="lazy" alt="MTP Mission Injector with four missions, four RC 2 slots and a Device Slots column."></figure>
-      <ol class="legend">
-        <li><span><b>Status line.</b> Says what the last action did, or what went wrong.</span></li>
-        <li><span><b>Folder</b> picks a different missions folder; <b>Refresh</b> re-reads it.</span></li>
-        <li><span><b>Missions.</b> Tap one to select it. Green names were imported from the RC&nbsp;2. <b>Delete</b> removes the file from the phone.</span></li>
-        <li><span><b>Read slots</b> lists the RC&nbsp;2's DJI Fly waypoint missions.</span></li>
-        <li><span><b>Import</b> copies <code>.kmz</code> files from the RC&nbsp;2's <code>Download</code> and <code>Download/LiteFlight</code> folders. Files already on the phone are skipped.</span></li>
-        <li><span><b>RC 2 slots.</b> Tap one to send the selected mission to it.</span></li>
-        <li><span><b>Device Slots</b> is for DJI Fly on the phone itself. You don't need it for the RC&nbsp;2.</span></li>
+        <li>Tap <b>Format</b> if the card's page shows it first.</li>
+        <li>Tap <b>FORMAT SD CARD</b> <span class="mono">①</span>. This erases the card.</li>
+        <li>When the RC&nbsp;2 says <i>Your SD card is ready to use</i>, tap <b>Done</b>.</li>
       </ol>
     </div>
   </div>
 
   <div class="sub">
-    <h3>5 · Send it to a slot</h3>
-    <div class="fig wide">
-      <figure class="shot"><img src="img/inj_overwrite.webp" width="1920" height="800" loading="lazy" alt="The Overwrite warning dialog asking to push Quick Mission RC2 into DJI Waypoint Mission No. 4."></figure>
-      <ol class="steps">
-        <li>Tap the mission under <i>Missions</i> <span class="mono">①</span>.</li>
-        <li>Tap the RC&nbsp;2 slot to fill.</li>
-        <li>Every send asks first. Tap <b>Force overwrite</b> <span class="mono">②</span>. If the injector filled that slot before, the dialog names the mission that's in it now.</li>
-      </ol>
-    </div>
-    <div class="fig wide">
-      <figure class="shot"><img src="img/inj_swapped.webp" width="1920" height="800" loading="lazy" alt="Slot No. 4 now labelled Swap: Quick Mission RC2, and the Missions list down to three."></figure>
-      <ol class="legend">
-        <li><span>The slot now reads <b>Swap: "mission name"</b>.</span></li>
-        <li><span>The sent mission leaves the phone's list. The copy on the RC&nbsp;2 stays; tap <b>Import</b> to bring it back if you want to send it again.</span></li>
-      </ol>
-    </div>
-  </div>
-
-  <div class="sub">
-    <h3>6 · Fly it from the RC&nbsp;2</h3>
+    <h3>First time · 2 · Put the apps on the card</h3>
     <ol class="steps">
-      <li>Unplug the phone.</li>
-      <li>On the RC&nbsp;2, open DJI Fly's waypoint list and tap the slot you filled. The new flight path loads straight away.</li>
-      <li>Check the route on the map, then fly it as usual. See <a href="#send">Find it in DJI Fly</a>.</li>
+      <li>Take the card out and put it in your computer (or a card reader).</li>
+      <li>Extract <code>freefcc-helpers.zip</code>.</li>
+      <li>Copy <code>LiteFlight_v1.1.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> into the extracted folder.</li>
+      <li>Copy that whole folder onto the card, then put the card back into the RC&nbsp;2.</li>
+    </ol>
+  </div>
+
+  <div class="sub">
+    <h3>First time · 3 · Install the package installer and file manager</h3>
+    <p>Swipe down from the top of the screen, tap the SD card notification's <b>EXPLORE</b>, and open your folder.</p>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/rc2_card_files.webp" width="1920" height="360" loading="lazy" alt="The folder on the card with six APKs: 01_PackageInstaller, 02_FileManager, 03_ATVLauncher, 04_Edge Gestures, DJI-Fly-Refresher and LiteFlight_v1.1."></figure>
+      <ol class="legend">
+        <li><span><b>FreeFCC's helper apps.</b> Install them in number order.</span></li>
+        <li><span><b>DJI Fly Refresher and Lite Flight.</b> These come last, in step 6.</span></li>
+      </ol>
+    </div>
+    <div class="fig half wide">
+      <figure class="shot"><img src="img/rc2_install_continue.webp" width="1920" height="1020" loading="lazy" alt="Android's unknown-apps warning with Cancel and Continue."><figcaption>Tap <code>01_PackageInstaller</code>. Android warns about unknown apps: tap <b>CONTINUE</b>.</figcaption></figure>
+      <figure class="shot"><img src="img/rc2_install.webp" width="1920" height="1020" loading="lazy" alt="Package installer asking to install an update to a built-in application, with Cancel and Install."><figcaption>Tap <b>INSTALL</b>, then <b>DONE</b>. <b>Don't open it.</b> It's called an update to a built-in app; that's expected.</figcaption></figure>
+    </div>
+    <p>Do the same for <code>02_FileManager</code>.</p>
+  </div>
+
+  <div class="sub">
+    <h3>First time · 4 · Restart the RC&nbsp;2</h3>
+    <p>Hold the power button to shut down, then power back on. The restart switches on the new package installer.</p>
+  </div>
+
+  <div class="sub">
+    <h3>First time · 5 · Add the launcher and its swipe</h3>
+    <ol class="steps">
+      <li>Back in your folder on the card, install <code>03_ATVLauncher</code>. Don't open it.</li>
+      <li>Install <code>04_Edge Gestures</code>, and this time tap <b>OPEN</b>.</li>
+      <li>Follow its prompts and switch on its <b>accessibility service</b>. Android shows the same “full control” warning as for <a href="#refresher">DJI Fly Refresher</a>.</li>
+    </ol>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/rc2_edge_launcher.webp" width="1920" height="1020" loading="lazy" alt="Edge Gestures, Left tab: Swipe down set to ATV Launcher and Swipe up set to Home."></figure>
+      <ol class="legend">
+        <li><span><b>Left</b> sets the gestures for the screen's left edge.</span></li>
+        <li><span><b>Swipe down → ATV Launcher.</b> Tap the row, pick <b>Application</b>, then <b>ATV Launcher</b>.</span></li>
+      </ol>
+    </div>
+    <p>A downward swipe along the left edge now opens the launcher. Any free gesture works; FreeFCC's own guide uses a right-to-left swipe instead.</p>
+  </div>
+
+  <div class="sub">
+    <h3>First time · 6 · Install Lite Flight and DJI Fly Refresher</h3>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/rc2_launcher.webp" width="1920" height="930" loading="lazy" alt="ATV Launcher's Applications grid with DJI Fly, Files, Lite Flight and DJI Fly Refresher among the tiles."></figure>
+      <ol class="steps">
+        <li>Swipe to open <b>ATV Launcher</b>, then open <b>Files</b> <span class="mono">①</span>.</li>
+        <li>Go to your folder on the card.</li>
+        <li>Tap <code>LiteFlight_v1.1.apk</code> and install it.</li>
+        <li>Tap <code>DJI-Fly-Refresher-v1.1.apk</code> and install it.</li>
+        <li><b>Lite Flight</b> <span class="mono">②</span> and <b>DJI Fly Refresher</b> <span class="mono">③</span> now sit in the launcher next to <b>DJI Fly</b> <span class="mono">④</span>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="sub">
+    <h3>First time · 7 · Switch on DJI Fly Refresher</h3>
+    <p>Open DJI Fly Refresher from the launcher and turn on its accessibility service, exactly as in <a href="#refresher">chapter 04</a>. On the RC&nbsp;2 the Refresher is essential: Shizuku can't run there because the RC&nbsp;2 has no developer options.</p>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/rc2_edge_apps.webp" width="1920" height="1020" loading="lazy" alt="Edge Gestures, Right tab: Swipe down set to Lite Flight and Swipe up set to DJI Fly Refresher."></figure>
+      <ol class="legend">
+        <li><span><i>Optional shortcuts.</i> On the <b>Right</b> tab…</span></li>
+        <li><span><b>Swipe down → Lite Flight</b> opens Lite Flight from anywhere.</span></li>
+        <li><span><b>Swipe up → DJI Fly Refresher</b> refreshes DJI Fly with one swipe.</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="sub">
+    <h3>First send: give Lite Flight folder access</h3>
+    <p>Make a few throwaway missions in DJI Fly first (see <a href="#slots">Prepare DJI Fly slots</a>). Then plan a mission in Lite Flight as usual and tap <b>Send to DJI Fly…</b>.</p>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/rc2_use_folder.webp" width="1920" height="1020" loading="lazy" alt="Lite Flight's Send to DJI Fly dialog on the RC 2 offering Use folder access instead of Shizuku."></figure>
+      <ol class="legend">
+        <li><span><b>Use folder access instead of Shizuku.</b> Tap it. The red Shizuku lines don't matter on the RC&nbsp;2.</span></li>
+      </ol>
+    </div>
+    <div class="fig half wide">
+      <figure class="shot"><img src="img/rc2_folder_picker.webp" width="1920" height="1020" loading="lazy" alt="Android's folder picker open at dji.go.v5 with an Allow access to dji.go.v5 button."><figcaption>The picker opens at DJI Fly's folder. Tap <b>ALLOW ACCESS TO "DJI.GO.V5"</b>.</figcaption></figure>
+      <figure class="shot"><img src="img/rc2_folder_allow.webp" width="1920" height="1020" loading="lazy" alt="Allow access to dji.go.v5 in Internal Storage? with Cancel and Allow."><figcaption>Then <b>ALLOW</b>. That's a one-time grant.</figcaption></figure>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/rc2_slots.webp" width="1920" height="1020" loading="lazy" alt="The send dialog on the RC 2 now listing a Swap: Mission slot, with Direct folder access, no Shizuku needed."></figure>
+      <ol class="legend">
+        <li><span><b>Status.</b> Red until DJI Fly Refresher is installed; then it turns blue and says the Refresher will update DJI Fly.</span></li>
+        <li><span><b>DJI Fly's slots</b> are now listed.</span></li>
+        <li><span><b>Direct folder access.</b> The grant worked.</span></li>
+      </ol>
+    </div>
+    <div class="note"><span class="tag">Why this only works with the helper apps</span><p>A stock RC&nbsp;2 won't let any app into DJI Fly's folder. With FreeFCC's helper apps installed, Android's folder picker can open it, which is all Lite Flight needs.</p></div>
+  </div>
+
+  <div class="sub">
+    <h3>Every send</h3>
+    <ol class="steps">
+      <li>Tap a slot and confirm, as in <a href="#send">Send to DJI Fly</a>.</li>
+      <li>Tap <b>Refresh &amp; open DJI Fly</b> (see <a href="#send">Sending with DJI Fly Refresher</a>).</li>
+      <li>The “Refreshing DJI Fly…” screen shows while the Refresher works. It takes a little longer on the RC&nbsp;2 than on the RC Pro&nbsp;2.</li>
+      <li>DJI Fly opens. Lite Flight closes itself and keeps your mission for next time.</li>
     </ol>
     <div class="fig half wide">
-      <figure class="shot"><img src="img/rc2_djifly_list.webp" width="1280" height="748" loading="lazy" alt="DJI Fly's waypoint History on the RC 2; the top tile reads Quick Mission RC2."><figcaption>The filled slot in DJI Fly's History. The tile's distance and waypoint count can still be the old ones until DJI Fly's cache is cleared.</figcaption></figure>
-      <figure class="shot"><img src="img/rc2_djifly_map.webp" width="1280" height="753" loading="lazy" alt="The Quick Mission RC2 route open in DJI Fly on the RC 2: 22 waypoints at 80 m, 1.66 km."><figcaption>Opened, it shows the injected route: 22 waypoints, 1.66&nbsp;km, at 80&nbsp;m.</figcaption></figure>
+      <figure class="shot"><img src="img/rc2_djifly_list.webp" width="1280" height="333" loading="lazy" alt="DJI Fly's waypoint History on the RC 2 with one tile reading LF v1.1 Mission."><figcaption>After the refresh, the slot shows your mission's name. The distance and waypoint count under it can lag behind; the route itself is already replaced.</figcaption></figure>
+      <figure class="shot"><img src="img/rc2_djifly_map.webp" width="1280" height="753" loading="lazy" alt="The Quick Mission RC2 route open in DJI Fly on the RC 2: 22 waypoints at 80 m, 1.66 km."><figcaption>Open it, check the route, and fly as usual.</figcaption></figure>
     </div>
-    <div class="note"><span class="tag">Updating the slot's name and picture</span><p>DJI Fly caches each slot's thumbnail, so the tile can keep showing the old picture and name. With FreeFCC's helper apps on the RC&nbsp;2 you can fix this yourself: open DJI Fly's app info, tap <b>Force stop</b>, clear its cache, and reopen DJI Fly. Your saved missions aren't affected.</p></div>
-    <div class="note"><span class="tag">Good to know</span><p>Slot labels and the send history live on the phone, not on the RC&nbsp;2. If every slot is taken, the injector says so: make another throwaway mission in DJI Fly on the RC&nbsp;2 and tap <b>Read slots</b> again.</p></div>
+    <div class="note"><span class="tag">Coming from Lite Flight 1.0?</span><p>1.0 needed an Android phone running MTP Mission Injector to reach DJI Fly on the RC&nbsp;2. With 1.1 the phone isn't needed. The injector is still on the <a href="https://github.com/leobarua/liteflight/releases/tag/v1.0">v1.0 download page</a>.</p></div>
   </div>
 
-  <details class="faq"><summary>&ldquo;No RC 2 (MTP device) found&rdquo;</summary><p>Check the OTG adapter is on the phone side and you're not using a USB-C to USB-C cable. Make sure the RC&nbsp;2 is on, then unplug it and plug it back in.</p></details>
-  <details class="faq"><summary>&ldquo;USB permission denied&rdquo;</summary><p>Unplug and replug the RC&nbsp;2, tap <b>Read slots</b> again and tap <b>OK</b> on the prompt.</p></details>
-  <details class="faq"><summary>Import says there are no .kmz files</summary><p>Save the mission on the RC&nbsp;2 with <b>Save to Downloads</b> on Lite Flight's Export screen first, then tap <b>Import</b> again.</p></details>
-  <details class="faq"><summary>&ldquo;Connected — no waypoint mission slots found&rdquo;</summary><p>DJI Fly on the RC&nbsp;2 has no saved waypoint missions yet. Make a throwaway one (see <a href="#slots">Prepare DJI Fly slots</a>), then tap <b>Read slots</b> again.</p></details>
-  <details class="faq"><summary>DJI Fly on the RC&nbsp;2 still shows the old picture</summary><p>The route has already been replaced. Using FreeFCC's helper apps, force-stop DJI Fly, clear its cache and reopen it to refresh the thumbnail and name.</p></details>
+  <details class="faq"><summary>The RC&nbsp;2 won't show the files on the card</summary><p>Format the card in the RC&nbsp;2 itself (step 1), then copy the folder onto it again.</p></details>
+  <details class="faq"><summary>Tapping an APK does nothing, or installing is blocked</summary><p>Install <code>01_PackageInstaller</code> first and restart the RC&nbsp;2 before installing anything else.</p></details>
+  <details class="faq"><summary>Swiping from the edge doesn't open the launcher</summary><p>Open Edge Gestures from the card's folder again and check that its accessibility service is on and that a swipe points at ATV Launcher.</p></details>
+  <details class="faq"><summary>Lite Flight doesn't offer folder access, or the picker won't allow dji.go.v5</summary><p>Check that the helper apps are installed and that you restarted after <code>01_PackageInstaller</code>.</p></details>
+  <details class="faq"><summary>DJI Fly on the RC&nbsp;2 still shows the old picture</summary><p>The route has already been replaced. Open DJI Fly Refresher (or use its swipe) to refresh it.</p></details>
 
   <footer>
-    Lite Flight 1.1 by LeoBar. Screens captured on a DJI RC Pro 2, and the injector on a Samsung Galaxy A73; device code, contact address, network address and device name are blurred. Demo missions are over the UPLB CAFS experimental paddies in Los Baños, Laguna. Imagery: Esri World Imagery.
+    Lite Flight 1.1 by LeoBar. Screens captured on a DJI RC Pro 2 and a DJI RC 2; device code, contact address, network name and address, and device name are blurred. Demo missions are over the UPLB CAFS experimental paddies in Los Baños, Laguna. Imagery: Esri World Imagery. RC&nbsp;2 setup steps follow FreeFCC's guide (github.com/doesthings/FreeFCC).
   </footer>
 </section>
 
