@@ -17,4 +17,4 @@ Read the illustrated user manual at **<https://leobarua.github.io/liteflight/>**
 
 ## Shizuku
 
-Shizuku is optional. It lets Lite Flight refresh DJI Fly after sending a mission, and on Android 13+ it's needed to send at all. A copy of the Shizuku APK is attached to each release for convenience. Shizuku is open-source software by RikkaApps, licensed under Apache 2.0: <https://github.com/RikkaApps/Shizuku>
+Shizuku is optional. It lets Lite Flight refresh DJI Fly after sending a mission, and on Android 13+ it's needed to send at all. Get the latest Shizuku from its GitHub releases page: <https://github.com/RikkaApps/Shizuku/releases>. Shizuku is open-source software by RikkaApps, licensed under Apache 2.0.
