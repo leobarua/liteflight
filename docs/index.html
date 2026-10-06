@@ -309,7 +309,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <li><a href="#start">How it works</a></li>
     <li><a href="#terms">Words you'll see</a></li>
     <li><a href="#prep">Before the field</a></li>
-    <li><a href="#shizuku">Shizuku &amp; Wi-Fi</a></li>
+    <li><a href="#shizuku">Shizuku or Refresher</a></li>
     <li><a href="#map">The map screen</a></li>
     <li><a href="#modes">Mission types</a></li>
     <li><a href="#settings">Mission settings</a></li>
@@ -319,18 +319,18 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <li><a href="#help">Troubleshooting</a></li>
     <li><a href="#rc2">DJI RC 2</a></li>
   </ol>
-  <p class="meta">Version 1.0 <span id="dl-wrap" hidden>(downloads: <span id="dl-count"></span>)</span> · captured on a DJI&nbsp;RC&nbsp;Pro&nbsp;2 (Android&nbsp;11). Demo missions are over the UPLB CAFS rice paddies in Los&nbsp;Baños, Laguna.</p>
+  <p class="meta">Version 1.1 <span id="dl-wrap" hidden>(downloads: <span id="dl-count"></span>)</span> · captured on a DJI&nbsp;RC&nbsp;Pro&nbsp;2 (Android&nbsp;11). Demo missions are over the UPLB CAFS rice paddies in Los&nbsp;Baños, Laguna.</p>
 </nav>
 
 <main>
 
 <header class="hero">
   <div>
-    <p class="eyebrow">Field manual · v1.0</p>
+    <p class="eyebrow">Field manual · v1.1</p>
     <h1>Plan mapping flights <em>offline</em>, fly them in DJI&nbsp;Fly.</h1>
     <p class="lede">Lite Flight lets you draw aerial-imaging waypoint missions on saved satellite imagery and drop them straight into DJI Fly's waypoint list. It works even off-grid.</p>
     <div class="strip">
-      <span>Built for the <b>DJI RC Pro 2</b> and <b>Android 11+</b> smartphones on <b>DJI RC&#8209;N2/RC&#8209;N3</b> controllers. Also works with the <b>DJI RC 2</b> through <a href="#rc2">a companion app</a> on an Android device connected by OTG.</span>
+      <span>Built for the <b>DJI RC Pro 2</b> and <b>Android 11+</b> smartphones on <b>DJI RC&#8209;N2/RC&#8209;N3</b> controllers. Also works on the original <b>DJI RC Pro</b> with <a href="#refresher">DJI Fly Refresher</a>, and with the <b>DJI RC 2</b> through <a href="#rc2">a companion app</a> on an Android device connected by OTG.</span>
       <span>Compatible with current-generation DJI drones: <b>Mini 4 Pro · Mini 5 Pro · Air 3S · Mavic 4 Pro</b></span>
     </div>
   </div>
@@ -365,7 +365,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <div class="ch-head">
     <p class="eyebrow">02 · Vocabulary</p>
     <h2>Words you'll see</h2>
-    <p class="lede">New to mapping? These eight terms cover nearly every setting in the app.</p>
+    <p class="lede">New to mapping? These nine terms cover nearly every setting in the app.</p>
   </div>
   <dl class="terms wide">
     <div class="term"><dt>Waypoint mission <span class="mono">KMZ</span></dt><dd>A list of points the drone flies through on its own. DJI stores each one as a <code>.kmz</code> file.</dd></div>
@@ -376,6 +376,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <div class="term"><dt>Terrain follow <span class="mono">m AGL</span></dt><dd>Height kept above the ground under the drone, using downloaded elevation data. Use it on slopes so the GSD stays even.</dd></div>
     <div class="term"><dt>DJI Fly slot <span class="mono">No.&nbsp;N</span></dt><dd>A waypoint mission already saved in DJI Fly. Lite Flight replaces its contents with your mission, because DJI Fly has no import button on the RC.</dd></div>
     <div class="term"><dt>Shizuku <span class="mono">helper app</span></dt><dd>A free app that gives Lite Flight extra system access, so it can refresh DJI Fly after a send. Started over Wi-Fi with wireless debugging.</dd></div>
+    <div class="term"><dt>DJI Fly Refresher <span class="mono">companion app</span></dt><dd>A small app for DJI RCs that does the same refresh without Shizuku or Wi-Fi. It taps through DJI Fly's App info for you.</dd></div>
   </dl>
 </section>
 
@@ -391,8 +392,8 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <li><label><input type="checkbox" id="ck-license"><span><span class="t">Lite Flight is licensed or in trial</span><span class="d">See <a href="#license">License &amp; trial</a> below.</span></span></label></li>
     <li><label><input type="checkbox" id="ck-imagery"><span><span class="t">Imagery for the site is downloaded</span><span class="d">With elevation data if you plan to use terrain follow.</span></span></label></li>
     <li><label><input type="checkbox" id="ck-slots"><span><span class="t">DJI Fly has enough waypoint slots</span><span class="d">One placeholder mission per mission you want to carry.</span></span></label></li>
-    <li><label><input type="checkbox" id="ck-wifi"><span><span class="t">A Wi-Fi network to join at the field</span><span class="d">A phone hotspot works. It doesn't need internet.</span></span></label></li>
-    <li><label><input type="checkbox" id="ck-shizuku"><span><span class="t">Shizuku is installed and paired</span><span class="d">Pairing is once per device; starting is once per reboot.</span></span></label></li>
+    <li><label><input type="checkbox" id="ck-wifi"><span><span class="t">A Wi-Fi network to join at the field (Shizuku only)</span><span class="d">A phone hotspot works. It doesn't need internet. Skip this if you use DJI Fly Refresher.</span></span></label></li>
+    <li><label><input type="checkbox" id="ck-shizuku"><span><span class="t">Shizuku or DJI Fly Refresher is set up</span><span class="d">On a DJI RC either one works. Phones need Shizuku: pairing is once per device, starting is once per reboot.</span></span></label></li>
   </ul>
   <div class="check-foot"><span><span id="ck-count">0 of 5 done</span> · ticks are saved in this browser only</span><button type="button" id="ck-reset">Clear ticks</button></div>
 
@@ -482,28 +483,30 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 <section class="ch" id="shizuku">
   <div class="ch-head">
     <p class="eyebrow">04 · One-time setup</p>
-    <h2>Shizuku and Wi-Fi</h2>
-    <p class="lede">Shizuku is optional on the RC Pro 2 but makes sending missions over to DJI Fly much smoother. Here's what it does and how to start it.</p>
+    <h2>Shizuku or DJI Fly Refresher</h2>
+    <p class="lede">Putting a mission into a DJI Fly slot is one job; getting DJI Fly to show it under its new name is another. DJI's controllers are lenient about the first, Android phones are strict. Find your device below.</p>
   </div>
 
   <div class="table-wrap wide">
     <table>
-      <thead><tr><th>Task</th><th>Without Shizuku</th><th>With Shizuku</th></tr></thead>
+      <thead><tr><th>Device</th><th>Put the mission into a slot</th><th>Refresh DJI Fly (new name and thumbnail)</th><th>Install</th></tr></thead>
       <tbody>
-        <tr><td>Put the mission into a DJI Fly slot</td><td>Works on Android 11–12 after a one-time <b>folder access</b> grant (the RC Pro 2 runs Android 11)</td><td>Works on every Android version, including 13 and newer phones</td></tr>
-        <tr><td>Show the new mission name in DJI Fly</td><td>DJI Fly keeps showing the old thumbnail until its cache clears</td><td>Cache is cleared automatically and the new name shows</td></tr>
-        <tr><td>Opening DJI Fly</td><td>You switch to DJI Fly yourself</td><td>DJI Fly opens automatically as soon as the mission is sent</td></tr>
+        <tr><td><b>DJI RC Pro 2</b>, original <b>DJI RC Pro</b></td><td><b>Folder access</b>, a one-time grant. No helper needed.</td><td><b>DJI Fly Refresher</b> (no Wi-Fi needed) <i>or</i> <b>Shizuku</b></td><td>Lite Flight + Refresher is the simplest. Shizuku also works.</td></tr>
+        <tr><td><b>DJI RC 2</b></td><td colspan="3">See <a href="#rc2">Missions on the DJI RC&nbsp;2</a>.</td></tr>
+        <tr><td><b>Android phone</b> on an RC&#8209;N2/RC&#8209;N3</td><td><b>Shizuku only.</b> Android keeps other apps out of DJI Fly's folder.</td><td><b>Shizuku</b>, already running for the send</td><td>Lite Flight + Shizuku. <b>Skip the Refresher</b>: a phone doesn't need it, and newer Android versions put it behind extra security warnings.</td></tr>
       </tbody>
     </table>
   </div>
 
+  <div class="note"><span class="tag">With neither</span><p>On a DJI RC the mission still lands in the slot, but DJI Fly keeps showing the slot's old name and picture until its cache is cleared. You can do that by hand: Android <b>Settings → Apps → DJI Fly → Storage → Clear cache</b>. Your saved missions aren't affected.</p></div>
+
   <div class="note warn">
-    <span class="tag">Why Wi-Fi matters even with no internet</span>
-    <p>Shizuku starts through Android's <b>wireless debugging</b>, and Android only turns that on while the device is connected to a Wi-Fi network. Internet access isn't needed: a phone hotspot with mobile data off works. Shizuku also stops whenever the RC restarts, so you'll start it again at the field. Bring a hotspot.</p>
+    <span class="tag">Shizuku needs Wi-Fi, even with no internet</span>
+    <p>Shizuku starts through Android's <b>wireless debugging</b>, and Android only turns that on while the device is connected to a Wi-Fi network. Internet access isn't needed: a phone hotspot with mobile data off works. Shizuku also stops whenever the device restarts, so you'll start it again at the field. Bring a hotspot. DJI Fly Refresher has none of this: once it's switched on, it stays on.</p>
   </div>
 
   <div class="sub">
-    <h3>First time: turn on developer options</h3>
+    <h3>Shizuku, first time: turn on developer options</h3>
     <ol class="steps">
       <li>Open <b>Settings → About</b> and tap <b>Build number</b> seven times. Android confirms that developer options are on.</li>
       <li>Connect to any Wi-Fi network.</li>
@@ -526,7 +529,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   </div>
 
   <div class="sub">
-    <h3>First time: pair Shizuku</h3>
+    <h3>Shizuku, first time: pair it</h3>
     <p>Install Shizuku from the Play Store or its GitHub releases page. Pairing happens once per device.</p>
     <div class="fig wide">
       <figure class="shot"><img src="img/shizuku_home.webp" width="1920" height="1100" loading="lazy" alt="Shizuku's home screen reading Shizuku is not running, with Step-by-step guide and Pairing buttons."></figure>
@@ -547,7 +550,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   </div>
 
   <div class="sub">
-    <h3>Every time: start Shizuku</h3>
+    <h3>Shizuku, every time: start it</h3>
     <div class="fig wide">
       <figure class="shot clip"><video src="video/shizuku_start.mp4" poster="video/shizuku_start.webp" width="1280" height="732" muted loop playsinline preload="none" aria-label="Clip: tapping Start in Shizuku; a Starter log runs and Shizuku reports it is running."></video></figure>
       <ol class="steps">
@@ -557,15 +560,51 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
         <li>The top card now reads <b>Shizuku is running</b>.</li>
       </ol>
     </div>
-    <div class="note"><span class="tag">Lite Flight reminds you</span><p>If Shizuku isn't running when you send a mission, the <b>Send to DJI Fly</b> dialog shows a red warning with a <b>Start Shizuku</b> button that opens Shizuku for you. Tap <b>Start</b> there, come back, and send. When folder access isn't set up, the Export screen also has a <b>Shizuku</b> shortcut button.</p></div>
+    <div class="note"><span class="tag">Lite Flight reminds you</span><p>If Shizuku isn't running when you send a mission, the <b>Send to DJI Fly</b> dialog shows a red warning with a <b>Start Shizuku</b> button that opens Shizuku for you. Tap <b>Start</b> there, come back, and send. When folder access isn't set up, the Export screen also has a <b>Shizuku</b> shortcut button. With DJI Fly Refresher installed and folder access granted, the warning becomes a blue line instead.</p></div>
   </div>
 
   <div class="sub">
-    <h3>First send: allow Lite Flight</h3>
+    <h3>Shizuku, first send: allow Lite Flight</h3>
     <p>The first time you send after Shizuku is running, the send dialog asks for permission. Tap <b>Allow in Shizuku</b>, then <b>Allow all the time</b>.</p>
     <div class="fig wide">
       <figure class="shot clip"><video src="video/shizuku_allow.mp4" poster="video/shizuku_allow.webp" width="1280" height="732" muted loop playsinline preload="none" aria-label="Clip: Allow in Shizuku, then Allow all the time; the dialog's message turns blue."></video></figure>
       <figure class="shot"><img src="img/shizuku_perm.webp" width="1920" height="1100" loading="lazy" alt="Shizuku's permission dialog with Allow all the time highlighted."><figcaption><b>①</b> Choose <i>Allow all the time</i> so it never asks again.</figcaption></figure>
+    </div>
+  </div>
+  <div class="sub" id="refresher">
+    <h3>Or: DJI Fly Refresher (DJI RCs only)</h3>
+    <p>DJI Fly Refresher clears DJI Fly's cache by tapping through its App info for you: <b>Force stop</b>, <b>Storage</b>, <b>Clear cache</b>. It works on the DJI RC Pro&nbsp;2, the original DJI RC Pro and the DJI RC&nbsp;2, with no Wi-Fi and nothing to start after a reboot. Install <code>DJI-Fly-Refresher-v1.1.apk</code> from the <a href="https://github.com/leobarua/liteflight/releases/latest">download page</a>, next to Lite Flight.</p>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/refresher_setup.webp" width="1920" height="1100" loading="lazy" alt="DJI Fly Refresher's screen reading Not set up: turn on the accessibility service, with an Open Accessibility settings button."></figure>
+      <ol class="legend">
+        <li><span><b>Status.</b> Orange until the accessibility service is on, then green.</span></li>
+        <li><span><b>Open Accessibility settings</b> takes you to the switch.</span></li>
+        <li><span><b>Refreshing screen.</b> Covers the taps with a “Refreshing DJI Fly…” screen. Leave it ticked.</span></li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/refresher_a11y_page.webp" width="1920" height="1100" loading="lazy" alt="Android's accessibility page for DJI Fly Refresher with the Use DJI Fly Refresher switch."></figure>
+      <ol class="steps">
+        <li>Under <b>Downloaded apps</b>, tap <b>DJI Fly Refresher</b>.</li>
+        <li>Turn on <b>Use DJI Fly Refresher</b> <span class="mono">①</span>.</li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/refresher_a11y_warn.webp" width="1920" height="1100" loading="lazy" alt="Android's warning: Allow DJI Fly Refresher to have full control of your device? with View and control screen, View and perform actions, and Allow."></figure>
+      <ol class="legend">
+        <li><span><b>What Android warns about.</b> An accessibility service can read the screen and tap for you. That's exactly how the Refresher works.</span></li>
+        <li><span><b>Allow</b> switches it on. It stays on, even after a restart.</span></li>
+      </ol>
+    </div>
+    <div class="note warn"><span class="tag">Why the warning, and what the Refresher actually does</span><p>Android shows this warning for every accessibility app, because the permission is powerful. DJI Fly Refresher only watches the <b>Settings</b> app, only taps DJI Fly's Force stop, OK, Storage and Clear cache buttons, and only in the few seconds after you ask for a refresh. It has <b>no internet permission</b>, and no other app except Lite Flight can start it. If that's more than you're comfortable with, use Shizuku or clear the cache by hand instead.</p></div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/refresher_splash.webp" width="1920" height="1100" loading="lazy" alt="Full-screen Refreshing DJI Fly… screen with an orange refresh icon and a spinner."></figure>
+      <ol class="steps">
+        <li>After a send, Lite Flight offers <b>Refresh &amp; open DJI Fly</b> (see <a href="#send">Send to DJI Fly</a>).</li>
+        <li>This screen shows for about four seconds while the Refresher works behind it.</li>
+        <li>DJI Fly opens with the new mission name.</li>
+        <li>Tapping the Refresher's own icon also runs a refresh, handy as a gesture shortcut.</li>
+      </ol>
     </div>
   </div>
 </section>
@@ -781,18 +820,43 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <li>Tap <b>Send to DJI Fly…</b> under the settings.</li>
       <li>Tap a slot. <i>DJI Waypoint Mission No.&nbsp;N</i> is unused; <i>Swap: Mission</i> already holds one of yours and asks before overwriting.</li>
       <li>With Shizuku running, DJI Fly's cache is cleared and DJI Fly opens by itself.</li>
-      <li>Without Shizuku, tap <b>Open DJI Fly anyway</b>. The mission is there, but the old thumbnail may still show.</li>
+      <li>With <a href="#refresher">DJI Fly Refresher</a> instead, tap <b>Refresh &amp; open DJI Fly</b> (see below).</li>
+      <li>With neither, tap <b>Open DJI Fly anyway</b>. The mission is there, but the old thumbnail may still show.</li>
     </ol>
   </div>
   <div class="fig wide">
     <figure class="shot"><img src="img/send_dialog.webp" width="1920" height="1100" loading="lazy" alt="The Send to DJI Fly dialog listing slots, with an Allow in Shizuku button."></figure>
     <ol class="legend">
-      <li><span><b>Shizuku status.</b> Red means DJI Fly won't refresh by itself; blue means all set.</span></li>
+      <li><span><b>Status.</b> Red means DJI Fly won't refresh by itself; blue means all set, with Shizuku or with DJI Fly Refresher.</span></li>
       <li><span><b>Allow in Shizuku</b> (or <b>Start Shizuku</b>) fixes it from here.</span></li>
       <li><span><b>Refresh</b> after making new slots in DJI Fly.</span></li>
       <li><span><b>Swap: Mission</b> is a slot you filled before. It's safe to overwrite, but the app asks first.</span></li>
     </ol>
   </div>
+
+  <div class="sub">
+    <h3>Sending with DJI Fly Refresher</h3>
+    <div class="fig wide">
+      <figure class="shot clip"><video src="video/send_refresher.mp4" poster="video/send_refresher.webp" width="1280" height="732" muted loop playsinline preload="none" aria-label="Clip: overwriting a slot, then Refresh &amp; open DJI Fly; the Refreshing DJI Fly screen shows, then DJI Fly opens."></video></figure>
+      <ol class="steps">
+        <li>Tap a slot and confirm, as above.</li>
+        <li>Tap <b>Refresh &amp; open DJI Fly</b>.</li>
+        <li>The “Refreshing DJI Fly…” screen covers the Refresher's taps for a few seconds.</li>
+        <li>DJI Fly opens, showing the new mission name.</li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/send_refresher.webp" width="1920" height="1100" loading="lazy" alt="The Send to DJI Fly dialog after a send, with a blue DJI Fly Refresher line and Stay here and Refresh &amp; open DJI Fly buttons."></figure>
+      <ol class="legend">
+        <li><span><b>Blue line:</b> the Refresher clears DJI Fly's cache after the send. No Shizuku needed.</span></li>
+        <li><span><b>The slot</b> you just filled.</span></li>
+        <li><span><b>Refresh &amp; open DJI Fly</b> runs the Refresher, then opens DJI Fly.</span></li>
+        <li><span><b>Stay here</b> keeps you in Lite Flight to send more.</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="note"><span class="tag">Lite Flight closes after handing over</span><p>Whenever Lite Flight opens DJI Fly for you, it closes itself to free memory on the controller. The mission you were working on is kept, unsaved changes included, and comes back the next time you open Lite Flight.</p></div>
 
   <div class="sub">
     <h3>Find it in DJI Fly</h3>
@@ -815,11 +879,11 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <div class="fig wide">
       <figure class="shot"><img src="img/send_many.webp" width="1920" height="1100" loading="lazy" alt="Send 4 missions to DJI Fly, each mission paired with a slot number."></figure>
       <ol class="legend">
-        <li><span><b>Shizuku status.</b></span></li>
+        <li><span><b>Status:</b> Shizuku, or DJI Fly Refresher.</span></li>
         <li><span><b>Slots available.</b> You need one per mission.</span></li>
         <li><span><b>→ No.&nbsp;N</b> is the slot each mission goes to. Tap it to choose another.</span></li>
         <li><span><b>×</b> leaves that mission out of this batch.</span></li>
-        <li><span><b>Send</b> fills every slot, then opens DJI Fly.</span></li>
+        <li><span><b>Send</b> fills every slot. Then <b>Clear cache &amp; open DJI Fly</b> (Shizuku) or <b>Refresh &amp; open DJI Fly</b> (Refresher) hands over to DJI Fly.</span></li>
       </ol>
     </div>
   </div>
@@ -883,7 +947,8 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <li><span><b>Access method</b> in use: folder access or Shizuku.</span></li>
     </ol>
   </div>
-  <div class="note"><span class="tag">Folder access instead of Shizuku</span><p>On Android 11–12, if Shizuku isn't running, this screen offers <b>Use folder access instead of Shizuku</b>. Tap it, then <b>Allow access to dji.go.v5</b> and <b>Allow</b>. That's a one-time grant, and missions can then be sent without Shizuku.</p><p>Without Shizuku, DJI Fly keeps showing the slot's old thumbnail until its cache clears. To refresh it yourself, go to Android <b>Settings → Apps → DJI Fly → Storage</b> and tap <b>Clear cache</b>. Your saved missions aren't affected.</p></div>
+  <p>After a send from this screen, a button appears under the slots: <b>Clear cache &amp; open DJI Fly</b> with Shizuku running, or <b>Refresh &amp; open DJI Fly</b> with <a href="#refresher">DJI Fly Refresher</a>.</p>
+  <div class="note"><span class="tag">Folder access instead of Shizuku</span><p>On a DJI RC, if Shizuku isn't running, this screen offers <b>Use folder access instead of Shizuku</b>. Tap it, then <b>Allow access to dji.go.v5</b> and <b>Allow</b>. That's a one-time grant, and missions can then be sent without Shizuku. Phones don't allow it; they need Shizuku.</p><p>Without Shizuku or the Refresher, DJI Fly keeps showing the slot's old thumbnail until its cache clears. To refresh it yourself, go to Android <b>Settings → Apps → DJI Fly → Storage</b> and tap <b>Clear cache</b>. Your saved missions aren't affected.</p></div>
 </section>
 
 <!-- ============================================================= -->
@@ -894,7 +959,10 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   </div>
   <details class="faq"><summary>The map is blank or blurry at the field</summary><p>That area wasn't downloaded, or a different map source is selected. Open Imagery Download and check the area is listed. Tap it to switch back to the source it was saved from.</p></details>
   <details class="faq"><summary>The send dialog says “No DJI Fly waypoint found”</summary><p>DJI Fly has no saved waypoint missions to fill. Make a couple of placeholder missions in DJI Fly (see <a href="#slots">Prepare DJI Fly slots</a>), then tap refresh.</p></details>
-  <details class="faq"><summary>DJI Fly still shows the old mission name</summary><p>DJI Fly is showing a cached thumbnail. Start Shizuku and send again, or force-close and reopen DJI Fly. The route itself has already been replaced.</p></details>
+  <details class="faq"><summary>DJI Fly still shows the old mission name</summary><p>DJI Fly is showing a cached thumbnail; the route itself has already been replaced. Open DJI Fly Refresher, or start Shizuku and send again, or clear DJI Fly's cache in Android <b>Settings → Apps → DJI Fly → Storage</b>.</p></details>
+  <details class="faq"><summary>Sending fails with “Failed to determine if … is child of …”</summary><p>That's a bug in Lite Flight 1.0 on controllers with older Android storage, such as the original DJI RC Pro and the DJI RC&nbsp;2. Install Lite Flight 1.1 over it from the <a href="https://github.com/leobarua/liteflight/releases/latest">download page</a>; your missions and license are kept.</p></details>
+  <details class="faq"><summary>Lite Flight closed when DJI Fly opened</summary><p>That's on purpose, to free memory for DJI Fly. Open Lite Flight again and the mission you were working on is back.</p></details>
+  <details class="faq"><summary>DJI Fly Refresher does nothing</summary><p>Check that it's still on in Android <b>Settings → Accessibility</b>, then open the Refresher once: its status line says what's missing.</p></details>
   <details class="faq"><summary>Shizuku won't start</summary><p>Wireless debugging needs Wi-Fi. Join a network (a phone hotspot with no data is fine), check wireless debugging is on, then tap Start again. After a reboot you always need to start Shizuku again.</p></details>
   <details class="faq"><summary>The speed hint turned red</summary><p>At this speed DJI Fly would need to shoot faster than every 2 seconds. Lower the speed to the value in the message, fly higher, or reduce front overlap.</p></details>
   <details class="faq"><summary>“Large waypoint count”, or DJI Fly lags with the mission</summary><p>Large missions still work, but DJI Fly gets slower as the waypoint count grows; 150 is a suggestion, not a limit. To make a mission lighter, split a big site into two missions, raise the altitude, lower side overlap, or (in Circle mode) use fewer waypoints per circle.</p></details>
@@ -1030,7 +1098,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <details class="faq"><summary>DJI Fly on the RC&nbsp;2 still shows the old picture</summary><p>The route has already been replaced. Using FreeFCC's helper apps, force-stop DJI Fly, clear its cache and reopen it to refresh the thumbnail and name.</p></details>
 
   <footer>
-    Lite Flight 1.0 by LeoBar. Screens captured on a DJI RC Pro 2, and the injector on a Samsung Galaxy A73; device code, contact address, network address and device name are blurred. Demo missions are over the UPLB CAFS experimental paddies in Los Baños, Laguna. Imagery: Esri World Imagery.
+    Lite Flight 1.1 by LeoBar. Screens captured on a DJI RC Pro 2, and the injector on a Samsung Galaxy A73; device code, contact address, network address and device name are blurred. Demo missions are over the UPLB CAFS experimental paddies in Los Baños, Laguna. Imagery: Esri World Imagery.
   </footer>
 </section>
 
