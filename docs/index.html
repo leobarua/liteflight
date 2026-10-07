@@ -24,6 +24,8 @@
   --sky-soft: #e8f1fc;
   --go: #23793c;
   --go-soft: #e8f5ec;
+  --stop: #c62828;       /* safety warnings */
+  --stop-soft: #fdecec;
   --display: "Barlow Semi Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
   --body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
@@ -203,6 +205,9 @@ section.ch > .sub { max-width: none; }
 .note .tag { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; color: var(--sky); }
 .note.warn .tag { color: var(--signal); }
 .note.ok .tag { color: var(--go); }
+.note.danger { background: var(--stop-soft); border: 2px solid var(--stop); }
+.note.danger .tag { color: var(--stop); font-weight: 600; display: flex; align-items: center; gap: 0.45rem; }
+.note.danger .tag svg { width: 1.35rem; height: 1.35rem; flex: none; }
 
 /* ---- Tables ------------------------------------------------------- */
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
@@ -634,6 +639,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     </ol>
   </div>
   <div class="note"><span class="tag">Where the drone takes off</span><p>The <b style="color:var(--go)">green dot</b> is the launch point. It starts at your GPS position. To move it, tap the green dot, then tap where you'll actually take off. The flight time and the first leg are worked out from there.</p><p>This matters most for <a href="#terrain">terrain follow</a>. Each waypoint's height is worked out relative to the ground at the launch point, so a launch point in the wrong place raises or lowers the whole mission.</p></div>
+  <div class="note danger" role="note"><span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 1.5 21h21z" fill="currentColor"/><path d="M12 9v5.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.35" fill="#fff"/></svg>Warning: set the launch point with care</span><p>Put the green dot <b>exactly where the drone will take off</b>. If the drone takes off somewhere else, every height in the mission is off by the difference in ground height between the two spots:</p><ul><li>Take off from <b>higher ground</b> than the green dot, and the drone flies <b>higher</b> than the height above ground you set.</li><li>Take off from <b>lower ground</b> than the green dot, and the drone flies <b>lower</b> than you set. It can <b>fly into the ground, trees or buildings</b>.</li></ul><p>Check the launch point every time, before you send the mission. Lite Flight can't tell where you'll really take off, so <b>getting it right is your responsibility</b>.</p></div>
 </section>
 
 <!-- ============================================================= -->
