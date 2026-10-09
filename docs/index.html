@@ -241,7 +241,7 @@ td:first-child { font-weight: 600; white-space: nowrap; }
 }
 
 /* ---- Mode cards ----------------------------------------------------- */
-.modes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+.modes { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; }
 .mode { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; text-decoration: none; color: inherit; }
 .mode img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; height: auto; max-width: 100%; border-bottom: 1px solid var(--line); }
 .mode div { padding: 0.8rem 0.9rem 1rem; display: grid; gap: 0.25rem; align-content: start; }
@@ -259,7 +259,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 /* ---- Narrow screens --------------------------------------------- */
 @media (max-width: 1100px) {
   .fig, .fig.tall { grid-template-columns: minmax(0, 1fr); }
-  .modes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .modes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 900px) {
@@ -298,7 +298,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 <div class="getbar">
   <div class="in">
     <div class="id">
-      <p><b>Lite Flight v1.1</b> <span>· for the DJI RC Pro 2, RC 2 and Android 11+</span></p>
+      <p><b>Lite Flight v1.2</b> <span>· for the DJI RC Pro 2, RC 2 and Android 11+</span></p>
       <p class="contact"><span class="c">Inquiries: <a href="mailto:ldbarua@gmail.com">ldbarua@gmail.com</a></span><span class="sep"> · </span><span class="c">or DM on <a href="https://www.facebook.com/leonardo.barua" target="_blank" rel="noopener">Facebook</a></span></p>
     </div>
     <div class="acts">
@@ -324,14 +324,14 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <li><a href="#help">Troubleshooting</a></li>
     <li><a href="#rc2">DJI RC 2</a></li>
   </ol>
-  <p class="meta">Version 1.1 <span id="dl-wrap" hidden>(downloads: <span id="dl-count"></span>)</span> · captured on a DJI&nbsp;RC&nbsp;Pro&nbsp;2 (Android&nbsp;11). Demo missions are over the UPLB CAFS rice paddies in Los&nbsp;Baños, Laguna.</p>
+  <p class="meta">Version 1.2 <span id="dl-wrap" hidden>(downloads: <span id="dl-count"></span>)</span> · captured on a DJI&nbsp;RC&nbsp;Pro&nbsp;2 (Android&nbsp;11). Demo missions are over the UPLB CAFS rice paddies in Los&nbsp;Baños, Laguna.</p>
 </nav>
 
 <main>
 
 <header class="hero">
   <div>
-    <p class="eyebrow">Field manual · v1.1</p>
+    <p class="eyebrow">Field manual · v1.2</p>
     <h1>Plan mapping flights <em>offline</em>, fly them in DJI&nbsp;Fly.</h1>
     <p class="lede">Lite Flight lets you draw aerial-imaging waypoint missions on saved satellite imagery and drop them straight into DJI Fly's waypoint list. It works even off-grid.</p>
     <div class="strip">
@@ -354,7 +354,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <p>Every mission goes through the same five steps. Do the first one at home while you still have internet; the rest work anywhere.</p>
   <ol class="flow wide">
     <li><b>Save the map</b><span>Download satellite imagery and elevation for your site while online.</span></li>
-    <li><b>Draw the area</b><span>Tap corners on the map, trace a line, or drag a quick box.</span></li>
+    <li><b>Draw the area</b><span>Tap corners on the map, trace a line, drag a quick box, or circle a subject.</span></li>
     <li><b>Check settings</b><span>Pick your drone; set altitude, overlap and speed.</span></li>
     <li><b>Send to DJI Fly</b><span>Pick a DJI Fly waypoint slot. Lite Flight swaps your mission in.</span></li>
     <li><b>Fly it</b><span>Open the mission in DJI Fly, start Timed Shot, press GO.</span></li>
@@ -404,7 +404,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 
   <div class="sub" id="license">
     <h3>License &amp; trial</h3>
-    <p>A new install runs as a 14-day trial with every feature on. From day 8 a reminder asks for a license each time you open the app; after day 14 the app locks until you activate. To get a license, open this screen from the red <b>Trial</b> line under the app name.</p>
+    <p>A new install runs as a 14-day trial with every feature on. For the first week only a small <i>Trial ends in …</i> line shows. From day 8 a reminder pops up asking for a license, and comes back a minute after each <b>Later</b>; after day 14 the app locks until you activate. To get a license, open this screen from the red <b>Trial</b> line under the app name.</p>
     <div class="fig wide">
       <figure class="shot"><img src="img/license.webp" width="1920" height="1100" loading="lazy" alt="The license screen with the device code blurred, a key field, and Activate and Load license file buttons."></figure>
       <ol class="legend">
@@ -619,12 +619,12 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <div class="ch-head">
     <p class="eyebrow">05 · Home screen</p>
     <h2>The map screen</h2>
-    <p class="lede">Lite Flight opens here. The left panel holds the mission type and your saved missions; the map holds the drawing tools.</p>
+    <p class="lede">Lite Flight opens here. The left panel holds the mission type and your saved missions; the map holds the drawing tools. The small number beside the name is the version you're running.</p>
   </div>
   <div class="fig wide">
     <figure class="shot"><img src="img/map_area_empty.webp" width="1920" height="1100" loading="lazy" alt="The map screen with numbered badges on the mode tabs, mission list, hint banner and map buttons."></figure>
     <ol class="legend">
-      <li><span><b>Mission type:</b> Area, Corridor, Circle or Quick. See <a href="#modes">Mission types</a>.</span></li>
+      <li><span><b>Mission type:</b> Area, Corridor, Circle, Quick or Orbit. See <a href="#modes">Mission types</a>.</span></li>
       <li><span><b>My missions.</b> Tap one to load it. Long-press to select several.</span></li>
       <li><span><b>Hint</b> for the next step: tap the map to start.</span></li>
       <li><span><b>Download imagery</b> for offline use.</span></li>
@@ -654,6 +654,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <a class="mode" href="#mode-corridor"><img width="640" height="400" src="img/tile_corridor.webp" alt="" loading="lazy"><div><b>Corridor</b><span>Roads, canals, rivers, fences. Parallel lines along a path you trace.</span></div></a>
     <a class="mode" href="#mode-circle"><img width="640" height="400" src="img/tile_circle.webp" alt="" loading="lazy"><div><b>Circle</b><span>Buildings and tall objects. Overlapping orbits with the camera tilted inwards.</span></div></a>
     <a class="mode" href="#mode-quick"><img width="640" height="400" src="img/tile_quick.webp" alt="" loading="lazy"><div><b>Quick</b><span>Field work in a hurry. Drag a box, rotate it, fly, with fewer settings.</span></div></a>
+    <a class="mode" href="#mode-orbit"><img width="640" height="400" src="img/tile_orbit.webp" alt="" loading="lazy"><div><b>Orbit</b><span>One building, tree or tower. Rings around it, stacked on top of each other.</span></div></a>
   </div>
 
   <!-- Area -->
@@ -670,7 +671,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     </div>
     <p><b>Fix the shape.</b> Tap a corner to select it (it turns orange), then tap where it should go. Tap a purple midpoint to add a corner there.</p>
     <div class="fig wide">
-      <figure class="shot"><img src="img/sel_vertex.webp" width="1920" height="1100" loading="lazy" alt="A five-corner boundary with one corner selected in orange."></figure>
+      <figure class="shot"><img src="img/sel_vertex.webp" width="1920" height="1100" loading="lazy" alt="A six-corner boundary with one corner selected in orange."></figure>
       <ol class="legend">
         <li><span><b>Selected corner</b> (orange). Tap the map to move it.</span></li>
         <li><span><b>Midpoint</b> (purple). Tap it to add a corner.</span></li>
@@ -763,6 +764,53 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       </ol>
     </div>
   </div>
+
+  <!-- Orbit -->
+  <div class="sub" id="mode-orbit">
+    <h3>Orbit</h3>
+    <p>Orbit circles a single subject, such as a building, a tree or a tower, with the camera facing it the whole way round. It flies several rings stacked on top of each other, so you get the subject from more than one height in one flight.</p>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/orbit_draw.webp" width="1920" height="1100" loading="lazy" alt="Drawing an orbit: a dashed circle being dragged out from the centre of a building, with a live readout of r 51 m."></figure>
+      <ol class="steps">
+        <li>Choose <b>Orbit</b>.</li>
+        <li>Tap the middle of the subject. A 40&nbsp;m circle appears around it.</li>
+        <li>Or tap <b>Draw</b>, press on the subject and drag outwards. The radius shows next to your finger as you drag.</li>
+        <li>The pin button drops a circle on your launch point instead.</li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/orbit_drawn.webp" width="1920" height="1100" loading="lazy" alt="A 70 m orbit around the UPLB CAFS building, with numbered size label, move handle, resize handle, Redraw, Save and Next."></figure>
+      <ol class="legend">
+        <li><span><b>Radius and diameter</b> of the orbit, and where the launch point is.</span></li>
+        <li><span><b>Move handle.</b> Drag it to move the whole circle.</span></li>
+        <li><span><b>Resize handle.</b> Drag it in or out; the radius shows while you drag.</span></li>
+        <li><span><b>Redraw</b> starts a new circle.</span></li>
+        <li><span><b>Save</b> to My missions.</span></li>
+        <li><span><b>Next.</b></span></li>
+      </ol>
+    </div>
+    <div class="fig solo wide">
+      <figure class="shot"><img src="img/config_orbit_map.webp" width="1920" height="1100" loading="lazy" alt="The orbit mission on the settings screen: the orange flight path around the building, the launch point and the last waypoint."><figcaption><b>①</b> launch point · <b>②</b> move · <b>③</b> resize · <b>④</b> last waypoint (red). The handles work on this screen too.</figcaption></figure>
+    </div>
+    <div class="fig tall wide">
+      <figure class="shot"><img width="690" height="2734" src="img/panel_orbit.webp" loading="lazy" alt="Orbit settings with eleven numbered rows."></figure>
+      <ol class="legend">
+        <li><span><b>Flight summary.</b> See <a href="#settings">settings</a>.</span></li>
+        <li><span><b>Altitude mode.</b> <i>Take Off</i> stacks the rings above the launch point. <i>Ground</i> follows the terrain round the circle (see <a href="#terrain">Terrain follow</a>).</span></li>
+        <li><span><b>Lowest ring</b> height. The first ring is flown here; the others are above it.</span></li>
+        <li><span><b>Target GSD</b>, linked to the height as in the other types.</span></li>
+        <li><span><b>Drone speed.</b> The grey line says how long one ring takes and how many photos that gives at a 2&nbsp;s Timed Shot.</span></li>
+        <li><span><b>Auto camera angle.</b> On: the camera points at the centre of the orbit from each ring, so the higher rings look down more steeply. Off: you set one angle (65° to start) and it's held for every ring.</span></li>
+        <li><span><b>Circle radius</b>, 5 to 500&nbsp;m. Same as dragging the resize handle.</span></li>
+        <li><span><b>Waypoints per circle.</b> More points turn the camera more smoothly round the subject but use more of the waypoint budget.</span></li>
+        <li><span><b>Number of rings</b>, 3 by default, up to 20. The green buttons step by 5.</span></li>
+        <li><span><b>Vertical distance between rings</b>, 10&nbsp;m by default. The grey line shows the height of the top ring.</span></li>
+        <li><span><b>Upon signal loss.</b> As in the other types.</span></li>
+      </ol>
+    </div>
+    <div class="note"><span class="tag">How it climbs between rings</span><p>The drone doesn't stop between rings. Stopping, climbing straight up and speeding up again wastes battery, so when a ring is done it keeps going round and climbs on a gentle slope to the next one, then flies that ring level. The climb is spread over just enough of the circle to stay at about 1.5&nbsp;m/s, so the drone holds its speed. With Auto camera angle on, the camera tilts to the next ring's angle during the climb.</p><p>In <i>Take Off</i> mode the drone only climbs to the lowest ring's height before it sets off, not the top one. In <i>Ground</i> mode it climbs to the highest point of the mission first, to be safe over uneven ground.</p></div>
+    <div class="note warn"><span class="tag">Check what's around the subject</span><p>The camera aims at the ground in the middle of the circle. For a tall subject, pick a radius that clears it and anything next to it at every ring height, and remember the top ring is the highest point of the flight.</p></div>
+  </div>
 </section>
 
 <!-- ============================================================= -->
@@ -774,17 +822,16 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   </div>
   <div class="note"><span class="tag">The plus and minus buttons</span><p>The <b>black − / +</b> buttons change a value by a small step; the <b style="color:var(--go)">green − / +</b> buttons change it by a big step (10&nbsp;m of altitude, 1&nbsp;m/s of speed). You can also tap the number and type a value.</p></div>
   <div class="fig tall wide">
-    <figure class="shot"><img src="img/panel_area.webp" width="690" height="2617" loading="lazy" alt="The full Area settings panel with fourteen numbered rows."></figure>
+    <figure class="shot"><img src="img/panel_area.webp" width="690" height="2493" loading="lazy" alt="The full Area settings panel with thirteen numbered rows."></figure>
     <ol class="legend">
       <li><span><b>Flight summary:</b> flight time · distance · area · waypoint count. Time includes flying out from the launch point and back.</span></li>
       <li><span><b>Camera model.</b> Pick your drone. It sets the sensor maths and the top speed.</span></li>
       <li><span><b>Altitude mode.</b> <i>Take Off</i> flies a fixed height above the launch point. <i>Ground</i> follows the terrain (see below).</span></li>
       <li><span><b>Target altitude</b> in metres. <span class="hint">Higher = faster flights, coarser detail.</span></span></li>
       <li><span><b>Target GSD.</b> Type the detail you want and the altitude adjusts to match. <span class="hint">2.9&nbsp;cm/px at 80&nbsp;m on a Mini 5 Pro.</span></span></li>
-      <li><span><b>Drone speed.</b> The grey line below it is the Timed Shot interval to set in DJI Fly. <span class="hint">Turns red if you'd need shots faster than every 2&nbsp;s; slow down as it suggests.</span></span></li>
+      <li><span><b>Drone speed.</b> The mission flies at exactly this speed. Set the shutter in DJI Fly's camera settings; a fast shutter (1/1000&nbsp;s or quicker) keeps photos sharp. The grey line below it is the Timed Shot interval to set in DJI Fly. <span class="hint">Turns red if you'd need shots faster than every 2&nbsp;s; slow down as it suggests.</span></span></li>
       <li><span><b>Front overlap.</b> 80&nbsp;% for most mapping.</span></li>
       <li><span><b>Side overlap.</b> 70–75&nbsp;%. Higher means more lines.</span></li>
-      <li><span><b>Shutter speed</b> you'll use. A slower shutter lowers the top speed so photos aren't blurred.</span></li>
       <li><span><b>Camera angle</b> in degrees below the horizon. 90 is straight down; 75 cuts the “bowl” error in 3D models.</span></li>
       <li><span><b>Grid orientation.</b> Auto picks the line direction from the boundary. Switch it off to set your own angle.</span></li>
       <li><span><b>Upon signal loss.</b> Off: the drone stops the mission and does what DJI Fly is set to do when the signal is lost (usually return home). On: it finishes the mission first.</span></li>
@@ -883,10 +930,10 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <h3>Send several at once</h3>
     <p>From <b>My missions</b>, long-press a mission, tick the others (or tick a whole group), and tap the send arrow.</p>
     <div class="fig wide">
-      <figure class="shot"><img src="img/send_many.webp" width="1920" height="1100" loading="lazy" alt="Send 4 missions to DJI Fly, each mission paired with a slot number."></figure>
+      <figure class="shot"><img src="img/send_many.webp" width="1920" height="1100" loading="lazy" alt="Send 3 missions to DJI Fly, each mission paired with a slot number."></figure>
       <ol class="legend">
         <li><span><b>Status:</b> Shizuku, or DJI Fly Refresher.</span></li>
-        <li><span><b>Slots available.</b> You need one per mission.</span></li>
+        <li><span><b>Slots available.</b> You need one per mission. With too few, the line turns red; drop missions with <b>×</b> or make more placeholder missions in DJI Fly.</span></li>
         <li><span><b>→ No.&nbsp;N</b> is the slot each mission goes to. Tap it to choose another.</span></li>
         <li><span><b>×</b> leaves that mission out of this batch.</span></li>
         <li><span><b>Send</b> fills every slot. Then <b>Clear cache &amp; open DJI Fly</b> (Shizuku) or <b>Refresh &amp; open DJI Fly</b> (Refresher) hands over to DJI Fly.</span></li>
@@ -903,7 +950,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <p class="lede">Saved missions keep their shape and every setting. Groups keep a site or a client's jobs together.</p>
   </div>
   <div class="fig wide">
-    <figure class="shot"><img src="img/save_dialog.webp" width="1920" height="1100" loading="lazy" alt="The Save mission dialog named Manual UPLB CAFS Paddies."></figure>
+    <figure class="shot"><img src="img/save_dialog.webp" width="1920" height="1100" loading="lazy" alt="The Save mission dialog named Manual CAFS Orbit."></figure>
     <ol class="legend">
       <li><span><b>Name.</b> It's also the name DJI Fly shows on the slot, so make it something you'll recognise in the field.</span></li>
       <li><span><b>Save</b> adds it to My missions.</span></li>
@@ -945,7 +992,6 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <li><span><b>File name</b> of the exported <code>.kmz</code>.</span></li>
       <li><span><b>Save to Downloads</b> puts a copy in <code>Download/LiteFlight</code>.</span></li>
       <li><span><b>Load KMZ</b> adds DJI mission files from elsewhere to the list.</span></li>
-      <li><span><b>Mission Injector</b> hands the file to the phone app Lite Flight 1.0 used for the DJI RC&nbsp;2. With 1.1 you don't need it; see <a href="#rc2">Missions on the DJI RC&nbsp;2</a>.</span></li>
       <li><span><b>Home</b> returns to the map.</span></li>
       <li><span><b>Missions</b> ready to send. Tap one to select it.</span></li>
       <li><span><b>DJI Fly slots.</b> Tap one to send the selected mission.</span></li>
@@ -982,7 +1028,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <div class="ch-head">
     <p class="eyebrow">12 · DJI RC 2</p>
     <h2>Missions on the DJI RC&nbsp;2</h2>
-    <p class="lede">With Lite Flight 1.1 the RC&nbsp;2 works on its own, with no phone or cable. Lite Flight sends missions straight into DJI Fly's slots, and DJI Fly Refresher makes DJI Fly show them. Out of the box, though, the RC&nbsp;2 can't install apps. <b>FreeFCC's helper apps come first</b>; everything else builds on them.</p>
+    <p class="lede">Since Lite Flight 1.1 the RC&nbsp;2 works on its own, with no phone or cable. Lite Flight sends missions straight into DJI Fly's slots, and DJI Fly Refresher makes DJI Fly show them. Out of the box, though, the RC&nbsp;2 can't install apps. <b>FreeFCC's helper apps come first</b>; everything else builds on them.</p>
   </div>
 
   <div class="fig wide">
@@ -994,7 +1040,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
         <li>A <b>microSD card</b>. It gets formatted, so copy off anything on it first.</li>
         <li>A computer or phone that can copy files onto the card.</li>
         <li><b>FreeFCC's helper apps:</b> <a href="https://freefcc.pages.dev/downloads/freefcc-helpers.zip"><code>freefcc-helpers.zip</code></a>.</li>
-        <li><code>LiteFlight_v1.1.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> from the <a href="https://github.com/leobarua/liteflight/releases/latest">download page</a>.</li>
+        <li><code>LiteFlight_v1.2.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> from the <a href="https://github.com/leobarua/liteflight/releases/latest">download page</a>.</li>
       </ul>
     </div>
   </div>
@@ -1038,7 +1084,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <ol class="steps">
       <li>Take the card out and put it in your computer (or a card reader).</li>
       <li>Extract <code>freefcc-helpers.zip</code>.</li>
-      <li>Copy <code>LiteFlight_v1.1.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> into the extracted folder.</li>
+      <li>Copy <code>LiteFlight_v1.2.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> into the extracted folder.</li>
       <li>Copy that whole folder onto the card, then put the card back into the RC&nbsp;2.</li>
     </ol>
   </div>
@@ -1089,7 +1135,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <ol class="steps">
         <li>Swipe to open <b>ATV Launcher</b>, then open <b>Files</b> <span class="mono">①</span>.</li>
         <li>Go to your folder on the card.</li>
-        <li>Tap <code>LiteFlight_v1.1.apk</code> and install it.</li>
+        <li>Tap <code>LiteFlight_v1.2.apk</code> and install it.</li>
         <li>Tap <code>DJI-Fly-Refresher-v1.1.apk</code> and install it.</li>
         <li><b>Lite Flight</b> <span class="mono">②</span> and <b>DJI Fly Refresher</b> <span class="mono">③</span> now sit in the launcher next to <b>DJI Fly</b> <span class="mono">④</span>.</li>
       </ol>
@@ -1155,7 +1201,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <details class="faq"><summary>DJI Fly on the RC&nbsp;2 still shows the old picture</summary><p>The route has already been replaced. Open DJI Fly Refresher (or use its swipe) to refresh it.</p></details>
 
   <footer>
-    Lite Flight 1.1 by LeoBar. Screens captured on a DJI RC Pro 2 and a DJI RC 2; device code, contact address, network name and address, and device name are blurred. Demo missions are over the UPLB CAFS experimental paddies in Los Baños, Laguna. Imagery: Esri World Imagery. RC&nbsp;2 setup steps follow FreeFCC's guide (github.com/doesthings/FreeFCC).
+    Lite Flight 1.2 by LeoBar. Screens captured on a DJI RC Pro 2 and a DJI RC 2; device code, contact address, network name and address, and device name are blurred. Demo missions are over the UPLB CAFS experimental paddies in Los Baños, Laguna. Imagery: Esri World Imagery. RC&nbsp;2 setup steps follow FreeFCC's guide (github.com/doesthings/FreeFCC).
   </footer>
 </section>
 

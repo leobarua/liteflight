@@ -2,7 +2,7 @@
 
 Lite Flight lets you draw aerial-imaging waypoint missions on saved satellite imagery and drop them straight into DJI Fly's waypoint list. It works even off-grid.
 
-- Built for the DJI RC Pro 2 and Android 11+ smartphones on DJI RC-N2/RC-N3 controllers. Also works with the DJI RC 2 through a companion app on an Android device connected by OTG.
+- Built for the DJI RC Pro 2 and Android 11+ smartphones on DJI RC-N2/RC-N3 controllers. Also works on the original DJI RC Pro, and on the DJI RC 2 once FreeFCC's helper apps are installed (see the manual's DJI RC 2 chapter).
 - Compatible with current-generation DJI drones: Mini 4 Pro · Mini 5 Pro · Air 3S · Mavic 4 Pro
 
 ## Download
@@ -13,7 +13,7 @@ New installs run as a 14-day trial. To get a license, email the device code show
 
 ## Manual
 
-Read the illustrated user manual at **<https://leobarua.github.io/liteflight/>** (source in [`docs/`](docs/)). It covers offline imagery, drawing missions, mission settings, Shizuku setup and sending missions to DJI Fly.
+Read the illustrated user manual at **<https://leobarua.github.io/liteflight/>** (source in [`docs/`](docs/)). It covers offline imagery, the five mission types (Area, Corridor, Circle, Quick and Orbit), mission settings, Shizuku setup and sending missions to DJI Fly.
 
 ## DJI Fly Refresher
 
