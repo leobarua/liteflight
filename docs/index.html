@@ -208,6 +208,10 @@ section.ch > .sub { max-width: none; }
 .note.danger { background: var(--stop-soft); border: 2px solid var(--stop); }
 .note.danger .tag { color: var(--stop); font-weight: 600; display: flex; align-items: center; gap: 0.45rem; }
 .note.danger .tag svg { width: 1.35rem; height: 1.35rem; flex: none; }
+.note ul { margin: 0; padding-left: 1.2rem; }
+.note li { margin: 0.15rem 0; }
+.cta { display: inline-block; background: var(--signal); color: #fff; font-weight: 600; text-decoration: none; padding: 0.6rem 1.1rem; border-radius: 8px; }
+.cta:hover { background: #c2410c; }
 
 /* ---- Tables ------------------------------------------------------- */
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
@@ -298,7 +302,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 <div class="getbar">
   <div class="in">
     <div class="id">
-      <p><b>Lite Flight v1.2</b> <span>· for the DJI RC Pro 2, RC 2 and Android 11+</span></p>
+      <p><b>Lite Flight v1.3</b> <span>· for the DJI RC Pro 2, RC 2 and Android 11+</span></p>
       <p class="contact"><span class="c">Inquiries: <a href="mailto:ldbarua@gmail.com">ldbarua@gmail.com</a></span><span class="sep"> · </span><span class="c">or DM on <a href="https://www.facebook.com/leonardo.barua" target="_blank" rel="noopener">Facebook</a></span></p>
     </div>
     <div class="acts">
@@ -323,20 +327,22 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <li><a href="#export">Export screen</a></li>
     <li><a href="#help">Troubleshooting</a></li>
     <li><a href="#rc2">DJI RC 2</a></li>
+    <li><a href="#liteflyer">Lite Flyer (older drones)</a></li>
   </ol>
-  <p class="meta">Version 1.2 <span id="dl-wrap" hidden>(downloads: <span id="dl-count"></span>)</span> · captured on a DJI&nbsp;RC&nbsp;Pro&nbsp;2 (Android&nbsp;11). Demo missions are over the UPLB CAFS rice paddies in Los&nbsp;Baños, Laguna.</p>
+  <p class="meta">Version 1.3 <span id="dl-wrap" hidden>(downloads: <span id="dl-count"></span>)</span> · captured on a DJI&nbsp;RC&nbsp;Pro&nbsp;2 (Android&nbsp;11). Demo missions are over the UPLB CAFS rice paddies in Los&nbsp;Baños, Laguna. The v1.3 screens (auto-capture, Share with Lite Flyer, Send to Lite Flyer) were captured on a Samsung Galaxy&nbsp;A73 phone.</p>
 </nav>
 
 <main>
 
 <header class="hero">
   <div>
-    <p class="eyebrow">Field manual · v1.2</p>
+    <p class="eyebrow">Field manual · v1.3</p>
     <h1>Plan mapping flights <em>offline</em>, fly them in DJI&nbsp;Fly.</h1>
     <p class="lede">Lite Flight lets you draw aerial-imaging waypoint missions on saved satellite imagery and drop them straight into DJI Fly's waypoint list. It works even off-grid.</p>
     <div class="strip">
       <span>Built for the <b>DJI RC Pro 2</b> and <b>Android 11+</b> smartphones on <b>DJI RC&#8209;N2/RC&#8209;N3</b> controllers. Also works on the original <b>DJI RC Pro</b> with <a href="#refresher">DJI Fly Refresher</a>, and on the <b>DJI RC 2</b> once <a href="#rc2">FreeFCC's helper apps</a> are installed.</span>
       <span>Compatible with current-generation DJI drones: <b>Mini 4 Pro · Mini 5 Pro · Air 3S · Mavic 4 Pro</b></span>
+      <span>Older drones (Phantom&nbsp;4, Mavic&nbsp;2, Air&nbsp;2S, Mini&nbsp;2, Mini&nbsp;3) fly Lite Flight missions with the companion app <a href="#liteflyer">Lite Flyer</a>, a limited release.</span>
     </div>
   </div>
   <figure class="hero-shot shot">
@@ -458,6 +464,14 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <ol class="legend">
         <li><span><b>Selected source.</b> Custom sources you add appear in this list too.</span></li>
         <li><span><b>Add custom</b> asks for a name, the tile URL and an optional attribution.</span></li>
+      </ol>
+    </div>
+    <p id="share-imagery"><b>Share with Lite Flyer.</b> If you fly with <a href="#liteflyer">Lite Flyer</a>, it can show your downloaded areas offline too. Switch on <b>Share with Lite Flyer</b> at the top of <b>Downloaded areas</b>.</p>
+    <div class="fig tall wide">
+      <figure class="shot"><img width="620" height="625" src="img/share_lite_flyer.webp" loading="lazy" alt="Downloaded areas with the Share with Lite Flyer switch on and each area marked Shared with Lite Flyer."></figure>
+      <ol class="legend">
+        <li><span><b>Share with Lite Flyer.</b> Off by default. When it's on, each finished area is also saved as an <code>.mbtiles</code> file in <code>Documents/LiteFlight/Imagery</code>, where Lite Flyer finds it. Android asks you to allow <b>All files access</b> for Lite Flight; allow it in Lite Flyer as well. <span class="hint">Deleting an area here deletes its shared copy too.</span></span></li>
+        <li><span><b>Shared with Lite Flyer</b> shows under each area that's been copied. Large areas take a moment.</span></li>
       </ol>
     </div>
   </div>
@@ -842,7 +856,17 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 
   <div class="fig half wide">
     <figure class="shot"><img width="640" height="230" src="img/speed_warning.webp" loading="lazy" alt="Drone speed with the red warning: photo every 1.5 s, slow to 6.0 m/s for a 2 s interval."><figcaption><b>①</b> At 60&nbsp;m and 8&nbsp;m/s you'd need a photo every 1.5&nbsp;s, which DJI cameras can't do. The fix is in the message: slow to 6&nbsp;m/s, or fly higher.</figcaption></figure>
-    <figure class="shot"><img width="640" height="480" src="img/camera_menu.webp" loading="lazy" alt="The camera model menu: DJI Air 3S, Mini 5 Pro, Mini 4 Pro, Mavic 4 Pro."><figcaption>Pick your drone from the camera menu.</figcaption></figure>
+    <figure class="shot"><img width="640" height="480" src="img/camera_menu.webp" loading="lazy" alt="The camera model menu: DJI Air 3S, Mini 5 Pro, Mini 4 Pro, Mavic 4 Pro."><figcaption>Pick your drone from the camera menu. Scroll down for the drones flown with <a href="#liteflyer">Lite Flyer</a>: Mini&nbsp;3, Mini&nbsp;3&nbsp;Pro, Air&nbsp;2, Air&nbsp;2S, Mavic&nbsp;2 Zoom, Mavic&nbsp;2 Pro, Phantom&nbsp;4 and Phantom&nbsp;4&nbsp;Pro.</figcaption></figure>
+  </div>
+
+  <div class="sub" id="autocapture">
+    <h3>Auto-capture photos</h3>
+    <p>Normally you start a <b>Timed Shot</b> in DJI Fly at the start of the mission (the grey line under Drone speed gives the interval). With <b>Auto-capture photos</b> on, Lite Flight puts a photo waypoint at every photo position along each line, the way Litchi does, and DJI Fly takes the photos by itself. You don't need to start a Timed Shot.</p>
+    <div class="fig half wide">
+      <figure class="shot"><img width="720" height="635" src="img/autocap_panel.webp" loading="lazy" alt="The Camera card with Auto-capture photos on and a red line: plus 106 photo waypoints, 161 in total, over 150, DJI Fly may lag."><figcaption><b>①</b> The <b>Auto-capture photos</b> switch, under Camera model. <b>②</b> How many photo waypoints it adds; red over 150. <b>③</b> The waypoint count in the summary goes up to match.</figcaption></figure>
+      <figure class="shot"><img width="830" height="678" src="img/autocap_dialog.webp" loading="lazy" alt="Dialog: Auto-capture adds waypoints. This mission goes from 55 to 161 waypoints, about 2.9 times."><figcaption>Switching it on shows how many waypoints the mission will have. Tap <b>Keep auto-capture</b> or <b>Turn off</b>.</figcaption></figure>
+    </div>
+    <div class="note warn"><span class="tag">More waypoints</span><p>DJI Fly can only take photos by itself at waypoints, so auto-capture often triples the waypoint count. Over about 150, DJI Fly may lag or be slow to load the mission. Split a big site, lower front overlap or fly higher to bring the count down. The switch is remembered for your next mission, and each saved mission keeps its own setting.</p></div>
   </div>
 
   <div class="sub" id="terrain">
@@ -1001,6 +1025,27 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   </div>
   <p>After a send from this screen, a button appears under the slots: <b>Clear cache &amp; open DJI Fly</b> with Shizuku running, or <b>Refresh &amp; open DJI Fly</b> with <a href="#refresher">DJI Fly Refresher</a>.</p>
   <div class="note"><span class="tag">Folder access instead of Shizuku</span><p>On a DJI RC, if Shizuku isn't running, this screen offers <b>Use folder access instead of Shizuku</b>. Tap it, then <b>Allow access to dji.go.v5</b> and <b>Allow</b>. That's a one-time grant, and missions can then be sent without Shizuku. Phones don't allow it; they need Shizuku.</p><p>Without Shizuku or the Refresher, DJI Fly keeps showing the slot's old thumbnail until its cache clears. To refresh it yourself, go to Android <b>Settings → Apps → DJI Fly → Storage</b> and tap <b>Clear cache</b>. Your saved missions aren't affected.</p></div>
+
+  <div class="sub" id="send-liteflyer">
+    <h3>Send to Lite Flyer</h3>
+    <p>For a drone that DJI Fly can't fly missions on, send the mission to <a href="#liteflyer">Lite Flyer</a> instead of a DJI Fly slot. It's on the same screen, on a phone or tablet with Lite Flyer installed.</p>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/lf_export.webp" width="2360" height="1001" loading="lazy" alt="The Export screen on a phone, with a mission selected and Send to Lite Flyer (older drones) at the top of the right column."></figure>
+      <ol class="legend">
+        <li><span><b>Select the mission</b> to send.</span></li>
+        <li><span><b>Send to Lite Flyer (older drones).</b> Lite Flyer opens with the mission loaded, ready for a dry run. Lite Flight stays open behind it.</span></li>
+        <li><span><b>Lite Flyer</b> switches to the app without sending anything.</span></li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/lf_chooser.webp" width="2360" height="1001" loading="lazy" alt="The Which Lite Flyer? dialog offering Lite Flyer (MSDK v4) and Lite Flyer 5 (MSDK v5)."></figure>
+      <ol class="legend">
+        <li><span><b>Lite Flyer</b> for the Phantom&nbsp;4, Mavic&nbsp;2, Mavic Pro, Air&nbsp;2S, Mavic Air&nbsp;2 and Mini&nbsp;2.</span></li>
+        <li><span><b>Lite Flyer&nbsp;5</b> for the Mini&nbsp;3, Mini&nbsp;3&nbsp;Pro and Mini&nbsp;4&nbsp;Pro. This choice only appears when both are installed.</span></li>
+      </ol>
+    </div>
+    <p>If Lite Flyer isn't installed, Lite Flight says what it's for instead. See <a href="#liteflyer">Lite Flyer</a> for how to request it.</p>
+  </div>
 </section>
 
 <!-- ============================================================= -->
@@ -1040,7 +1085,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
         <li>A <b>microSD card</b>. It gets formatted, so copy off anything on it first.</li>
         <li>A computer or phone that can copy files onto the card.</li>
         <li><b>FreeFCC's helper apps:</b> <a href="https://freefcc.pages.dev/downloads/freefcc-helpers.zip"><code>freefcc-helpers.zip</code></a>.</li>
-        <li><code>LiteFlight_v1.2.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> from the <a href="https://github.com/leobarua/liteflight/releases/latest">download page</a>.</li>
+        <li><code>LiteFlight_v1.3.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> from the <a href="https://github.com/leobarua/liteflight/releases/latest">download page</a>.</li>
       </ul>
     </div>
   </div>
@@ -1084,7 +1129,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <ol class="steps">
       <li>Take the card out and put it in your computer (or a card reader).</li>
       <li>Extract <code>freefcc-helpers.zip</code>.</li>
-      <li>Copy <code>LiteFlight_v1.2.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> into the extracted folder.</li>
+      <li>Copy <code>LiteFlight_v1.3.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> into the extracted folder.</li>
       <li>Copy that whole folder onto the card, then put the card back into the RC&nbsp;2.</li>
     </ol>
   </div>
@@ -1135,7 +1180,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <ol class="steps">
         <li>Swipe to open <b>ATV Launcher</b>, then open <b>Files</b> <span class="mono">①</span>.</li>
         <li>Go to your folder on the card.</li>
-        <li>Tap <code>LiteFlight_v1.2.apk</code> and install it.</li>
+        <li>Tap <code>LiteFlight_v1.3.apk</code> and install it.</li>
         <li>Tap <code>DJI-Fly-Refresher-v1.1.apk</code> and install it.</li>
         <li><b>Lite Flight</b> <span class="mono">②</span> and <b>DJI Fly Refresher</b> <span class="mono">③</span> now sit in the launcher next to <b>DJI Fly</b> <span class="mono">④</span>.</li>
       </ol>
@@ -1203,6 +1248,36 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <footer>
     Lite Flight 1.2 by LeoBar. Screens captured on a DJI RC Pro 2 and a DJI RC 2; device code, contact address, network name and address, and device name are blurred. Demo missions are over the UPLB CAFS experimental paddies in Los Baños, Laguna. Imagery: Esri World Imagery. RC&nbsp;2 setup steps follow FreeFCC's guide (github.com/doesthings/FreeFCC).
   </footer>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="liteflyer">
+  <div class="ch-head">
+    <p class="eyebrow">13 · Companion app</p>
+    <h2>Lite Flyer, for older drones</h2>
+    <p class="lede">DJI Fly can't fly waypoint missions on older drones. Lite Flyer can: plan the mission in Lite Flight as usual, <a href="#send-liteflyer">send it to Lite Flyer</a>, and Lite Flyer flies it and takes the photos. It runs on an Android phone or tablet plugged into the drone's remote controller.</p>
+  </div>
+  <div class="table-wrap wide">
+    <table>
+      <thead><tr><th>App</th><th>Drones</th></tr></thead>
+      <tbody>
+        <tr><td>Lite Flyer</td><td>Phantom&nbsp;4 (all versions), Mavic&nbsp;2 Pro / Zoom / Enterprise, Mavic Pro, Air&nbsp;2S, Mavic Air&nbsp;2, Mavic Mini, Mini&nbsp;SE, Mini&nbsp;2</td></tr>
+        <tr><td>Lite Flyer&nbsp;5</td><td>Mini&nbsp;3, Mini&nbsp;3&nbsp;Pro, Mini&nbsp;4&nbsp;Pro</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note warn">
+    <span class="tag">Limited release: at most 15 people</span>
+    <p>Lite Flyer runs on a DJI SDK key with a small device limit, so it isn't on the download page. It's shared privately with at most 15 people. Each request is evaluated, and access isn't guaranteed. To request it, email <a href="mailto:ldbarua@gmail.com?subject=Lite%20Flyer%20access%20request">ldbarua@gmail.com</a> or DM on <a href="https://www.facebook.com/leonardo.barua" target="_blank" rel="noopener">Facebook</a> with:</p>
+    <ul>
+      <li>your full name</li>
+      <li>your affiliation</li>
+      <li>your drone model, and the device you'll install Lite Flyer on</li>
+      <li>3–5 sentences on what you'll use the app for, and why you should be given one of the places</li>
+    </ul>
+  </div>
+  <p><a class="cta" href="liteflyer/">Open the Lite Flyer manual →</a></p>
+  <p>The Lite Flyer manual covers installing it, getting missions in, practising with a dry run on the map, the pre-flight checks, flying, stopping and resuming after a battery swap, and offline maps (see <a href="#share-imagery">Share with Lite Flyer</a>).</p>
 </section>
 
 </main>

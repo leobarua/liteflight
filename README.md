@@ -4,6 +4,7 @@ Lite Flight lets you draw aerial-imaging waypoint missions on saved satellite im
 
 - Built for the DJI RC Pro 2 and Android 11+ smartphones on DJI RC-N2/RC-N3 controllers. Also works on the original DJI RC Pro, and on the DJI RC 2 once FreeFCC's helper apps are installed (see the manual's DJI RC 2 chapter).
 - Compatible with current-generation DJI drones: Mini 4 Pro · Mini 5 Pro · Air 3S · Mavic 4 Pro
+- Older DJI drones (Phantom 4, Mavic 2, Mavic Pro, Air 2S, Mavic Air 2, Mini 2, Mini 3 / 3 Pro / 4 Pro) can fly Lite Flight missions with the companion app **Lite Flyer** (limited release, see below).
 
 ## Download
 
@@ -13,7 +14,18 @@ New installs run as a 14-day trial. To get a license, email the device code show
 
 ## Manual
 
-Read the illustrated user manual at **<https://leobarua.github.io/liteflight/>** (source in [`docs/`](docs/)). It covers offline imagery, the five mission types (Area, Corridor, Circle, Quick and Orbit), mission settings, Shizuku setup and sending missions to DJI Fly.
+Read the illustrated user manual at **<https://leobarua.github.io/liteflight/>** (source in [`docs/`](docs/)). It covers offline imagery, the five mission types (Area, Corridor, Circle, Quick and Orbit), mission settings including auto-capture, Shizuku setup, and sending missions to DJI Fly or Lite Flyer. The Lite Flyer manual is at **<https://leobarua.github.io/liteflight/liteflyer/>**.
+
+## Lite Flyer (limited release)
+
+Lite Flyer is Lite Flight's companion app for older DJI drones that DJI Fly can't fly waypoint missions on. Lite Flight sends the mission across with one tap and Lite Flyer flies it and takes the photos.
+
+Lite Flyer runs on a DJI SDK key that allows only a few devices, so it isn't on the Releases page. **At most 15 people will get access.** Requests are evaluated and access isn't guaranteed. To request it, email ldbarua@gmail.com or send a Facebook DM (https://www.facebook.com/leonardo.barua) with:
+
+- Full name
+- Affiliation
+- Drone model, and the device it will be installed on
+- 3–5 sentences on what you'll use the app for, and why you should be given one of the places
 
 ## DJI Fly Refresher
 

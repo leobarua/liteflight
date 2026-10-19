@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="How to fly Lite Flight missions on DJI drones with Lite Flyer and Lite Flyer 5.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lite Flyer Field Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a sticky chapter rail beside one reading column; screenshots break
+   wider than the text and pair with a numbered legend whose orange badges
+   match the badges drawn on the images. Light only, by request: the app
+   itself is locked to a light theme for outdoor readability. */
+:root {
+  --paper: #f5f6f8;      /* page ground, cool like the app's own surface */
+  --surface: #ffffff;
+  --ink: #142030;        /* navy body text */
+  --muted: #5a6677;
+  --line: #d9dee6;
+  --signal: #ea580c;     /* the annotation badge orange */
+  --signal-soft: #fff1e7;
+  --sky: #1a6fd8;        /* the app's primary blue, used for links */
+  --sky-soft: #e8f1fc;
+  --go: #23793c;
+  --go-soft: #e8f5ec;
+  --stop: #c62828;       /* safety warnings */
+  --stop-soft: #fdecec;
+  --display: "Barlow Semi Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.2rem;
+  --step-2: 1.6rem;
+  --step-3: 2.3rem;
+  --step-4: clamp(2.4rem, 5vw, 3.6rem);
+  --rail: 15.5rem;
+  --bar: 4.6rem;
+  --read: 42rem;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 6rem; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--step-0)/1.62 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+img, video { max-width: 100%; display: block; }
+a { color: var(--sky); text-underline-offset: 0.18em; }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--signal); outline-offset: 2px; border-radius: 4px;
+}
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; }
+h2 { font-size: var(--step-3); font-weight: 700; letter-spacing: -0.005em; }
+h3 { font-size: var(--step-2); font-weight: 600; }
+p, ul, ol { margin: 0; }
+code, .mono { font-family: var(--mono); font-size: 0.92em; }
+kbd {
+  font-family: var(--body); font-size: 0.86em; font-weight: 600; white-space: nowrap;
+  padding: 0.05em 0.5em; border: 1px solid var(--line); border-bottom-width: 2px;
+  border-radius: 6px; background: var(--surface);
+}
+
+/* ---- Pinned download bar -------------------------------------------- */
+.getbar {
+  position: sticky; top: 0; z-index: 10;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: var(--ink); color: #fff;
+}
+.getbar .in {
+  max-width: 82rem; margin: 0 auto; padding-inline: 1.5rem;
+  min-height: var(--bar); display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.getbar .id { min-width: 0; padding-block: 0.45rem; display: grid; gap: 0.2rem; }
+.getbar p { font-size: 0.9rem; line-height: 1.3; }
+.getbar p b { font-family: var(--display); font-size: 1.45rem; font-weight: 700; letter-spacing: 0.01em; line-height: 1.1; }
+.getbar p span { color: #b9c3d0; }
+.getbar .contact { font-size: 0.82rem; color: #b9c3d0; }
+.getbar .contact a { color: #fff; text-decoration: underline; text-decoration-color: rgba(255, 255, 255, 0.4); text-underline-offset: 2px; }
+.getbar .contact a:hover { text-decoration-color: #fff; }
+.getbar .acts { display: flex; align-items: center; gap: 0.9rem; flex-shrink: 0; }
+.getbar .btn {
+  display: inline-flex; align-items: center; gap: 0.45rem; white-space: nowrap;
+  background: var(--signal); color: #fff; text-decoration: none; font-weight: 600; font-size: 0.92rem;
+  padding: 0.5rem 1rem; border-radius: 8px;
+}
+.getbar .btn:hover { background: #c2410c; }
+.getbar .btn svg { width: 1rem; height: 1rem; }
+.getbar a:focus-visible { outline-color: #fff; }
+
+/* ---- Shell ---------------------------------------------------------- */
+.shell {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  gap: 3rem;
+  max-width: 82rem;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+}
+.rail {
+  min-width: 0;
+  position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--bar));
+  align-self: start; max-height: calc(100vh - var(--bar)); overflow-y: auto;
+  padding-block: 2rem;
+}
+.rail .brand { font-family: var(--display); font-weight: 700; font-size: var(--step-1); letter-spacing: 0.01em; }
+.rail .brand span { color: var(--signal); }
+.rail a.back { display: block; padding: 0; margin-bottom: 0.6rem; font-size: 0.82rem; color: var(--muted); text-decoration: none; }
+.rail .back:hover { color: var(--signal); }
+.rail a.back::before { content: none; }
+.rail ol { list-style: none; padding: 0; margin-top: 1.25rem; display: grid; gap: 0.15rem; counter-reset: ch; }
+.rail li { counter-increment: ch; }
+.rail a {
+  display: grid; grid-template-columns: 1.6rem 1fr; align-items: baseline;
+  padding: 0.35rem 0.5rem; border-radius: 6px; color: var(--muted); text-decoration: none;
+  font-size: var(--step--1); line-height: 1.35;
+}
+.rail a::before { content: counter(ch, decimal-leading-zero); font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+.rail a:hover { background: var(--surface); color: var(--ink); }
+.rail a.on { background: var(--surface); color: var(--ink); font-weight: 600; box-shadow: inset 3px 0 0 var(--signal); }
+.rail a.on::before { color: var(--signal); }
+.rail .meta { margin-top: 1.5rem; font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+main { min-width: 0; padding-block: 2rem 6rem; }
+section.ch { padding-top: 4.5rem; display: grid; gap: 1.25rem; }
+section.ch > * { max-width: var(--read); }
+section.ch > .wide { max-width: none; }
+section.ch > .sub { max-width: none; }
+.eyebrow {
+  font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--signal); font-weight: 500;
+}
+.ch-head { display: grid; gap: 0.4rem; }
+.lede { font-size: var(--step-1); color: var(--muted); line-height: 1.5; }
+.sub { padding-top: 1.5rem; display: grid; gap: 1rem; }
+.sub > * { max-width: var(--read); }
+.sub > .wide { max-width: none; }
+
+/* ---- Hero ----------------------------------------------------------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 2.5rem; align-items: center; padding-top: 1rem; }
+.hero h1 { font-size: var(--step-4); font-weight: 700; letter-spacing: -0.01em; }
+.hero h1 em { font-style: normal; color: var(--signal); }
+.hero .lede { margin-top: 1rem; }
+.strip {
+  display: grid; gap: 0.4rem; margin-top: 1.5rem;
+  font-family: var(--mono); font-size: 0.8rem; color: var(--muted);
+}
+.strip b { color: var(--ink); font-weight: 500; }
+.hero-shot { position: relative; border-radius: 14px; overflow: hidden; box-shadow: 0 18px 40px -22px rgba(20, 32, 48, 0.55); border: 1px solid var(--line); }
+.hero-shot figcaption {
+  position: absolute; left: 0.75rem; bottom: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 6px;
+  background: rgba(255, 255, 255, 0.92); color: var(--ink); font-size: 0.78rem;
+}
+
+/* ---- Flow (the real five-step sequence) ------------------------------ */
+.flow { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; counter-reset: fl; }
+.flow li {
+  counter-increment: fl; background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 0.9rem 0.9rem 1rem; display: grid; gap: 0.3rem; align-content: start;
+}
+.flow li::before { content: counter(fl); font-family: var(--display); font-weight: 700; font-size: 1.6rem; color: var(--signal); line-height: 1; }
+.flow b { font-family: var(--display); font-size: 1.1rem; font-weight: 600; }
+.flow span { font-size: var(--step--1); color: var(--muted); line-height: 1.45; }
+
+/* ---- Figures + numbered legends ----------------------------------- */
+.fig { display: grid; grid-template-columns: minmax(0, 1fr) minmax(14rem, 19rem); gap: 1.5rem; align-items: start; }
+.fig.solo { grid-template-columns: minmax(0, 1fr); }
+.fig.tall { grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); }
+.fig.half { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.shot { margin: 0; min-width: 0; }
+.shot img, .shot video {
+  width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); background: var(--surface);
+}
+.shot figcaption { margin-top: 0.5rem; font-size: 0.8rem; color: var(--muted); }
+.legend { list-style: none; padding: 0; display: grid; gap: 0.7rem; counter-reset: lg; min-width: 0; }
+.legend li { display: grid; grid-template-columns: 1.75rem minmax(0, 1fr); gap: 0.6rem; font-size: 0.95rem; line-height: 1.45; }
+.legend li::before {
+  counter-increment: lg; content: counter(lg);
+  width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center;
+  background: var(--signal); color: #fff; font: 600 0.82rem/1 var(--body);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px rgba(20, 32, 48, 0.08);
+}
+.legend b { font-weight: 600; }
+.legend .hint { display: block; color: var(--muted); font-size: 0.86rem; }
+.clip { position: relative; }
+.clip::after {
+  content: "Clip"; position: absolute; top: 0.6rem; left: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 999px;
+  background: rgba(20, 32, 48, 0.72); color: #fff; font: 500 0.7rem/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* ---- Steps (written instructions beside a clip) -------------------- */
+.steps { padding-left: 1.4rem; display: grid; gap: 0.55rem; }
+.steps li::marker { font-family: var(--display); font-weight: 700; color: var(--signal); }
+.steps li { padding-left: 0.25rem; }
+
+/* ---- Callouts -------------------------------------------------------- */
+.note {
+  border-radius: 10px; padding: 0.9rem 1.1rem; display: grid; gap: 0.35rem;
+  background: var(--sky-soft); border: 1px solid #c7dbf5;
+}
+.note.warn { background: var(--signal-soft); border-color: #f6cfb3; }
+.note.ok { background: var(--go-soft); border-color: #bfe0c9; }
+.note .tag { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; color: var(--sky); }
+.note.warn .tag { color: var(--signal); }
+.note.ok .tag { color: var(--go); }
+.note.danger { background: var(--stop-soft); border: 2px solid var(--stop); }
+.note.danger .tag { color: var(--stop); font-weight: 600; display: flex; align-items: center; gap: 0.45rem; }
+.note.danger .tag svg { width: 1.35rem; height: 1.35rem; flex: none; }
+.note ul { margin: 0; padding-left: 1.2rem; }
+.note li { margin: 0.15rem 0; }
+
+/* ---- Tables ------------------------------------------------------- */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+th, td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--paper); }
+td:first-child { font-weight: 600; white-space: nowrap; }
+
+/* ---- Glossary ------------------------------------------------------- */
+.terms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.term { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0.85rem 1rem; display: grid; gap: 0.25rem; align-content: start; }
+.term dt { font-family: var(--display); font-weight: 600; font-size: 1.12rem; display: flex; justify-content: space-between; gap: 0.75rem; align-items: baseline; }
+.term dt .mono { font-size: 0.74rem; color: var(--signal); font-weight: 500; }
+.term dd { margin: 0; font-size: 0.92rem; color: var(--muted); line-height: 1.5; }
+
+/* ---- Pre-flight checklist ---------------------------------------- */
+.checklist { list-style: none; padding: 0; display: grid; gap: 0.5rem; }
+.checklist label {
+  display: grid; grid-template-columns: 1.4rem minmax(0, 1fr); gap: 0.75rem; align-items: start;
+  padding: 0.75rem 0.9rem; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; cursor: pointer;
+}
+.checklist input { width: 1.15rem; height: 1.15rem; margin: 0.2rem 0 0; accent-color: var(--go); }
+.checklist .t { font-weight: 600; }
+.checklist .d { display: block; font-size: 0.88rem; color: var(--muted); }
+.checklist input:checked + span .t { text-decoration: line-through; text-decoration-color: var(--go); color: var(--muted); }
+.check-foot { display: flex; justify-content: space-between; gap: 1rem; align-items: center; font-size: 0.85rem; color: var(--muted); }
+.check-foot button {
+  font: 500 0.85rem var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 0.35rem 0.8rem; cursor: pointer;
+}
+
+/* ---- Mode cards ----------------------------------------------------- */
+.modes { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; }
+.mode { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; text-decoration: none; color: inherit; }
+.mode img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; height: auto; max-width: 100%; border-bottom: 1px solid var(--line); }
+.mode div { padding: 0.8rem 0.9rem 1rem; display: grid; gap: 0.25rem; align-content: start; }
+.mode b { font-family: var(--display); font-size: 1.2rem; font-weight: 600; }
+.mode span { font-size: 0.88rem; color: var(--muted); line-height: 1.45; }
+.mode:hover { border-color: var(--signal); }
+
+details.faq { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0.2rem 1rem; }
+details.faq + details.faq { margin-top: -0.5rem; }
+details.faq summary { cursor: pointer; font-weight: 600; padding: 0.7rem 0; }
+details.faq p { padding-bottom: 0.9rem; color: var(--muted); }
+
+footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: 0.82rem; color: var(--muted); max-width: var(--read); }
+
+/* ---- Narrow screens --------------------------------------------- */
+@media (max-width: 1100px) {
+  .fig, .fig.tall { grid-template-columns: minmax(0, 1fr); }
+  .modes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; padding-inline: 1rem; }
+  .rail {
+    position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--bar)); z-index: 5; max-height: none; overflow: visible;
+    padding-block: 0.6rem; margin-inline: -1rem; padding-inline: 1rem;
+    background: rgba(245, 246, 248, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  }
+  .rail .brand { font-size: 1rem; }
+  .rail ol { display: flex; overflow-x: auto; gap: 0.25rem; margin-top: 0.4rem; scrollbar-width: none; }
+  .rail a { white-space: nowrap; grid-template-columns: auto auto; gap: 0.35rem; }
+  .rail .meta { display: none; }
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .fig.half, .terms { grid-template-columns: minmax(0, 1fr); }
+  section.ch { padding-top: 3rem; }
+  html { scroll-padding-top: 10rem; }
+  .getbar .in { padding-inline: 1rem; }
+  .getbar p b + span { display: none; }
+}
+@media (max-width: 560px) {
+  :root { --bar: 5.4rem; }
+  html { scroll-padding-top: 11rem; }
+  .getbar p b { font-size: 1.3rem; white-space: nowrap; }
+  .getbar .btn { padding-inline: 0.8rem; }
+  .getbar .btn .long { display: none; }
+  .getbar .contact .c { display: block; }
+  .getbar .contact .sep { display: none; }
+  .flow, .modes { grid-template-columns: minmax(0, 1fr); }
+  .flow li { grid-template-columns: 2rem minmax(0, 1fr); column-gap: 0.5rem; }
+  .flow li::before { grid-row: span 2; }
+}
+</style>
+</head>
+<body>
+<div class="getbar">
+  <div class="in">
+    <div class="id">
+      <p><b>Lite Flyer v1.0</b> <span>· companion to Lite Flight v1.3 · Android 7+ phones on a DJI RC</span></p>
+      <p class="contact"><span class="c">Inquiries: <a href="mailto:ldbarua@gmail.com">ldbarua@gmail.com</a></span><span class="sep"> · </span><span class="c">or DM on <a href="https://www.facebook.com/leonardo.barua" target="_blank" rel="noopener">Facebook</a></span></p>
+    </div>
+    <div class="acts">
+      <a class="btn" href="#access"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m6 11 6 6 6-6"/><path d="M4 21h16"/></svg>Request<span class="long" style="margin-left:-0.2rem">access</span></a>
+    </div>
+  </div>
+</div>
+<div class="shell">
+<nav class="rail" aria-label="Chapters">
+  <a class="back" href="../">← Lite Flight manual</a>
+  <div class="brand">Lite Flyer <span>Manual</span></div>
+  <ol id="toc">
+    <li><a href="#start">How it works</a></li>
+    <li><a href="#apps">Which app, which drone</a></li>
+    <li><a href="#prep">Before the field</a></li>
+    <li><a href="#load">Get a mission in</a></li>
+    <li><a href="#screen">The flight screen</a></li>
+    <li><a href="#settings">Mission settings</a></li>
+    <li><a href="#dry">Practise: dry run</a></li>
+    <li><a href="#fly">Fly the mission</a></li>
+    <li><a href="#stop">Stop, come home, resume</a></li>
+    <li><a href="#tabs">Camera, Map, Status</a></li>
+    <li><a href="#help">Troubleshooting</a></li>
+  </ol>
+  <p class="meta">Captured on a Samsung Galaxy A73 (Android&nbsp;14) running Lite Flyer for MSDK&nbsp;v4. Lite Flyer&nbsp;5 looks and works the same. The demo mission is beside the UPLB campus in Los&nbsp;Baños, Laguna.</p>
+</nav>
+<main>
+<header class="hero">
+  <div>
+    <p class="eyebrow">Field manual · Lite Flyer</p>
+    <h1>Fly Lite Flight missions on drones <em>DJI&nbsp;Fly can't</em> automate.</h1>
+    <p class="lede">Lite Flyer is Lite Flight's companion app. Plan the mission in Lite Flight as usual, send it across with one tap, and Lite Flyer flies it on a Phantom&nbsp;4, Mavic&nbsp;2, Air&nbsp;2S or one of the Minis. It takes the photos, shows where it has been, and can pick up where it stopped after a battery swap.</p>
+    <div class="strip">
+      <span>Two apps, one per DJI SDK: <b>Lite Flyer</b> for the Phantom&nbsp;4, Mavic&nbsp;2, Mavic Pro, Air&nbsp;2S, Mavic Air&nbsp;2 and Mini&nbsp;2; <b>Lite Flyer&nbsp;5</b> for the Mini&nbsp;3, Mini&nbsp;3&nbsp;Pro and Mini&nbsp;4&nbsp;Pro. See <a href="#apps">Which app, which drone</a>.</span>
+      <span>Runs on an Android phone or tablet plugged into the drone's remote controller (RC&#8209;N1, standard Phantom/Mavic RCs, or the Mavic&nbsp;2 Smart Controller).</span>
+    </div>
+  </div>
+  <figure class="hero-shot shot">
+    <img src="img/hero_flying.webp" width="2262" height="1001" alt="Lite Flyer mid-mission: the drone arrow on a lawnmower route over trees and buildings, yellow photo markers along the flown lines, and the mission card at 60 percent done with 1 minute 8 seconds left.">
+    <figcaption>Dry run of a 58-waypoint auto-capture mission, 60&nbsp;% done</figcaption>
+  </figure>
+</header>
+
+<!-- ============================================================= -->
+<section class="ch" id="start">
+  <div class="ch-head">
+    <p class="eyebrow">01 · Overview</p>
+    <h2>How it works</h2>
+  </div>
+  <p>Lite Flight does the planning; Lite Flyer does the flying. Every mission goes through the same five steps.</p>
+  <ol class="flow wide">
+    <li><b>Plan in Lite Flight</b><span>Draw the area, pick your drone and settings, exactly as for DJI Fly.</span></li>
+    <li><b>Send to Lite Flyer</b><span>One tap on Lite Flight's <a href="../#send-liteflyer">Export screen</a>. Lite Flyer opens with the mission loaded.</span></li>
+    <li><b>Practise</b><span>Fly it once as a virtual dry run on the map. Nothing goes to the drone.</span></li>
+    <li><b>Connect &amp; check</b><span>Plug the phone into the RC and power on the drone. The Fly card lists anything that's not ready.</span></li>
+    <li><b>Upload &amp; start</b><span>Lite Flyer takes off, flies the lines, takes the photos and comes home.</span></li>
+  </ol>
+  <div class="note">
+    <span class="tag">Photos are taken by the mission itself</span>
+    <p>Unlike DJI Fly's Timed Shot, Lite Flyer fires the camera for you: at Lite Flight's <a href="../#autocapture">auto-capture</a> points, or every so many seconds or metres along each line. You don't set anything on the drone's camera to get the shots. You do need an SD card in the drone.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="apps">
+  <div class="ch-head">
+    <p class="eyebrow">02 · Install</p>
+    <h2>Which app, which drone</h2>
+    <p class="lede">DJI's older and newer drones use two different SDKs that can't live in one app, so Lite Flyer comes in two versions. Install the one for your drone, or both if you fly both kinds.</p>
+  </div>
+  <div class="table-wrap wide">
+    <table>
+      <thead><tr><th>App</th><th>Drones</th><th>How it flies the mission</th></tr></thead>
+      <tbody>
+        <tr><td>Lite Flyer</td><td>Phantom&nbsp;4 (all versions), Mavic&nbsp;2 Pro / Zoom / Enterprise, Mavic Pro</td><td><b>Onboard waypoint mission.</b> The route is uploaded to the drone, which flies it by itself. Long routes go up in batches of up to 99 waypoints.</td></tr>
+        <tr><td>Lite Flyer</td><td>Air&nbsp;2S, Mavic Air&nbsp;2, Mavic Mini, Mini&nbsp;SE, Mini&nbsp;2</td><td><b>Virtual sticks.</b> These drones have no waypoint missions in DJI's SDK, so Lite Flyer steers the drone itself, 25 times a second, over the RC link.</td></tr>
+        <tr><td>Lite Flyer&nbsp;5</td><td>Mini&nbsp;3, Mini&nbsp;3&nbsp;Pro, Mini&nbsp;4&nbsp;Pro</td><td><b>Virtual sticks</b>, as above.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note warn" id="access">
+    <span class="tag">Limited release: at most 15 people</span>
+    <p>Lite Flyer runs on a DJI SDK key with a small device limit, so it isn't a public download like Lite Flight. It's shared by Google Drive link with at most 15 people. Each request is evaluated, and access isn't guaranteed. To request it, email <a href="mailto:ldbarua@gmail.com?subject=Lite%20Flyer%20access%20request">ldbarua@gmail.com</a> or DM on <a href="https://www.facebook.com/leonardo.barua" target="_blank" rel="noopener">Facebook</a> with:</p>
+    <ul>
+      <li>your full name</li>
+      <li>your affiliation</li>
+      <li>your drone model, and the device you'll install Lite Flyer on</li>
+      <li>3–5 sentences on what you'll use the app for, and why you should be given one of the places</li>
+    </ul>
+    <p>Please don't pass the link or the APK on: each install uses one of the places.</p>
+  </div>
+  <p>The Status tab shows which way your drone is being flown under <i>Mission engine</i>. The difference matters in two places: with virtual sticks Lite Flyer must stay open for the whole flight, and the mission can't continue out of RC range (see <a href="#settings">Signal loss</a>).</p>
+  <div class="note warn">
+    <span class="tag">New drone? Start close and low</span>
+    <p>Lite Flyer has been flown on a Mavic&nbsp;2 Pro and a Phantom&nbsp;4, and Lite Flyer&nbsp;5 bench-tested on a Mini&nbsp;3. The first time you fly a model, plan a short mission close to you at a safe height, keep your thumbs on the sticks, and be ready with <a href="#stop">STOP/RTH</a>.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="prep">
+  <div class="ch-head">
+    <p class="eyebrow">03 · At home, with internet</p>
+    <h2>Before you go to the field</h2>
+    <p class="lede">Tick these off while you still have internet.</p>
+  </div>
+  <ul class="checklist" id="checklist">
+    <li><label><input type="checkbox" id="ck-install"><span><span class="t">The right Lite Flyer is installed</span><span class="d">Next to Lite Flight, on the phone or tablet you'll fly with. See <a href="#apps">Which app, which drone</a>.</span></span></label></li>
+    <li><label><input type="checkbox" id="ck-register"><span><span class="t">Lite Flyer was opened once with internet</span><span class="d">DJI registers the app on the device the first time. Status → SDK should say <i>Registered</i>.</span></span></label></li>
+    <li><label><input type="checkbox" id="ck-imagery"><span><span class="t">Imagery for the site is downloaded and shared</span><span class="d">In Lite Flight's imagery download, turn on <a href="../#share-imagery"><b>Share with Lite Flyer</b></a>. Allow "All files access" in both apps (<a href="#tabs">Map tab</a>).</span></span></label></li>
+    <li><label><input type="checkbox" id="ck-mission"><span><span class="t">The mission is sent and dry-run</span><span class="d">Send it from Lite Flight and watch it once as a <a href="#dry">dry run</a>.</span></span></label></li>
+    <li><label><input type="checkbox" id="ck-card"><span><span class="t">An SD card is in the drone, with space</span><span class="d">Without one the mission still flies, but no photos are saved.</span></span></label></li>
+    <li><label><input type="checkbox" id="ck-batt"><span><span class="t">Batteries are charged</span><span class="d">The Fly card warns below 40&nbsp;%.</span></span></label></li>
+  </ul>
+  <div class="check-foot"><span><span id="ck-count">0 of 6 done</span> · ticks are saved in this browser only</span><button type="button" id="ck-reset">Clear ticks</button></div>
+  <div class="note warn">
+    <span class="tag">Close DJI Fly and DJI GO&nbsp;4</span>
+    <p>Only one app can talk to the drone at a time. When you plug in the RC, Android may ask which app to open: pick Lite Flyer, <b>Just once</b>. If DJI Fly, DJI GO&nbsp;4 or the other Lite Flyer is running, swipe it away first.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="load">
+  <div class="ch-head">
+    <p class="eyebrow">04 · Hand-off</p>
+    <h2>Get a mission into Lite Flyer</h2>
+    <p class="lede">The quickest way is straight from Lite Flight. Any Lite Flight KMZ file works too.</p>
+  </div>
+  <div class="sub">
+    <h3>From Lite Flight</h3>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/lf_export.webp" width="2360" height="1001" loading="lazy" alt="Lite Flight's Export KMZ screen with the UPLB demo mission selected, a Send to Lite Flyer button and a Lite Flyer button in the top bar."></figure>
+      <ol class="legend">
+        <li><span><b>Pick the mission</b> in Lite Flight's Export screen.</span></li>
+        <li><span><b>Send to Lite Flyer.</b> Lite Flyer opens with the mission loaded and named.</span></li>
+        <li><span><b>Lite Flyer</b> just opens the app, without sending anything.</span></li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/lf_chooser.webp" width="2360" height="1001" loading="lazy" alt="A Which Lite Flyer? dialog offering Lite Flyer for the Mavic 2 Pro, Phantom 4 Pro and Air 2S, and Lite Flyer 5 for the Mini 3, Mini 3 Pro and Mini 4 Pro."></figure>
+      <ol class="legend">
+        <li><span><b>Lite Flyer</b> for MSDK&nbsp;v4 drones.</span></li>
+        <li><span><b>Lite Flyer&nbsp;5</b> for the Minis on MSDK&nbsp;v5.<span class="hint">This question only comes up when both apps are installed. With one, Lite Flight opens it directly.</span></span></li>
+      </ol>
+    </div>
+  </div>
+  <div class="sub">
+    <h3>From a KMZ file</h3>
+    <p>Tap <b>Import KMZ</b> on Lite Flyer's Mission tab and pick the file, for example one saved with Lite Flight's <i>Save to Downloads</i>. You can also open or share a <code>.kmz</code> into Lite Flyer from a file manager. Lite Flyer reads Lite Flight's KMZ files: the heights, speeds, headings, gimbal angle and photo points come with it.</p>
+    <p>The <b>Lite Flight</b> button next to Import KMZ switches to Lite Flight, to change the plan and send it again. Lite Flyer keeps its connection to the drone while you're away.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="screen">
+  <div class="ch-head">
+    <p class="eyebrow">05 · Orientation</p>
+    <h2>The flight screen</h2>
+    <p class="lede">One screen: the flight view on the left, four tabs on the right.</p>
+  </div>
+  <div class="fig wide">
+    <figure class="shot"><img src="img/main.webp" width="2262" height="1001" loading="lazy" alt="Lite Flyer's main screen with a loaded mission: telemetry bar, attitude dial, video inset, the route in blue with a green start marker, and the Mission tab."></figure>
+    <ol class="legend">
+      <li><span><b>Telemetry.</b> Battery, GPS satellites, signal, altitude, vertical and horizontal speed, distance from home, flight mode.<span class="hint">Tap H.S to switch between m/s and km/h.</span></span></li>
+      <li><span><b>Attitude dial.</b> Pitch and roll, with the gimbal angle.</span></li>
+      <li><span><b>Video.</b> The drone's camera. Tap it to swap it with the map; the − button tucks it away.</span></li>
+      <li><span><b>Start waypoint ▶.</b> Where the mission begins. Tap any flight line to start from that leg.</span></li>
+      <li><span><b>Tabs:</b> Mission, <a href="#tabs">Camera, Map and Status</a>.</span></li>
+      <li><span><b>Mission card.</b> Name, waypoints, length, estimated flight time and the number of uploads. While flying it shows progress and time left.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="settings">
+  <div class="ch-head">
+    <p class="eyebrow">06 · Before take-off</p>
+    <h2>Mission settings</h2>
+    <p class="lede">Two choices on the Mission tab. The defaults suit most missions.</p>
+  </div>
+  <div class="fig tall wide">
+    <figure class="shot"><img src="img/panel_trigger.webp" width="784" height="1001" loading="lazy" alt="The Camera trigger card set to Auto, and the Signal loss card with Continue the mission beyond RC signal switched off."></figure>
+    <ol class="legend">
+      <li><span><b>Camera trigger.</b><span class="hint"><b>Auto</b> (default) shoots what the mission says: at each of Lite Flight's auto-capture photo points, or at the mission's interval.<br><b>Every s / Every m</b> overrides the mission with a photo every so many seconds or metres along each line.</span></span></li>
+      <li><span><b>Continue the mission beyond RC signal.</b> Off by default: if the RC signal drops, the drone's failsafe (normally Return to Home) takes over.<span class="hint">On (onboard drones only), the drone keeps flying its batch out of range. At the end of a batch it heads home until the signal is back, then carries on. Check the route for obstacles first. With virtual sticks this switch is greyed out: Lite Flyer needs the link to steer.</span></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="dry">
+  <div class="ch-head">
+    <p class="eyebrow">07 · No drone needed</p>
+    <h2>Practise with a dry run</h2>
+    <p class="lede">A virtual drone flies the mission on the map: take-off, every line, every photo, the way home. Nothing is sent to an aircraft, so you can do it at home.</p>
+  </div>
+  <div class="fig tall wide">
+    <figure class="shot"><img src="img/panel_test.webp" width="784" height="1001" loading="lazy" alt="The Virtual Dry Run switch with an RC range of 500 m, and the Start from waypoint stepper at 1 of 58."></figure>
+    <ol class="legend">
+      <li><span><b>Virtual Dry Run.</b> Turn it on, then <b>Upload &amp; start</b> as for a real flight. MODE shows <b>DRY</b>.</span></li>
+      <li><span><b>RC range.</b> How far the pretend signal reaches; blank means no limit. Set it short to watch a long mission switch batches out of range.</span></li>
+      <li><span><b>Start from waypoint.</b> Which waypoint the mission starts at (<a href="#stop">resume</a>).</span></li>
+    </ol>
+  </div>
+  <p>During a dry run, ⏸ pauses the virtual drone and ⏩ speeds it up 2×, 4× or 8×. Turn the switch off when you're done; the real drone can't be flown while it's on.</p>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="fly">
+  <div class="ch-head">
+    <p class="eyebrow">08 · In the field</p>
+    <h2>Fly the mission</h2>
+    <p class="lede">Connect, read the Fly card, start.</p>
+  </div>
+  <ol class="steps">
+    <li>Power on the RC, plug in the phone, then power on the drone. Pick Lite Flyer (<i>Just once</i>) if Android asks.</li>
+    <li>Wait for the telemetry bar to fill in and GPS to settle. The drone can start on the ground or already in the air.</li>
+    <li>For virtual-stick drones (Air&nbsp;2S, the Minis), set the RC's flight mode switch to <b>Normal (N)</b>.</li>
+    <li>Check the Fly card at the bottom of the Mission tab, then tap <b>Upload &amp; start</b> and confirm.</li>
+  </ol>
+  <div class="fig tall wide">
+    <figure class="shot"><img src="img/panel_fly.webp" width="784" height="1001" loading="lazy" alt="The Fly card: state Ready, a red line saying No aircraft connected, and a greyed-out Upload and start button."></figure>
+    <ol class="legend">
+      <li><span><b>State:</b> Ready, Uploading, Flying (batch and waypoint), Paused, Finished or Stopped.</span></li>
+      <li><span><b>Pre-flight checks.</b> Red ✕ lines block the start; orange ! lines are warnings to read.</span></li>
+      <li><span><b>Upload &amp; start.</b> Enabled once nothing blocks. The drone takes off by itself if it's on the ground.</span></li>
+    </ol>
+  </div>
+  <div class="table-wrap wide">
+    <table>
+      <thead><tr><th>Check</th><th>Kind</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td>No aircraft connected</td><td>Blocks</td><td>Check the cable and that the drone is on. Close DJI Fly / DJI GO&nbsp;4.</td></tr>
+        <tr><td>DJI SDK not registered yet</td><td>Blocks</td><td>Open Lite Flyer once with internet (Status → SDK, <b>Retry registration</b>).</td></tr>
+        <tr><td>GPS too weak</td><td>Blocks</td><td>Wait in the open until GPS reaches level 3.</td></tr>
+        <tr><td>… isn't supported for missions</td><td>Blocks</td><td>This drone isn't one of the <a href="#apps">supported models</a>, or it belongs to the other Lite Flyer.</td></tr>
+        <tr><td>Virtual sticks / Set the RC to N</td><td>Warning</td><td>Lite Flyer flies this drone itself: keep the app open and on screen. Move any stick to take over.</td></tr>
+        <tr><td>First waypoint is … m away</td><td>Warning</td><td>Over 500&nbsp;m. Make sure the way there is clear.</td></tr>
+        <tr><td>Battery at …&nbsp;%</td><td>Warning</td><td>Below 40&nbsp;%. Swap it if the mission is long.</td></tr>
+        <tr><td>No card / card full</td><td>Warning</td><td>The mission flies but photos won't be saved.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="sub">
+    <h3>While it flies</h3>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/flying.webp" width="2262" height="1001" loading="lazy" alt="A mission in flight: STOP/RTH button, dry-run pause and 8x speed controls, the drone arrow, yellow photo markers, Following and Center on drone buttons, MODE DRY, and the Fly card with Pause and Stop mission."></figure>
+      <ol class="legend">
+        <li><span><b>STOP/RTH.</b> Hold 1.5&nbsp;s to stop and bring the drone home (<a href="#stop">next chapter</a>).</span></li>
+        <li><span><b>⏸ / ⏩</b> pause and speed up the virtual drone. Dry runs only.</span></li>
+        <li><span><b>The drone</b>, pointing where it's heading; the white line is where it has flown.</span></li>
+        <li><span><b>Photo markers</b>, one per photo taken.</span></li>
+        <li><span><b>Follow drone</b> keeps the map centred on the drone.</span></li>
+        <li><span><b>Center on drone</b> jumps to it once.</span></li>
+        <li><span><b>MODE</b> shows the drone's flight mode, or DRY.</span></li>
+        <li><span><b>Fly card</b>: <b>Pause</b> / <b>Resume</b>, and <b>Stop mission</b>.</span></li>
+      </ol>
+    </div>
+    <p>Long missions are flown in several uploads (the Mission card shows how many). Between uploads the drone hovers for a moment while the next batch goes up. If it's out of range at that point it heads home until the signal is back, then carries on. The screen stays on for the whole mission, and a notification lets you return to Lite Flyer if you switch apps.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="stop">
+  <div class="ch-head">
+    <p class="eyebrow">09 · Safety</p>
+    <h2>Stop, come home, resume</h2>
+  </div>
+  <div class="note danger">
+    <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Your RC always wins</span>
+    <p>The RC's own <b>Pause</b> and <b>RTH</b> buttons work at any time and override Lite Flyer. On virtual-stick drones, moving any stick hands control straight back to you.</p>
+  </div>
+  <div class="table-wrap wide">
+    <table>
+      <thead><tr><th>Control</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><td>Pause / Resume</td><td>The drone hovers in place; Resume carries on along the route.</td></tr>
+        <tr><td>Stop mission</td><td>Ends the mission and leaves the drone hovering. Fly it with the sticks or press RTH.</td></tr>
+        <tr><td>STOP/RTH (hold 1.5&nbsp;s)</td><td>Stops the mission and starts Return to Home in one go. Progress is kept.</td></tr>
+        <tr><td>RC signal lost</td><td>The drone's failsafe takes over (normally Return to Home), unless <a href="#settings">Continue beyond RC signal</a> is on.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="sub">
+    <h3>Carry on after a battery swap</h3>
+    <p>Lite Flyer remembers the last waypoint each flight reaches, and the white line on the map shows where the drone has been. After landing, the Start from waypoint card offers <b>Resume from N</b> (or <b>Start over</b>). Swap the battery, tap Resume, then <b>Upload &amp; start</b>: the drone flies straight to that waypoint and finishes the job. You can also pick any waypoint with − / +, type it in, or tap a flight line on the map.</p>
+    <p>If the app was closed mid-mission, reopen it: it reconnects to a mission that's still flying. When it can't tell what happened while it was away, it shows <i>Stopped</i> with the reason and offers the resume instead of guessing.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="tabs">
+  <div class="ch-head">
+    <p class="eyebrow">10 · The other tabs</p>
+    <h2>Camera, Map and Status</h2>
+  </div>
+  <div class="sub">
+    <h3>Camera</h3>
+    <p>With the drone connected, the Camera tab sets exposure for the mission's photos: mode (Auto, Manual and, where the camera has them, shutter or aperture priority), ISO, shutter speed, aperture, exposure compensation and white balance, plus buttons to take a test photo or record video. It only lists what your camera can do. In Auto the camera picks ISO and shutter itself and the tab says so; choose M to set them. The tab also warns when there's no SD card or it's full.</p>
+    <p>Manual shots are off while a mission runs: the mission's trigger fires the shutter.</p>
+  </div>
+  <div class="sub">
+    <h3>Map</h3>
+    <div class="fig half wide">
+      <figure class="shot"><img src="img/tab_map.webp" width="784" height="1001" loading="lazy" alt="Map tab: Esri World Imagery basemap, Add custom XYZ button, and a From Lite Flight card with an Allow access button."></figure>
+      <figure class="shot"><img src="img/tab_map2.webp" width="784" height="1001" loading="lazy" alt="Map tab, lower half: MBTiles overlay with an Import .mbtiles button, and KML overlays with an Import KML / KMZ button."></figure>
+    </div>
+    <ol class="legend">
+      <li><span><b>Basemap.</b> Esri World Imagery, or your own XYZ tile source. Tiles you view online are kept for the field.</span></li>
+      <li><span><b>Add custom XYZ</b> adds a tile URL of your own.</span></li>
+      <li><span><b>From Lite Flight.</b> Tap <b>Allow access</b> and switch on "All files access" so Lite Flyer can show the areas Lite Flight shared. This is the reliable way to have imagery offline.</span></li>
+    </ol>
+    <p>Lower down, <b>Import .mbtiles</b> lays an MBTiles file (for example a QGIS export of your site) over the basemap, and <b>Import KML / KMZ</b> draws reference shapes such as field boundaries.</p>
+  </div>
+  <div class="sub">
+    <h3>Status</h3>
+    <div class="fig tall wide">
+      <figure class="shot"><img src="img/tab_status.webp" width="784" height="1001" loading="lazy" alt="Status tab: SDK registered, MSDK version 4.18, and the Aircraft card with Connected No."></figure>
+      <div>
+        <p>The first place to look when something won't start:</p>
+        <ul class="steps">
+          <li><b>SDK:</b> registration and the DJI SDK version, with <b>Retry registration</b> if it failed.</li>
+          <li><b>Aircraft:</b> connected or not, the model, the <i>Mission engine</i> (onboard or virtual sticks) and firmware.</li>
+          <li><b>Link:</b> signal both ways.</li>
+          <li><b>Flight:</b> battery, GPS, home point, flight mode, flying or not, altitude.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="help">
+  <div class="ch-head">
+    <p class="eyebrow">11 · When something's off</p>
+    <h2>Troubleshooting</h2>
+  </div>
+  <details class="faq"><summary>"No aircraft connected", but the drone is on</summary><p>Unplug and replug the phone, and pick Lite Flyer when Android asks. Make sure DJI Fly, DJI GO&nbsp;4 and the other Lite Flyer are closed. Check Status → Aircraft.</p></details>
+  <details class="faq"><summary>Lite Flight says Lite Flyer isn't installed</summary><p>Install Lite Flyer or Lite Flyer&nbsp;5 from the Google Drive link you were sent (see <a href="#access">Limited release</a>), then try Send to Lite Flyer again.</p></details>
+  <details class="faq"><summary>The map is blank in the field</summary><p>Online tiles are only kept for places you've viewed. For a sure thing, download the area in Lite Flight with <b>Share with Lite Flyer</b> on, and allow "All files access" for both apps. Or import an MBTiles file on the Map tab.</p></details>
+  <details class="faq"><summary>Take-off didn't start</summary><p>Some drones refuse to take off by app right after power-on while GPS is still settling. Wait a minute and try again, or take off with the sticks and then tap Upload &amp; start: Lite Flyer skips take-off when the drone is already flying.</p></details>
+  <details class="faq"><summary>A virtual-stick mission ended by itself</summary><p>Virtual-stick flights end when the RC takes over: a stick moved, the Pause button, the flight-mode switch, low-battery RTH or lost signal. The Fly card says why. Resume from the last waypoint when ready.</p></details>
+  <details class="faq"><summary>No photo markers appear</summary><p>Check the Camera trigger. With Auto and a mission that has no capture set, Lite Flyer takes no photos; pick Every s or Every m. Also check the SD card warning.</p></details>
+  <details class="faq"><summary>The shutter setting is greyed out</summary><p>The camera is in Auto (P). Choose M on the Camera tab to set shutter and ISO yourself.</p></details>
+
+  <footer>
+    Lite Flyer by LeoBar, the companion to Lite Flight. Screens captured on a Samsung Galaxy A73 (Android&nbsp;14); flight screens are from a virtual dry run. Imagery: Esri World Imagery. DJI, Phantom, Mavic and Mini are trademarks of DJI; Lite Flyer is not affiliated with DJI.
+  </footer>
+</section>
+
+</main>
+</div>
+
+<script>
+(function () {
+  // Clips play only while on screen (and never on their own for viewers
+  // who asked for reduced motion; they get controls instead).
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var vids = Array.prototype.slice.call(document.querySelectorAll("video"));
+  vids.forEach(function (v) {
+    if (reduce) { v.controls = true; return; }
+    v.addEventListener("click", function () { v.paused ? v.play() : v.pause(); });
+  });
+  if (!reduce && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { v.preload = "auto"; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else { v.pause(); }
+      });
+    }, { threshold: 0.35 });
+    vids.forEach(function (v) { io.observe(v); });
+  } else if (!reduce) {
+    vids.forEach(function (v) { v.autoplay = true; });
+  }
+
+  // Chapter rail. Jumps are done in script (measured at click time, after
+  // any images above have loaded) and the highlight follows the scroll
+  // position directly, so both work wherever the page is embedded.
+  var rail = document.querySelector(".rail");
+  var railList = document.getElementById("toc");
+  var links = Array.prototype.slice.call(railList.querySelectorAll("a"));
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+  var active = null;
+  function stickyOffset() {
+    var bar = document.querySelector(".getbar").offsetHeight;
+    return bar + (window.matchMedia("(max-width: 900px)").matches ? rail.offsetHeight + 12 : 24);
+  }
+  function setActive(a) {
+    if (a === active) return;
+    if (active) active.classList.remove("on");
+    active = a;
+    if (!a) return;
+    a.classList.add("on");
+    if (railList.scrollWidth > railList.clientWidth) {
+      railList.scrollLeft = a.offsetLeft - (railList.clientWidth - a.offsetWidth) / 2;
+    }
+  }
+  var lockUntil = 0;
+  function sync() {
+    if (Date.now() < lockUntil) return;
+    var doc = document.documentElement;
+    var line = stickyOffset() + window.innerHeight * 0.2;
+    var idx = 0;
+    sections.forEach(function (sec, i) { if (sec && sec.getBoundingClientRect().top <= line) idx = i; });
+    if (window.innerHeight + window.pageYOffset >= doc.scrollHeight - 4) idx = sections.length - 1;
+    setActive(links[idx]);
+  }
+  var queued = false;
+  window.addEventListener("scroll", function () {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { queued = false; sync(); });
+  }, { passive: true });
+  window.addEventListener("resize", sync);
+  Array.prototype.slice.call(document.querySelectorAll('a[href^="#"]')).forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var target = document.getElementById(a.getAttribute("href").slice(1));
+      if (!target) return;
+      e.preventDefault();
+      var y = target.getBoundingClientRect().top + window.pageYOffset - stickyOffset();
+      window.scrollTo({ top: Math.max(0, y), behavior: reduce ? "auto" : "smooth" });
+      var i = sections.indexOf(target);
+      if (i >= 0) { setActive(links[i]); lockUntil = Date.now() + 900; }
+    });
+  });
+  sync();
+
+  // Pre-flight checklist, remembered per browser.
+  var KEY = "liteflyer-manual-checklist";
+  var boxes = Array.prototype.slice.call(document.querySelectorAll("#checklist input"));
+  var count = document.getElementById("ck-count");
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+  function update() {
+    var n = boxes.filter(function (b) { return b.checked; }).length;
+    count.textContent = n === boxes.length ? "All set for the field" : n + " of " + boxes.length + " done";
+  }
+  boxes.forEach(function (b) {
+    b.checked = !!saved[b.id];
+    b.addEventListener("change", function () {
+      saved[b.id] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+      update();
+    });
+  });
+  document.getElementById("ck-reset").addEventListener("click", function () {
+    boxes.forEach(function (b) { b.checked = false; });
+    saved = {};
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    update();
+  });
+  update();
+})();
+</script>
+</body>
+</html>
