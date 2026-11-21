@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="How to plan Lite Flight drone missions in the browser with Lite Flight Planner and send them to the phone.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lite Flight Planner Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a sticky chapter rail beside one reading column; screenshots break
+   wider than the text and pair with a numbered legend whose orange badges
+   match the badges drawn on the images. Light only, by request: the app
+   itself is locked to a light theme for outdoor readability. */
+:root {
+  --paper: #f5f6f8;      /* page ground, cool like the app's own surface */
+  --surface: #ffffff;
+  --ink: #142030;        /* navy body text */
+  --muted: #5a6677;
+  --line: #d9dee6;
+  --signal: #ea580c;     /* the annotation badge orange */
+  --signal-soft: #fff1e7;
+  --sky: #1a6fd8;        /* the app's primary blue, used for links */
+  --sky-soft: #e8f1fc;
+  --go: #23793c;
+  --go-soft: #e8f5ec;
+  --stop: #c62828;       /* safety warnings */
+  --stop-soft: #fdecec;
+  --display: "Barlow Semi Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.2rem;
+  --step-2: 1.6rem;
+  --step-3: 2.3rem;
+  --step-4: clamp(2.4rem, 5vw, 3.6rem);
+  --rail: 15.5rem;
+  --bar: 4.6rem;
+  --read: 42rem;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 6rem; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--step-0)/1.62 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+img, video { max-width: 100%; display: block; }
+a { color: var(--sky); text-underline-offset: 0.18em; }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--signal); outline-offset: 2px; border-radius: 4px;
+}
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; }
+h2 { font-size: var(--step-3); font-weight: 700; letter-spacing: -0.005em; }
+h3 { font-size: var(--step-2); font-weight: 600; }
+p, ul, ol { margin: 0; }
+code, .mono { font-family: var(--mono); font-size: 0.92em; }
+kbd {
+  font-family: var(--body); font-size: 0.86em; font-weight: 600; white-space: nowrap;
+  padding: 0.05em 0.5em; border: 1px solid var(--line); border-bottom-width: 2px;
+  border-radius: 6px; background: var(--surface);
+}
+
+/* ---- Pinned download bar -------------------------------------------- */
+.getbar {
+  position: sticky; top: 0; z-index: 10;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: var(--ink); color: #fff;
+}
+.getbar .in {
+  max-width: 82rem; margin: 0 auto; padding-inline: 1.5rem;
+  min-height: var(--bar); display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.getbar .id { min-width: 0; padding-block: 0.45rem; display: grid; gap: 0.2rem; }
+.getbar p { font-size: 0.9rem; line-height: 1.3; }
+.getbar p b { font-family: var(--display); font-size: 1.45rem; font-weight: 700; letter-spacing: 0.01em; line-height: 1.1; }
+.getbar p span { color: #b9c3d0; }
+.getbar .contact { font-size: 0.82rem; color: #b9c3d0; }
+.getbar .contact a { color: #fff; text-decoration: underline; text-decoration-color: rgba(255, 255, 255, 0.4); text-underline-offset: 2px; }
+.getbar .contact a:hover { text-decoration-color: #fff; }
+.getbar .acts { display: flex; align-items: center; gap: 0.9rem; flex-shrink: 0; }
+.getbar .btn {
+  display: inline-flex; align-items: center; gap: 0.45rem; white-space: nowrap;
+  background: var(--signal); color: #fff; text-decoration: none; font-weight: 600; font-size: 0.92rem;
+  padding: 0.5rem 1rem; border-radius: 8px;
+}
+.getbar .btn:hover { background: #c2410c; }
+.getbar .btn svg { width: 1rem; height: 1rem; }
+.getbar a:focus-visible { outline-color: #fff; }
+
+/* ---- Shell ---------------------------------------------------------- */
+.shell {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  gap: 3rem;
+  max-width: 82rem;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+}
+.rail {
+  min-width: 0;
+  position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--bar));
+  align-self: start; max-height: calc(100vh - var(--bar)); overflow-y: auto;
+  padding-block: 2rem;
+}
+.rail .brand { font-family: var(--display); font-weight: 700; font-size: var(--step-1); letter-spacing: 0.01em; }
+.rail .brand span { color: var(--signal); }
+.rail a.back { display: block; padding: 0; margin-bottom: 0.6rem; font-size: 0.82rem; color: var(--muted); text-decoration: none; }
+.rail .back:hover { color: var(--signal); }
+.rail a.back::before { content: none; }
+.rail ol { list-style: none; padding: 0; margin-top: 1.25rem; display: grid; gap: 0.15rem; counter-reset: ch; }
+.rail li { counter-increment: ch; }
+.rail a {
+  display: grid; grid-template-columns: 1.6rem 1fr; align-items: baseline;
+  padding: 0.35rem 0.5rem; border-radius: 6px; color: var(--muted); text-decoration: none;
+  font-size: var(--step--1); line-height: 1.35;
+}
+.rail a::before { content: counter(ch, decimal-leading-zero); font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+.rail a:hover { background: var(--surface); color: var(--ink); }
+.rail a.on { background: var(--surface); color: var(--ink); font-weight: 600; box-shadow: inset 3px 0 0 var(--signal); }
+.rail a.on::before { color: var(--signal); }
+.rail .meta { margin-top: 1.5rem; font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+main { min-width: 0; padding-block: 2rem 6rem; }
+section.ch { padding-top: 4.5rem; display: grid; gap: 1.25rem; }
+section.ch > * { max-width: var(--read); }
+section.ch > .wide { max-width: none; }
+section.ch > .sub { max-width: none; }
+.eyebrow {
+  font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--signal); font-weight: 500;
+}
+.ch-head { display: grid; gap: 0.4rem; }
+.lede { font-size: var(--step-1); color: var(--muted); line-height: 1.5; }
+.sub { padding-top: 1.5rem; display: grid; gap: 1rem; }
+.sub > * { max-width: var(--read); }
+.sub > .wide { max-width: none; }
+
+/* ---- Hero ----------------------------------------------------------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 2.5rem; align-items: center; padding-top: 1rem; }
+.hero h1 { font-size: var(--step-4); font-weight: 700; letter-spacing: -0.01em; }
+.hero h1 em { font-style: normal; color: var(--signal); }
+.hero .lede { margin-top: 1rem; }
+.strip {
+  display: grid; gap: 0.4rem; margin-top: 1.5rem;
+  font-family: var(--mono); font-size: 0.8rem; color: var(--muted);
+}
+.strip b { color: var(--ink); font-weight: 500; }
+.hero-shot { position: relative; border-radius: 14px; overflow: hidden; box-shadow: 0 18px 40px -22px rgba(20, 32, 48, 0.55); border: 1px solid var(--line); }
+.hero-shot figcaption {
+  position: absolute; left: 0.75rem; bottom: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 6px;
+  background: rgba(255, 255, 255, 0.92); color: var(--ink); font-size: 0.78rem;
+}
+
+/* ---- Flow (the real five-step sequence) ------------------------------ */
+.flow { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; counter-reset: fl; }
+.flow li {
+  counter-increment: fl; background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 0.9rem 0.9rem 1rem; display: grid; gap: 0.3rem; align-content: start;
+}
+.flow li::before { content: counter(fl); font-family: var(--display); font-weight: 700; font-size: 1.6rem; color: var(--signal); line-height: 1; }
+.flow b { font-family: var(--display); font-size: 1.1rem; font-weight: 600; }
+.flow span { font-size: var(--step--1); color: var(--muted); line-height: 1.45; }
+
+/* ---- Figures + numbered legends ----------------------------------- */
+.fig { display: grid; grid-template-columns: minmax(0, 1fr) minmax(14rem, 19rem); gap: 1.5rem; align-items: start; }
+.fig.solo { grid-template-columns: minmax(0, 1fr); }
+.fig.tall { grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); }
+.fig.half { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.shot { margin: 0; min-width: 0; }
+.shot img, .shot video {
+  width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); background: var(--surface);
+}
+.shot figcaption { margin-top: 0.5rem; font-size: 0.8rem; color: var(--muted); }
+.legend { list-style: none; padding: 0; display: grid; gap: 0.7rem; counter-reset: lg; min-width: 0; }
+.legend li { display: grid; grid-template-columns: 1.75rem minmax(0, 1fr); gap: 0.6rem; font-size: 0.95rem; line-height: 1.45; }
+.legend li::before {
+  counter-increment: lg; content: counter(lg);
+  width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center;
+  background: var(--signal); color: #fff; font: 600 0.82rem/1 var(--body);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px rgba(20, 32, 48, 0.08);
+}
+.legend b { font-weight: 600; }
+.legend .hint { display: block; color: var(--muted); font-size: 0.86rem; }
+.clip { position: relative; }
+.clip::after {
+  content: "Clip"; position: absolute; top: 0.6rem; left: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 999px;
+  background: rgba(20, 32, 48, 0.72); color: #fff; font: 500 0.7rem/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* ---- Steps (written instructions beside a clip) -------------------- */
+.steps { padding-left: 1.4rem; display: grid; gap: 0.55rem; }
+.steps li::marker { font-family: var(--display); font-weight: 700; color: var(--signal); }
+.steps li { padding-left: 0.25rem; }
+
+/* ---- Callouts -------------------------------------------------------- */
+.note {
+  border-radius: 10px; padding: 0.9rem 1.1rem; display: grid; gap: 0.35rem;
+  background: var(--sky-soft); border: 1px solid #c7dbf5;
+}
+.note.warn { background: var(--signal-soft); border-color: #f6cfb3; }
+.note.ok { background: var(--go-soft); border-color: #bfe0c9; }
+.note .tag { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; color: var(--sky); }
+.note.warn .tag { color: var(--signal); }
+.note.ok .tag { color: var(--go); }
+.note.danger { background: var(--stop-soft); border: 2px solid var(--stop); }
+.note.danger .tag { color: var(--stop); font-weight: 600; display: flex; align-items: center; gap: 0.45rem; }
+.note.danger .tag svg { width: 1.35rem; height: 1.35rem; flex: none; }
+.note ul { margin: 0; padding-left: 1.2rem; }
+.note li { margin: 0.15rem 0; }
+
+/* ---- Tables ------------------------------------------------------- */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+th, td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--paper); }
+td:first-child { font-weight: 600; white-space: nowrap; }
+
+/* ---- Glossary ------------------------------------------------------- */
+.terms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.term { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0.85rem 1rem; display: grid; gap: 0.25rem; align-content: start; }
+.term dt { font-family: var(--display); font-weight: 600; font-size: 1.12rem; display: flex; justify-content: space-between; gap: 0.75rem; align-items: baseline; }
+.term dt .mono { font-size: 0.74rem; color: var(--signal); font-weight: 500; }
+.term dd { margin: 0; font-size: 0.92rem; color: var(--muted); line-height: 1.5; }
+
+/* ---- Pre-flight checklist ---------------------------------------- */
+.checklist { list-style: none; padding: 0; display: grid; gap: 0.5rem; }
+.checklist label {
+  display: grid; grid-template-columns: 1.4rem minmax(0, 1fr); gap: 0.75rem; align-items: start;
+  padding: 0.75rem 0.9rem; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; cursor: pointer;
+}
+.checklist input { width: 1.15rem; height: 1.15rem; margin: 0.2rem 0 0; accent-color: var(--go); }
+.checklist .t { font-weight: 600; }
+.checklist .d { display: block; font-size: 0.88rem; color: var(--muted); }
+.checklist input:checked + span .t { text-decoration: line-through; text-decoration-color: var(--go); color: var(--muted); }
+.check-foot { display: flex; justify-content: space-between; gap: 1rem; align-items: center; font-size: 0.85rem; color: var(--muted); }
+.check-foot button {
+  font: 500 0.85rem var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 0.35rem 0.8rem; cursor: pointer;
+}
+
+/* ---- Mode cards ----------------------------------------------------- */
+.modes { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; }
+.mode { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; text-decoration: none; color: inherit; }
+.mode img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; height: auto; max-width: 100%; border-bottom: 1px solid var(--line); }
+.mode div { padding: 0.8rem 0.9rem 1rem; display: grid; gap: 0.25rem; align-content: start; }
+.mode b { font-family: var(--display); font-size: 1.2rem; font-weight: 600; }
+.mode span { font-size: 0.88rem; color: var(--muted); line-height: 1.45; }
+.mode:hover { border-color: var(--signal); }
+
+details.faq { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0.2rem 1rem; }
+details.faq + details.faq { margin-top: -0.5rem; }
+details.faq summary { cursor: pointer; font-weight: 600; padding: 0.7rem 0; }
+details.faq p { padding-bottom: 0.9rem; color: var(--muted); }
+
+footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: 0.82rem; color: var(--muted); max-width: var(--read); }
+
+/* ---- Narrow screens --------------------------------------------- */
+@media (max-width: 1100px) {
+  .fig, .fig.tall { grid-template-columns: minmax(0, 1fr); }
+  .modes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; padding-inline: 1rem; }
+  .rail {
+    position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--bar)); z-index: 5; max-height: none; overflow: visible;
+    padding-block: 0.6rem; margin-inline: -1rem; padding-inline: 1rem;
+    background: rgba(245, 246, 248, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  }
+  .rail .brand { font-size: 1rem; }
+  .rail ol { display: flex; overflow-x: auto; gap: 0.25rem; margin-top: 0.4rem; scrollbar-width: none; }
+  .rail a { white-space: nowrap; grid-template-columns: auto auto; gap: 0.35rem; }
+  .rail .meta { display: none; }
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .fig.half, .terms { grid-template-columns: minmax(0, 1fr); }
+  section.ch { padding-top: 3rem; }
+  html { scroll-padding-top: 10rem; }
+  .getbar .in { padding-inline: 1rem; }
+  .getbar p b + span { display: none; }
+}
+@media (max-width: 560px) {
+  :root { --bar: 5.4rem; }
+  html { scroll-padding-top: 11rem; }
+  .getbar p b { font-size: 1.3rem; white-space: nowrap; }
+  .getbar .btn { padding-inline: 0.8rem; }
+  .getbar .btn .long { display: none; }
+  .getbar .contact .c { display: block; }
+  .getbar .contact .sep { display: none; }
+  .flow, .modes { grid-template-columns: minmax(0, 1fr); }
+  .flow li { grid-template-columns: 2rem minmax(0, 1fr); column-gap: 0.5rem; }
+  .flow li::before { grid-row: span 2; }
+}
+/* ---- Planner additions: mission-type cards beside the menu ------------ */
+.fig.tall .modes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.fig.tall .modes .mode:first-child { grid-column: span 2; }
+@media (max-width: 560px) { .fig.tall .modes { grid-template-columns: minmax(0, 1fr); } .fig.tall .modes .mode:first-child { grid-column: auto; } }
+</style>
+</head>
+<body>
+<div class="getbar">
+  <div class="in">
+    <div class="id">
+      <p><b>Lite Flight Planner</b> <span>· free, in the browser · for Lite Flight v1.4 and later</span></p>
+      <p class="contact"><span class="c">Inquiries: <a href="mailto:ldbarua@gmail.com">ldbarua@gmail.com</a></span><span class="sep"> · </span><span class="c">or DM on <a href="https://www.facebook.com/leonardo.barua" target="_blank" rel="noopener">Facebook</a></span></p>
+    </div>
+    <div class="acts">
+      <a class="btn" href="https://liteflight-planner.pages.dev/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>Open<span class="long" style="margin-left:-0.2rem">the planner</span></a>
+    </div>
+  </div>
+</div>
+<div class="shell">
+<nav class="rail" aria-label="Chapters">
+  <a class="back" href="../">← Lite Flight manual</a>
+  <div class="brand">Planner <span>Manual</span></div>
+  <ol id="toc">
+    <li><a href="#start">How it works</a></li>
+    <li><a href="#screen">The screen</a></li>
+    <li><a href="#draw">Draw a mission</a></li>
+    <li><a href="#settings">Mission settings</a></li>
+    <li><a href="#safety">Safety checks</a></li>
+    <li><a href="#import">Import KML / KMZ</a></li>
+    <li><a href="#layers">Maps and your own layers</a></li>
+    <li><a href="#sim">3D view and simulation</a></li>
+    <li><a href="#send">Send to phone</a></li>
+    <li><a href="#workspace">Save your work</a></li>
+    <li><a href="#help">Questions</a></li>
+  </ol>
+  <p class="meta">Captured in Chrome on Windows at liteflight-planner.pages.dev. The demo missions are beside the UPLB campus in Los&nbsp;Baños, Laguna, as in the Lite Flight manual.</p>
+</nav>
+<main>
+<header class="hero">
+  <div>
+    <p class="eyebrow">User manual · Lite Flight Planner</p>
+    <h1>Plan on a big screen. <em>Fly</em> from the phone.</h1>
+    <p class="lede">The planner is Lite Flight in a web browser. Draw the mission on a computer, check it in 3D against the terrain, then send it to the phone with a QR code. Lite Flight opens it ready to fly, with the same lines, heights and photo points.</p>
+    <div class="strip">
+      <span><b>Free and open to everyone.</b> No account, no install. Open <a href="https://liteflight-planner.pages.dev/" target="_blank" rel="noopener">liteflight-planner.pages.dev</a> in Chrome, Edge, Firefox or Safari.</span>
+      <span><b>Same engine as the app.</b> Area, Quick, Corridor, Circle grid and Orbit, with Lite Flight's own planning code, so a mission plans the same on both.</span>
+      <span>Missions stay in your browser. Only <a href="#send">Send to phone</a> uploads anything, and only for a week.</span>
+    </div>
+  </div>
+  <figure class="hero-shot shot">
+    <img src="img/hero.webp" width="1620" height="1230" alt="The planner in 3D view: an area mission over Esri imagery with its flight path drawn at its real height, and the flight simulation bar along the bottom.">
+    <figcaption>A 46-waypoint area mission in the 3D view</figcaption>
+  </figure>
+</header>
+
+<!-- ============================================================= -->
+<section class="ch" id="start">
+  <div class="ch-head">
+    <p class="eyebrow">01 · Overview</p>
+    <h2>How it works</h2>
+  </div>
+  <p>The planner prepares the mission; Lite Flight on the phone takes it to the drone. Every mission goes through the same five steps.</p>
+  <ol class="flow wide">
+    <li><b>Draw</b><span>Outline the area, trace the road or drop the orbit centre, and place the launch point.</span></li>
+    <li><b>Set up</b><span>Pick the drone and the altitude, GSD, overlap and speed, as in Lite Flight.</span></li>
+    <li><b>Check</b><span>Read the notes, clear any ground warning, and fly it once in the 3D simulation.</span></li>
+    <li><b>Send</b><span>Send to phone shows a QR code and a six-letter code. Or download the KMZ.</span></li>
+    <li><b>Open in Lite Flight</b><span>Scan the QR in Lite Flight's <a href="../#qr-share">mission import</a>, then fly as usual.</span></li>
+  </ol>
+  <div class="note warn">
+    <span class="tag">Needs an active Lite Flight license or trial</span>
+    <p>The planner itself is never limited. But a mission prepared here is a flight file, and Lite Flight only opens flight files while its license or trial is active. See <a href="../#license-kmz">Prepared missions and the license</a>.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="screen">
+  <div class="ch-head">
+    <p class="eyebrow">02 · Orientation</p>
+    <h2>The screen</h2>
+    <p class="lede">Three columns: your missions, the open mission's settings, and the map.</p>
+  </div>
+  <div class="fig wide">
+    <figure class="shot"><img src="img/screen.webp" width="2400" height="1500" loading="lazy" alt="The planner with the Freedom Park area mission open: the missions list on the left, the summary and settings in the middle, and the mission's grid lines on the map with the floating map buttons."></figure>
+    <ol class="legend">
+      <li><span><b>Missions.</b> Click one to open it; click the open one's name to rename it. Missions imported from one file are grouped as a project, with <i>Download all</i> and <i>Send all</i>.</span></li>
+      <li><span><b>New mission, Import, New like this, Delete.</b><span class="hint">New like this starts the same type of mission with the same settings.</span></span></li>
+      <li><span><b>Summary.</b> GSD, waypoints, flight time, distance, area and line spacing, recomputed as you edit.</span></li>
+      <li><span><b>Notes.</b> The climb to waypoint&nbsp;1, the legs out and home, and the <a href="#safety">Return-to-Home altitude</a> to set.</span></li>
+      <li><span><b>Download KMZ</b> and <b><a href="#send">Send to phone</a></b>.</span></li>
+      <li><span><b>Settings</b> for the mission, in cards. <a href="#settings">Mission settings</a> goes through them.</span></li>
+      <li><span><b>Map buttons:</b> lock editing, undo, clear the outline, zoom to the mission, <a href="#sim">3D view</a>, my location.</span></li>
+      <li><span><b>Basemap, your layers, go to lat, lon.</b> See <a href="#layers">Maps and your own layers</a>.</span></li>
+    </ol>
+  </div>
+  <p>The « button folds the missions away for more map. On a phone the missions open as a drawer and the settings sit in a sheet you pull up, but a computer is far more comfortable for planning.</p>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="draw">
+  <div class="ch-head">
+    <p class="eyebrow">03 · On the map</p>
+    <h2>Draw a mission</h2>
+    <p class="lede">Pick the mission type from <b>New mission</b>, then click on the map. The hint at the top of the map says what each click does.</p>
+  </div>
+  <div class="fig tall wide">
+    <figure class="shot"><img src="img/new-menu.webp" width="564" height="746" loading="lazy" alt="The New mission menu listing Area, Quick, Corridor, Circle grid and Orbit, each with a one-line description."></figure>
+    <div class="modes">
+      <div class="mode"><img src="img/mode-area.webp" width="1300" height="812" loading="lazy" alt="An area mission: an orange outline filled with parallel teal flight lines."><div><b>Area</b><span>Click the corners of the area. Click the first point, press <kbd>Enter</kbd> or the ✓ button to close it. Grid lines are laid across it.</span></div></div>
+      <div class="mode"><img src="img/mode-quick.webp" width="1300" height="812" loading="lazy" alt="A Quick mission: a box dropped with one click, with its flight lines."><div><b>Quick</b><span>One click drops a box with field defaults. Drag its corners to size it, its centre to move it, its handle to turn it.</span></div></div>
+      <div class="mode"><img src="img/mode-corridor.webp" width="1300" height="812" loading="lazy" alt="A corridor mission: an orange midline along a road with teal flight lines on both sides."><div><b>Corridor</b><span>Click along the road, river or trail, then finish. Parallel lines are flown along it, always an even number so the drone ends near where it began.</span></div></div>
+      <div class="mode"><img src="img/mode-circle.webp" width="1300" height="812" loading="lazy" alt="A circle grid mission: an area covered with overlapping small circles of waypoints."><div><b>Circle grid</b><span>Outline the area. It is covered with overlapping circles, the camera facing in, for oblique photos of buildings and trees.</span></div></div>
+      <div class="mode"><img src="img/mode-orbit.webp" width="1300" height="812" loading="lazy" alt="An orbit mission: a ring of waypoints around an orange centre point and a blue radius handle."><div><b>Orbit</b><span>Click the subject, then drag the ring to set the radius. Add rings in the settings for a stack around a tower or a tree.</span></div></div>
+    </div>
+  </div>
+  <div class="sub">
+    <h3>Edit the shape and the launch point</h3>
+    <ul class="steps">
+      <li><b>Move a corner</b> by dragging it. Drag a small midpoint to add a corner there.</li>
+      <li><b>Delete a corner</b> by right-clicking it, or click it and press <kbd>Delete</kbd>.</li>
+      <li><b>Undo</b> with the ↶ button or <kbd>Ctrl</kbd>+<kbd>Z</kbd>.</li>
+      <li><b>Place the launch point</b> where the drone takes off: the planner asks for it once the shape is done. Drag the green take-off icon to move it.</li>
+      <li><b>Lock editing</b> with the padlock when you only want to look around, so a stray drag can't move anything.</li>
+    </ul>
+    <div class="note">
+      <span class="tag">Why the launch point matters</span>
+      <p>The heights, the climb before waypoint&nbsp;1 and the ground check all start from the ground at the launch point. Put it where you will really stand. If you move on site, move it here too and send the mission again.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="settings">
+  <div class="ch-head">
+    <p class="eyebrow">04 · The middle column</p>
+    <h2>Mission settings</h2>
+    <p class="lede">The same settings as Lite Flight's, in the same cards. Every change replans the mission at once.</p>
+  </div>
+  <div class="fig tall wide">
+    <figure class="shot"><img src="img/settings.webp" width="720" height="2310" loading="lazy" alt="The whole settings column for an area mission: summary, notes, Camera, Altitude mode, Mission parameters, Grid orientation and Upon signal loss cards."></figure>
+    <ol class="legend">
+      <li><span><b>Mission type.</b> Turn an Area outline into a Circle grid, or back, without redrawing it.</span></li>
+      <li><span><b>Camera.</b> Pick your drone. <b>Auto-capture photos</b> adds a waypoint at every photo position, as in <a href="../#autocapture">Lite Flight</a>.</span></li>
+      <li><span><b>Altitude mode.</b> <b>Take Off</b> flies one height above the launch point. <b>Ground</b> follows the terrain, keeping the same height above the ground under every line.<span class="hint">Terrain-follow threshold: how much the ground must change before a waypoint is added.</span></span></li>
+      <li><span><b>Mission parameters.</b> Altitude and GSD move together: change one and the other follows. Then speed, front and side overlap, and camera angle (90° is straight down).<span class="hint">The line under the speed says how often the camera fires for that overlap.</span></span></li>
+      <li><span><b>Grid orientation.</b> Auto-detect picks the line direction from the outline; turn it off to set the grid angle yourself.</span></li>
+      <li><span><b>Upon signal loss.</b> Continue the mission, or return home, when the remote's signal drops.</span></li>
+    </ol>
+  </div>
+  <p>Orbit and Circle grid add their own: the radius, the waypoints per circle, the number of rings and the height between them, and an automatic camera angle that keeps the subject in frame.</p>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="safety">
+  <div class="ch-head">
+    <p class="eyebrow">05 · Before you send</p>
+    <h2>Safety checks</h2>
+    <p class="lede">The planner checks the whole flight against the terrain, from take-off to landing, not only the mission lines.</p>
+  </div>
+  <div class="sub">
+    <h3>The mission goes into the ground</h3>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/ground.webp" width="1620" height="1800" loading="lazy" alt="The map darkened behind a pop-up titled Makiling ridge goes into the ground, with the buttons Fly 80 m above ground and Keep editing."></figure>
+      <ol class="legend">
+        <li><span><b>The pop-up</b> appears when part of the flight would be less than 5&nbsp;m above the ground, named after the mission. Most often the mission is set above the take-off point, but the area is on higher ground.</span></li>
+        <li><span><b>Fly N m above ground</b> switches the mission to the Ground altitude mode at the same height, which is usually what was meant.</span></li>
+        <li><span><b>Keep editing</b> closes it so you can move the launch point or raise the altitude. Download and Send stay off until the flight is clear.<span class="hint">It comes back after each change that is still unsafe, but never while you are dragging a point.</span></span></li>
+      </ol>
+    </div>
+    <p>Between 5 and 20&nbsp;m above the ground, the mission can be sent, but a short warning stays in the notes. Look at those stretches in the <a href="#sim">3D view</a>: trees and buildings aren't in the online terrain.</p>
+  </div>
+  <div class="sub">
+    <h3>The climb to waypoint 1, and the way home</h3>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/climb.webp" width="768" height="754" loading="lazy" alt="The mission's summary and notes: Climbs to a height, then out, mission and home distances and times; Set DJI Fly's Return-to-Home altitude to at least a given height before flying."></figure>
+      <ol class="legend">
+        <li><span><b>Climbs to N m.</b> The drone goes straight up over the launch point before it flies to waypoint&nbsp;1: to the mission's highest altitude, and higher if the ground on the way is higher (it then says <i>to clear a hill</i>). It always stays at least 30&nbsp;m above the ground on that leg.</span></li>
+        <li><span><b>Out, mission, home.</b> The distance and time of each part of the flight.</span></li>
+        <li><span><b>Return-to-Home altitude.</b> Set this in DJI Fly before you fly.</span></li>
+      </ol>
+    </div>
+    <div class="note danger">
+      <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Set the Return-to-Home altitude in DJI Fly</span>
+      <p>A KMZ can't set it. When the mission ends, or the signal is lost, the drone flies home at DJI Fly's RTH altitude, measured from the launch point. Below the height the note gives, the way home can meet a hillside. Set it on every flight, in DJI Fly's safety settings, before you take off.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="import">
+  <div class="ch-head">
+    <p class="eyebrow">06 · From other tools</p>
+    <h2>Import KML or KMZ</h2>
+    <p class="lede">Bring in outlines from Google Earth, QGIS or a client's file. Each shape becomes its own mission.</p>
+  </div>
+  <div class="fig wide">
+    <figure class="shot"><img src="img/import.webp" width="920" height="544" loading="lazy" alt="The Imported UPLB fields dialog: 3 areas fit an Area grid or Circle grid mission, 1 line a Corridor mission, 1 point an Orbit mission, with Just show them and Make 5 missions buttons."></figure>
+    <ol class="legend">
+      <li><span><b>What was found</b>, and which mission type each kind of shape fits: areas for Area or Circle grid, lines for Corridor, points for Orbit.</span></li>
+      <li><span><b>Make the missions</b>, one per shape, grouped as a project named after the file. Or <b>Just show them</b> on the map.</span></li>
+    </ol>
+  </div>
+  <ul class="steps">
+    <li>Press <b>Import</b>, or drop the file on the page. KML and KMZ up to 25&nbsp;MB.</li>
+    <li>Shapes with many corners are simplified to a shape that still contains all of the original, so nothing is left out. Holes are ignored.</li>
+    <li>The file's shapes stay on the map in grey. <b>Double-click one</b> to move the open mission onto it, or to start a new mission there with the same settings.</li>
+    <li>A KMZ made by the planner or by Lite Flight opens again as an editable mission.</li>
+  </ul>
+  <p>Lite Flight on the phone can import the same KML and KMZ files: see <a href="../#import-kml">Import a KML or KMZ</a>.</p>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="layers">
+  <div class="ch-head">
+    <p class="eyebrow">07 · Base maps</p>
+    <h2>Maps and your own layers</h2>
+    <p class="lede">Plan over satellite imagery, a street map, your own tile source, or your own orthophoto from an earlier flight.</p>
+  </div>
+  <div class="fig tall wide">
+    <figure class="shot"><img src="img/layers.webp" width="724" height="802" loading="lazy" alt="The Your layers panel: orthophotos and surface models from your own flights, read from your computer and never uploaded, with an Add a GeoTIFF button and the COG Converter link."></figure>
+    <ol class="legend">
+      <li><span><b>Basemap.</b> Esri World Imagery or OpenStreetMap, or <b>Add a tile source…</b> with any XYZ address, such as <code>https://…/{z}/{x}/{y}.png</code>. Your sources are kept in this browser.</span></li>
+      <li><span><b>Your layers.</b> Add a GeoTIFF from your own flight: an <b>orthophoto</b> shows on the map; a <b>surface model</b> (DSM) shows shaded and is used for terrain follow where it has data.<span class="hint">The files are read from your computer and never uploaded.</span></span></li>
+      <li><span><b>COG Converter.</b> A large GeoTIFF draws slowly until it is made Cloud Optimized. The free converter (Windows, macOS, Linux) makes the copy; press <b>Link</b> and the planner swaps it in by itself.</span></li>
+      <li><span><b>Go to lat, lon.</b> Type coordinates like <code>14.165, 121.241</code>.</span></li>
+    </ol>
+  </div>
+  <div class="note">
+    <span class="tag">Surface model heights</span>
+    <p>A drone surface model is rarely on the same height datum as the online terrain. The planner shifts it to match the online terrain on open ground, or you can type a fixed shift. Turn off <b>Use for terrain follow</b> to only look at it.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="sim">
+  <div class="ch-head">
+    <p class="eyebrow">08 · Rehearse</p>
+    <h2>3D view and flight simulation</h2>
+    <p class="lede">The cube button tilts the map onto the terrain and draws the whole flight at its real height. Right-drag, or <kbd>Ctrl</kbd>-drag, to tilt and turn.</p>
+  </div>
+  <div class="fig wide">
+    <figure class="shot"><img src="img/sim.webp" width="2400" height="1500" loading="lazy" alt="The 3D view with the flight path over the terrain and the simulation bar: play button, time slider, speed, Follow, flight time, battery use, lowest clearance and the warning height."></figure>
+    <ol class="legend">
+      <li><span><b>The flight path.</b> Orange where the drone climbs, teal where it is level, blue where it descends, and <span style="color:var(--stop);font-weight:600">red</span> wherever it passes closer to the ground than the warning height.</span></li>
+      <li><span><b>Play, scrub, speed.</b> 1× to 60×. <b>Follow</b> keeps the drone in the middle of the map. The drone shows its camera footprint as it flies.</span></li>
+      <li><span><b>Flight, battery, lowest point.</b> Time from take-off to landing, the share of a battery it uses (planned on 70&nbsp;% of the drone's rated time), and the closest it comes to the ground. Click <b>low stretch</b> to jump to it.</span></li>
+      <li><span><b>Warn below.</b> The clearance that turns the path red, 20&nbsp;m by default. With your own surface model loaded, it is the clearance over the treetops and roofs.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="send">
+  <div class="ch-head">
+    <p class="eyebrow">09 · To the phone</p>
+    <h2>Send to phone</h2>
+    <p class="lede">The fastest way to the field: a QR code that Lite Flight scans.</p>
+  </div>
+  <div class="fig tall wide">
+    <figure class="shot"><img src="img/share.webp" width="920" height="1376" loading="lazy" alt="The Send to phone dialog with a QR code, the share code 7KQ4MZ, a download link with a Copy button, and a note that Lite Flight offers to download the terrain and imagery for the area."></figure>
+    <ol class="legend">
+      <li><span><b>QR code.</b> In Lite Flight, use the QR scan in <a href="../#qr-share">mission import</a>: the mission loads directly.</span></li>
+      <li><span><b>Share code.</b> Six characters, for a phone that can't scan: type it in Lite Flight, or open the link's address in the phone's browser.</span></li>
+      <li><span><b>Link.</b> Downloads the KMZ in any browser, to open later with <a href="../#load-plan">Load mission plan</a>.</span></li>
+      <li><span><b>Offline maps.</b> Lite Flight offers to download the terrain and map imagery for the mission's area, so the map works with no signal on site.</span></li>
+    </ol>
+  </div>
+  <ul class="steps">
+    <li><b>A week, then gone.</b> Shared missions are kept 7 days and then deleted. Anyone with the code can download them until then, so share codes only with your team.</li>
+    <li><b>Same mission, same code.</b> Sending the same, unchanged missions again gives the same code and keeps it another week.</li>
+    <li><b>Several at once.</b> <i>Send all</i> on a project sends every mission in it under one code.</li>
+    <li><b>Offline maps are fetched by the phone.</b> Only the area is sent: the phone downloads the terrain, and the imagery of whatever basemap is active in Lite Flight (your custom XYZ source, if you set one). It skips what it already has. See <a href="../#imagery">Offline imagery</a>.</li>
+  </ul>
+  <div class="note">
+    <span class="tag">Prefer a file?</span>
+    <p><b>Download KMZ</b> saves the mission as a Lite Flight KMZ. Copy it to the phone and open it with <a href="../#load-plan">Load mission plan</a>. It is the same file Lite Flight exports, with the outline and settings inside, so you can also reopen it in the planner later.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="workspace">
+  <div class="ch-head">
+    <p class="eyebrow">10 · Keep it</p>
+    <h2>Save your work</h2>
+    <p class="lede">Missions are kept in this browser, so they are still there after a reload. A workspace file keeps them anywhere.</p>
+  </div>
+  <div class="fig tall wide">
+    <figure class="shot"><img src="img/workspace.webp" width="588" height="420" loading="lazy" alt="The workspace menu with Save workspace file and Open workspace file."></figure>
+    <ol class="legend">
+      <li><span><b>Save workspace file</b> (the ⋯ menu) writes every mission, the imported shapes and your settings to one file.<span class="hint">Do it before clearing the browser's data, and to move your missions to another computer.</span></span></li>
+      <li><span><b>Open workspace file</b>, or drop it on the page, adds its missions to yours or replaces them.<span class="hint">Your GeoTIFF layers come back listed; open each file again (one click in Chrome and Edge).</span></span></li>
+    </ol>
+  </div>
+  <div class="note ok">
+    <span class="tag">Privacy</span>
+    <ul>
+      <li>No account and no sign-in. Your missions are not sent anywhere until you press Send to phone.</li>
+      <li>Your own GeoTIFFs are read on your computer and never uploaded.</li>
+      <li>The site counts visits, new missions, imports and downloads, without names, shapes or anything you type, to see how it is used.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<section class="ch" id="help">
+  <div class="ch-head">
+    <p class="eyebrow">11 · Troubleshooting</p>
+    <h2>Questions</h2>
+  </div>
+  <details class="faq"><summary>Lite Flight says the mission can't be opened.</summary><p>Missions made in the planner are flight files, which Lite Flight opens only while its license or trial is active. Renew it, then scan again. See <a href="../#license-kmz">Prepared missions and the license</a>.</p></details>
+  <details class="faq"><summary>Download KMZ and Send to phone are greyed out.</summary><p>Part of the flight would be less than 5&nbsp;m above the ground, or the launch point is missing. Read the pop-up or the notes; <a href="#safety">Safety checks</a> explains the fixes.</p></details>
+  <details class="faq"><summary>The code has expired.</summary><p>Shares are kept 7 days. Open the planner on the same computer and send the mission again: your missions are still in the browser.</p></details>
+  <details class="faq"><summary>My missions are gone.</summary><p>They live in the browser's storage, so clearing site data, a private window or another browser starts empty. Open your last workspace file, or a KMZ you downloaded or sent.</p></details>
+  <details class="faq"><summary>Does the planner fly differently from Lite Flight?</summary><p>No. Both use the same planning engine; its version is shown at the foot of the settings column.</p></details>
+  <details class="faq"><summary>Can I fly the KMZ with DJI Fly directly?</summary><p>Open it in Lite Flight first, then send it to DJI Fly from there as usual: that is where the mission is put into a DJI Fly slot. See the <a href="../">Lite Flight manual</a>.</p></details>
+  <footer>
+    Lite Flight Planner by LeoBar, the web companion to Lite Flight. Imagery: Esri World Imagery (Esri, Maxar, Earthstar Geographics, and the GIS User Community); terrain: AWS Terrain Tiles. DJI and DJI Fly are trademarks of DJI; Lite Flight is not affiliated with DJI.
+  </footer>
+</section>
+
+</main>
+</div>
+
+<script>
+(function () {
+  // Clips play only while on screen (and never on their own for viewers
+  // who asked for reduced motion; they get controls instead).
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var vids = Array.prototype.slice.call(document.querySelectorAll("video"));
+  vids.forEach(function (v) {
+    if (reduce) { v.controls = true; return; }
+    v.addEventListener("click", function () { v.paused ? v.play() : v.pause(); });
+  });
+  if (!reduce && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { v.preload = "auto"; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else { v.pause(); }
+      });
+    }, { threshold: 0.35 });
+    vids.forEach(function (v) { io.observe(v); });
+  } else if (!reduce) {
+    vids.forEach(function (v) { v.autoplay = true; });
+  }
+
+  // Chapter rail. Jumps are done in script (measured at click time, after
+  // any images above have loaded) and the highlight follows the scroll
+  // position directly, so both work wherever the page is embedded.
+  var rail = document.querySelector(".rail");
+  var railList = document.getElementById("toc");
+  var links = Array.prototype.slice.call(railList.querySelectorAll("a"));
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+  var active = null;
+  function stickyOffset() {
+    var bar = document.querySelector(".getbar").offsetHeight;
+    return bar + (window.matchMedia("(max-width: 900px)").matches ? rail.offsetHeight + 12 : 24);
+  }
+  function setActive(a) {
+    if (a === active) return;
+    if (active) active.classList.remove("on");
+    active = a;
+    if (!a) return;
+    a.classList.add("on");
+    if (railList.scrollWidth > railList.clientWidth) {
+      railList.scrollLeft = a.offsetLeft - (railList.clientWidth - a.offsetWidth) / 2;
+    }
+  }
+  var lockUntil = 0;
+  function sync() {
+    if (Date.now() < lockUntil) return;
+    var doc = document.documentElement;
+    var line = stickyOffset() + window.innerHeight * 0.2;
+    var idx = 0;
+    sections.forEach(function (sec, i) { if (sec && sec.getBoundingClientRect().top <= line) idx = i; });
+    if (window.innerHeight + window.pageYOffset >= doc.scrollHeight - 4) idx = sections.length - 1;
+    setActive(links[idx]);
+  }
+  var queued = false;
+  window.addEventListener("scroll", function () {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { queued = false; sync(); });
+  }, { passive: true });
+  window.addEventListener("resize", sync);
+  Array.prototype.slice.call(document.querySelectorAll('a[href^="#"]')).forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var target = document.getElementById(a.getAttribute("href").slice(1));
+      if (!target) return;
+      e.preventDefault();
+      var y = target.getBoundingClientRect().top + window.pageYOffset - stickyOffset();
+      window.scrollTo({ top: Math.max(0, y), behavior: reduce ? "auto" : "smooth" });
+      var i = sections.indexOf(target);
+      if (i >= 0) { setActive(links[i]); lockUntil = Date.now() + 900; }
+    });
+  });
+  sync();
+
+})();
+</script>
+</body>
+</html>
