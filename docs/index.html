@@ -1105,10 +1105,17 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     </ul>
     <p>To get a file onto the phone, use <b>Save to Downloads</b> on the Export screen of another device, the web planner's <b>Download KMZ</b>, a USB cable or a messaging app.</p>
     <div class="fig wide">
-      <figure class="shot"><img src="img/loaded_plan.webp" width="2400" height="1000" loading="lazy" alt="A loaded mission on the settings screen, with the message You're 2.1 km from the planned launch point and a Launch here button."></figure>
+      <figure class="shot"><img src="img/loaded_plan.webp" width="2400" height="1000" loading="lazy" alt="A mission from the web planner on the settings screen, with the message You're 436 m from the planned launch point and a Launch here button."></figure>
       <ol class="legend">
         <li><span><b>You're far from the planned launch point.</b> When your GPS position is more than 100&nbsp;m from where the plan takes off, Lite Flight says so. Tap <b>Launch here</b> to take off from where you stand, or move the take-off marker yourself.</span></li>
         <li><span><b>The planned launch point.</b></span></li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/launch_shift.webp" width="2400" height="1000" loading="lazy" alt="After Launch here: the panel says Launch 7 m higher than planned: waypoints lowered 7 m, and a dashed line runs from the new launch point to the mission."></figure>
+      <ol class="legend">
+        <li><span><b>The height change</b> Lite Flight made for the new launch point (see below).</span></li>
+        <li><span><b>The new launch point</b>, with the flight out to the mission dashed.</span></li>
       </ol>
     </div>
     <div class="note"><span class="tag">Heights when the launch point moves</span><p>A plan made above take-off assumes the drone takes off where it was planned. If you launch from higher or lower ground, Lite Flight looks up the ground at both places and shifts every waypoint by the difference, so the drone still flies the planned lines at the planned height over the field. The panel says what it did, for example <i>Launch 4&nbsp;m lower than planned: waypoints raised 4&nbsp;m.</i> It needs terrain for both places; without it the mission isn't worked out until you go online or launch from the planned point.</p><p>A terrain-follow plan from the web planner may have been made on a detailed surface model. On the phone its heights are re-adjusted to the phone's own terrain data when you change the mission, and the panel says so. If the phone has no terrain for the site and you haven't changed the route, it flies the planner's heights as they are.</p></div>
@@ -1123,6 +1130,14 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <li>One mission opens on the settings screen, as with <a href="#load-plan">Load mission plan</a>. Several missions from one project are all added to My missions, in their project group, and the map zooms to them.</li>
       <li>If the planner sent the area for offline maps and the phone has no imagery there yet, Lite Flight asks <b>Download imagery and terrain?</b> Tap <b>Download</b> while you're still online. See <a href="#offline-with-mission">Imagery that comes with a mission</a>.</li>
     </ol>
+    <div class="fig tall wide">
+      <figure class="shot"><img src="img/offline_offer.webp" width="838" height="624" loading="lazy" alt="Dialog: Download imagery and terrain? This phone has no imagery for Area mission (2). Imagery from the selected map source, about 2 MB. Buttons Not now and Download."></figure>
+      <ol class="legend">
+        <li><span><b>Source and size.</b> The imagery comes from the map source selected in Lite Flight, at the detail the planner asked for, with terrain for the same area.</span></li>
+        <li><span><b>Not now</b> skips it. You can still download the area yourself in <a href="#imagery">Imagery Download</a>.</span></li>
+        <li><span><b>Download</b> runs in the background; the mission opens straight away.</span></li>
+      </ol>
+    </div>
     <p>The phone needs internet for the scan, so do it at home. The planner keeps a shared mission for a week; scanning the same code again opens the mission you already have. Lite Flight only accepts codes from the Lite Flight Planner.</p>
   </div>
 
