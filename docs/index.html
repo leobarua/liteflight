@@ -252,6 +252,7 @@ td:first-child { font-weight: 600; white-space: nowrap; }
 .mode b { font-family: var(--display); font-size: 1.2rem; font-weight: 600; }
 .mode span { font-size: 0.88rem; color: var(--muted); line-height: 1.45; }
 .mode:hover { border-color: var(--signal); }
+.modes.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 details.faq { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0.2rem 1rem; }
 details.faq + details.faq { margin-top: -0.5rem; }
@@ -292,7 +293,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   .getbar .btn .long { display: none; }
   .getbar .contact .c { display: block; }
   .getbar .contact .sep { display: none; }
-  .flow, .modes { grid-template-columns: minmax(0, 1fr); }
+  .flow, .modes, .modes.three { grid-template-columns: minmax(0, 1fr); }
   .flow li { grid-template-columns: 2rem minmax(0, 1fr); column-gap: 0.5rem; }
   .flow li::before { grid-row: span 2; }
 }
@@ -302,7 +303,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 <div class="getbar">
   <div class="in">
     <div class="id">
-      <p><b>Lite Flight v1.3</b> <span>· for the DJI RC Pro 2, RC 2 and Android 11+</span></p>
+      <p><b>Lite Flight v1.4</b> <span>· for the DJI RC Pro 2, RC 2 and Android 11+</span></p>
       <p class="contact"><span class="c">Inquiries: <a href="mailto:ldbarua@gmail.com">ldbarua@gmail.com</a></span><span class="sep"> · </span><span class="c">or DM on <a href="https://www.facebook.com/leonardo.barua" target="_blank" rel="noopener">Facebook</a></span></p>
     </div>
     <div class="acts">
@@ -324,19 +325,20 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <li><a href="#settings">Mission settings</a></li>
     <li><a href="#send">Send to DJI Fly</a></li>
     <li><a href="#library">My missions</a></li>
+    <li><a href="#import">Import &amp; load</a></li>
     <li><a href="#export">Export screen</a></li>
     <li><a href="#help">Troubleshooting</a></li>
     <li><a href="#rc2">DJI RC 2</a></li>
     <li><a href="#liteflyer">Lite Flyer (older drones)</a></li>
   </ol>
-  <p class="meta">Version 1.3 <span id="dl-wrap" hidden>(downloads: <span id="dl-count"></span>)</span> · captured on a DJI&nbsp;RC&nbsp;Pro&nbsp;2 (Android&nbsp;11). Demo missions are over the UPLB CAFS rice paddies in Los&nbsp;Baños, Laguna. The v1.3 screens (auto-capture, Share with Lite Flyer, Send to Lite Flyer) were captured on a Samsung Galaxy&nbsp;A73 phone.</p>
+  <p class="meta">Version 1.4 <span id="dl-wrap" hidden>(downloads: <span id="dl-count"></span>)</span> · captured on a DJI&nbsp;RC&nbsp;Pro&nbsp;2 (Android&nbsp;11). Demo missions are over the UPLB CAFS rice paddies in Los&nbsp;Baños, Laguna. The v1.3 and v1.4 screens (auto-capture, Lite Flyer, importing and loading missions, the flight checks) were captured on a Samsung Galaxy&nbsp;A73 phone.</p>
 </nav>
 
 <main>
 
 <header class="hero">
   <div>
-    <p class="eyebrow">Field manual · v1.3</p>
+    <p class="eyebrow">Field manual · v1.4</p>
     <h1>Plan mapping flights <em>offline</em>, fly them in DJI&nbsp;Fly.</h1>
     <p class="lede">Lite Flight lets you draw aerial-imaging waypoint missions on saved satellite imagery and drop them straight into DJI Fly's waypoint list. It works even off-grid.</p>
     <div class="strip">
@@ -360,7 +362,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <p>Every mission goes through the same five steps. Do the first one at home while you still have internet; the rest work anywhere.</p>
   <ol class="flow wide">
     <li><b>Save the map</b><span>Download satellite imagery and elevation for your site while online.</span></li>
-    <li><b>Draw the area</b><span>Tap corners on the map, trace a line, drag a quick box, or circle a subject.</span></li>
+    <li><b>Draw the area</b><span>Tap corners, trace with your finger, drag a quick box or circle a subject. Or bring one in from a KML file or the <a href="planner/">web planner</a>.</span></li>
     <li><b>Check settings</b><span>Pick your drone; set altitude, overlap and speed.</span></li>
     <li><b>Send to DJI Fly</b><span>Pick a DJI Fly waypoint slot. Lite Flight swaps your mission in.</span></li>
     <li><b>Fly it</b><span>Open the mission in DJI Fly, start Timed Shot, press GO.</span></li>
@@ -411,6 +413,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <div class="sub" id="license">
     <h3>License &amp; trial</h3>
     <p>A new install runs as a 14-day trial with every feature on. For the first week only a small <i>Trial ends in …</i> line shows. From day 8 a reminder pops up asking for a license, and comes back a minute after each <b>Later</b>; after day 14 the app locks until you activate. To get a license, open this screen from the red <b>Trial</b> line under the app name.</p>
+    <p>Ready-to-fly mission files (KMZ), including QR scans and typed codes, can only be loaded while the license or trial is valid. See <a href="#license-kmz">Licenses and mission files</a>.</p>
     <div class="fig wide">
       <figure class="shot"><img src="img/license.webp" width="1920" height="1100" loading="lazy" alt="The license screen with the device code blurred, a key field, and Activate and Load license file buttons."></figure>
       <ol class="legend">
@@ -466,6 +469,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
         <li><span><b>Add custom</b> asks for a name, the tile URL and an optional attribution.</span></li>
       </ol>
     </div>
+    <p id="offline-with-mission"><b>Imagery that comes with a mission.</b> When a mission from the <a href="#qr-share">web planner's QR code</a> covers ground this phone has no imagery for, Lite Flight offers to download the imagery and terrain for it, from the map source you have selected. These downloads belong to that mission: they're listed under <b>Downloaded areas</b> like any other, and deleting the mission deletes them too, unless another mission still needs them.</p>
     <p id="share-imagery"><b>Share with Lite Flyer.</b> If you fly with <a href="#liteflyer">Lite Flyer</a>, it can show your downloaded areas offline too. Switch on <b>Share with Lite Flyer</b> at the top of <b>Downloaded areas</b>.</p>
     <div class="fig tall wide">
       <figure class="shot"><img width="620" height="625" src="img/share_lite_flyer.webp" loading="lazy" alt="Downloaded areas with the Share with Lite Flyer switch on and each area marked Shared with Lite Flyer."></figure>
@@ -643,7 +647,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <li><span><b>Hint</b> for the next step: tap the map to start.</span></li>
       <li><span><b>Download imagery</b> for offline use.</span></li>
       <li><span><b>MBTiles</b> loads your own drone orthophoto or map file as an overlay.</span></li>
-      <li><span><b>KML</b> imports a boundary drawn elsewhere (Google Earth, QGIS) as a guide shape.</span></li>
+      <li><span><b>KML</b> imports areas, lines and points drawn elsewhere (Google Earth, QGIS). See <a href="#import-kml">Import a KML or KMZ file</a>.</span></li>
       <li><span><b>My location</b> centres the map on your GPS position.</span></li>
       <li><span><b>Recenter</b> zooms to the shape you've drawn.</span></li>
       <li><span><b>TERR</b> shades saved elevation, so you can spot hills.</span></li>
@@ -652,8 +656,21 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <li><span><b>Panel handle.</b> Drag it to widen the panel.</span></li>
     </ol>
   </div>
-  <div class="note"><span class="tag">Where the drone takes off</span><p>The <b style="color:var(--go)">green dot</b> is the launch point. It starts at your GPS position. To move it, tap the green dot, then tap where you'll actually take off. The flight time and the first leg are worked out from there.</p><p>This matters most for <a href="#terrain">terrain follow</a>. Each waypoint's height is worked out relative to the ground at the launch point, so a launch point in the wrong place raises or lowers the whole mission.</p></div>
-  <div class="note danger" role="note"><span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 1.5 21h21z" fill="currentColor"/><path d="M12 9v5.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.35" fill="#fff"/></svg>Warning: set the launch point with care</span><p>Put the green dot <b>exactly where the drone will take off</b>. If the drone takes off somewhere else, every height in the mission is off by the difference in ground height between the two spots:</p><ul><li>Take off from <b>higher ground</b> than the green dot, and the drone flies <b>higher</b> than the height above ground you set.</li><li>Take off from <b>lower ground</b> than the green dot, and the drone flies <b>lower</b> than you set. It can <b>fly into the ground, trees or buildings</b>.</li></ul><p>Check the launch point every time, before you send the mission. Lite Flight can't tell where you'll really take off, so <b>getting it right is your responsibility</b>.</p></div>
+  <p>Version 1.4 adds a few things to this screen:</p>
+  <div class="fig wide">
+    <figure class="shot"><img src="img/map_v14.webp" width="2400" height="1000" loading="lazy" alt="The v1.4 map screen on a phone: scan QR, type code and open-file icons beside My missions, the KML button, the take-off marker, the Redraw button and imported outlines."></figure>
+    <ol class="legend">
+      <li><span><b>Scan QR</b> loads a mission from the <a href="#qr-share">web planner</a>. Shown only on devices with a camera.</span></li>
+      <li><span><b>Type code</b> (keyboard icon) loads a web planner mission from its 6-character code. Use it on DJI RC controllers, which have no camera.</span></li>
+      <li><span><b>Open file</b> loads a ready-made mission file. See <a href="#load-plan">Load a mission plan</a>.</span></li>
+      <li><span><b>KML</b> imports shapes from a file. Once a file is on the map, the button turns into <b>×</b>, which removes it again.</span></li>
+      <li><span><b>Launch point</b>, now drawn as a green take-off marker: an arrow rising from a ring.</span></li>
+      <li><span><b>Draw</b> (<b>Redraw</b> once a shape is on the map) lets you trace the outline with your finger instead of tapping corners. See <a href="#draw-trace">Trace with your finger</a>.</span></li>
+      <li><span><b>Imported shapes</b> show as dashed teal outlines. Double-tap one to make it a mission.</span></li>
+    </ol>
+  </div>
+  <div class="note"><span class="tag">Where the drone takes off</span><p>The <b style="color:var(--go)">green take-off marker</b> is the launch point. It starts at your GPS position. To move it, tap the marker, then tap where you'll actually take off. The flight time and the first leg are worked out from there.</p><p>This matters most for <a href="#terrain">terrain follow</a>. Each waypoint's height is worked out relative to the ground at the launch point, so a launch point in the wrong place raises or lowers the whole mission.</p></div>
+  <div class="note danger" role="note"><span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 1.5 21h21z" fill="currentColor"/><path d="M12 9v5.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.35" fill="#fff"/></svg>Warning: set the launch point with care</span><p>Put the green marker <b>exactly where the drone will take off</b>. If the drone takes off somewhere else, every height in the mission is off by the difference in ground height between the two spots:</p><ul><li>Take off from <b>higher ground</b> than the green marker, and the drone flies <b>higher</b> than the height above ground you set.</li><li>Take off from <b>lower ground</b> than the green marker, and the drone flies <b>lower</b> than you set. It can <b>fly into the ground, trees or buildings</b>.</li></ul><p>Lite Flight now checks the route against the terrain (see <a href="#ground-check">Ground check</a>), but it can only check from the launch point you set, and it does not know about trees or buildings.</p><p>Check the launch point every time, before you send the mission. Lite Flight can't tell where you'll really take off, so <b>getting it right is your responsibility</b>.</p></div>
 </section>
 
 <!-- ============================================================= -->
@@ -683,6 +700,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
         <li>Tap <b>Next</b> to see the flight lines and settings.</li>
       </ol>
     </div>
+    <p id="draw-trace"><b>Trace with your finger.</b> Tap <b>Draw</b>, then run one finger around the field's edge without lifting it. When you let go, the outline closes and becomes corners you can fix as below. Too short a trace, or one that crosses itself, is refused with a message; just try again. Draw works the same way in <b>Circle</b>, and in <b>Corridor</b>, where you trace along the road or canal.</p>
     <p><b>Fix the shape.</b> Tap a corner to select it (it turns orange), then tap where it should go. Tap a purple midpoint to add a corner there.</p>
     <div class="fig wide">
       <figure class="shot"><img src="img/sel_vertex.webp" width="1920" height="1100" loading="lazy" alt="A six-corner boundary with one corner selected in orange."></figure>
@@ -711,7 +729,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <figure class="shot clip"><video src="video/corridor_draw.mp4" poster="video/corridor_draw.webp" width="1280" height="732" muted loop playsinline preload="none" aria-label="Clip: tracing four points along the farm road, then Next."></video></figure>
       <ol class="steps">
         <li>Choose <b>Corridor</b>.</li>
-        <li>Tap points along the centre of the road or canal, from one end to the other. Bends are fine.</li>
+        <li>Tap points along the centre of the road or canal, from one end to the other. Bends are fine. Or tap <b>Draw</b> and trace the line with one finger.</li>
         <li>Tap <b>Next</b>. The lines run parallel to your path on both sides.</li>
         <li>Set the width with <b>Number of lines</b> (even numbers, 4 or more).</li>
       </ol>
@@ -804,14 +822,14 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       </ol>
     </div>
     <div class="fig solo wide">
-      <figure class="shot"><img src="img/config_orbit_map.webp" width="1920" height="1100" loading="lazy" alt="The orbit mission on the settings screen: the orange flight path around the building, the launch point and the last waypoint."><figcaption><b>①</b> launch point · <b>②</b> move · <b>③</b> resize · <b>④</b> last waypoint (red). The handles work on this screen too.</figcaption></figure>
+      <figure class="shot"><img src="img/config_orbit_map.webp" width="1920" height="1100" loading="lazy" alt="The orbit mission on the settings screen: the orange flight path around the building, the launch point and the last waypoint."><figcaption><b>①</b> launch point · <b>②</b> move · <b>③</b> resize · <b>④</b> a waypoint on the ring (red). The handles work on this screen too.</figcaption></figure>
     </div>
     <div class="fig tall wide">
       <figure class="shot"><img width="690" height="2734" src="img/panel_orbit.webp" loading="lazy" alt="Orbit settings with eleven numbered rows."></figure>
       <ol class="legend">
         <li><span><b>Flight summary.</b> See <a href="#settings">settings</a>.</span></li>
         <li><span><b>Altitude mode.</b> <i>Take Off</i> stacks the rings above the launch point. <i>Ground</i> follows the terrain round the circle (see <a href="#terrain">Terrain follow</a>).</span></li>
-        <li><span><b>Lowest ring</b> height. The first ring is flown here; the others are above it.</span></li>
+        <li><span><b>Lowest ring</b> height. The other rings are above it; the drone starts on the top one and works down.</span></li>
         <li><span><b>Target GSD</b>, linked to the height as in the other types.</span></li>
         <li><span><b>Drone speed.</b> The grey line says how long one ring takes and how many photos that gives at a 2&nbsp;s Timed Shot.</span></li>
         <li><span><b>Auto camera angle.</b> On: the camera points at the centre of the orbit from each ring, so the higher rings look down more steeply. Off: you set one angle (65° to start) and it's held for every ring.</span></li>
@@ -822,7 +840,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
         <li><span><b>Upon signal loss.</b> As in the other types.</span></li>
       </ol>
     </div>
-    <div class="note"><span class="tag">How it climbs between rings</span><p>The drone doesn't stop between rings. Stopping, climbing straight up and speeding up again wastes battery, so when a ring is done it keeps going round and climbs on a gentle slope to the next one, then flies that ring level. The climb is spread over just enough of the circle to stay at about 1.5&nbsp;m/s, so the drone holds its speed. With Auto camera angle on, the camera tilts to the next ring's angle during the climb.</p><p>In <i>Take Off</i> mode the drone only climbs to the lowest ring's height before it sets off, not the top one. In <i>Ground</i> mode it climbs to the highest point of the mission first, to be safe over uneven ground.</p></div>
+    <div class="note"><span class="tag">How it moves between rings</span><p>Since v1.4 the orbit is flown <b>from the top down</b>. The drone climbs straight up to the top ring's height at the launch point, flies over, and starts there, so it is never low on the way in. It doesn't stop between rings: stopping and speeding up again wastes battery, so when a ring is done it keeps going round and descends on a gentle slope to the next one, then flies that ring level. The descent is spread over just enough of the circle to stay at about 1.5&nbsp;m/s, so the drone holds its speed. With Auto camera angle on, the camera re-aims for the next ring at the start of each descent.</p></div>
     <div class="note warn"><span class="tag">Check what's around the subject</span><p>The camera aims at the ground in the middle of the circle. For a tall subject, pick a radius that clears it and anything next to it at every ring height, and remember the top ring is the highest point of the flight.</p></div>
   </div>
 </section>
@@ -881,6 +899,28 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       </ol>
     </div>
     <div class="note warn"><span class="tag">Needs elevation data</span><p>If there's no saved elevation for the site, the app downloads it when you pick Ground, which needs internet. Tick <b>Include elevation data</b> when you save the imagery at home.</p></div>
+  </div>
+
+  <div class="sub" id="flight-checks">
+    <h3>Flight checks</h3>
+    <p>Lite Flight checks the whole flight against the terrain it has for the site: the climb at the launch point, the flight out to the first waypoint, the mission itself and the way home. The results show at the bottom of the settings panel, just above <b>Send to DJI Fly…</b>. Terrain comes from the elevation data you downloaded, or from the internet if you're online.</p>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/transit_notes.webp" width="2400" height="1000" loading="lazy" alt="An orbit mission with a dashed line from the launch point to the first waypoint, and notes at the bottom of the panel: climbs to 31 m before heading out, raised to clear a hill; set DJI Fly's Return-to-Home altitude to at least 31 m before flying; only 8 m above ground at the lowest point."></figure>
+      <ol class="legend">
+        <li><span id="transit"><b>Flight to the first waypoint</b> (dashed). The drone climbs straight up at the launch point, then flies across. Lite Flight sets that climb to the mission's highest waypoint, or higher when the ground on the way rises: at least 30&nbsp;m above the highest ground on the straight line to waypoint 1. When it had to go higher, the note says <i>raised to clear a hill</i>. Without terrain for the site it says it couldn't check.</span></li>
+        <li><span id="rth-altitude"><b>Return-to-Home reminder</b>, in red, on every mission. DJI Fly's Return-to-Home altitude isn't part of the mission file, so set it in DJI Fly's safety settings to at least the height given here before you fly. It's worked out to clear the mission and the ground on the way back.</span></li>
+        <li><span><b>Low clearance.</b> The lowest gap between the route and the ground, when it's under 20&nbsp;m. Fine over open fields, but check for trees, poles and buildings, which the terrain data doesn't include.</span></li>
+      </ol>
+    </div>
+    <p id="ground-check"><b>Ground check.</b> If any part of the route comes within 5&nbsp;m of the ground, or goes into it, Lite Flight stops you with a pop-up and greys out <b>Send to DJI Fly…</b> and <b>Next</b> until you fix it. This usually happens in <i>Take Off</i> mode when the mission is over ground higher than the launch point. The pop-up comes back each time you move the launch point while the route is still unsafe.</p>
+    <div class="fig tall wide">
+      <figure class="shot"><img src="img/ground_dialog.webp" width="838" height="584" loading="lazy" alt="Pop-up: Weather station nearly touches the ground. The land under the mission is higher than the launch point. Did you mean 6 m above ground? Buttons: Keep editing, Fly 6 m above ground."></figure>
+      <ol class="legend">
+        <li><span><b>Keep editing</b> to raise the height, move the mission or move the launch point yourself.</span></li>
+        <li><span><b>Fly N&nbsp;m above ground</b> switches the mission to <i>Ground</i> mode (terrain follow) at the same height, so it keeps that height over the rising ground.</span></li>
+      </ol>
+    </div>
+    <div class="note warn"><span class="tag">The checks are a safety net</span><p>They're only as good as the terrain data, which is about 30&nbsp;m per pixel and has no trees or buildings. Look at the site yourself, keep the launch point where you'll really take off, and watch the drone.</p></div>
   </div>
 </section>
 
@@ -1003,9 +1043,122 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 </section>
 
 <!-- ============================================================= -->
+<section class="ch" id="import">
+  <div class="ch-head">
+    <p class="eyebrow">10 · Bringing missions in</p>
+    <h2>Import &amp; load</h2>
+    <p class="lede">You don't have to draw every mission on the phone. Bring in shapes from a KML file, open a mission file someone sent you, or scan a mission from the <a href="planner/">Lite Flight Planner</a> on a computer.</p>
+  </div>
+  <div class="modes three wide">
+    <a class="mode" href="#import-kml"><div><b>KML button</b><span>Shapes only: field outlines, roads, points from Google Earth or QGIS. You make the missions.</span></div></a>
+    <a class="mode" href="#load-plan"><div><b>Open file</b><span>A finished mission file (KMZ) from Lite Flight, the web planner, Litchi Hub or DJI's tools.</span></div></a>
+    <a class="mode" href="#qr-share"><div><b>Scan QR or type a code</b><span>Missions planned in the web planner, straight onto the phone or RC. Can bring the offline maps too.</span></div></a>
+  </div>
+
+  <div class="sub" id="import-kml">
+    <h3>Import a KML or KMZ file</h3>
+    <p>Tap <b>KML</b> on the map and pick a <code>.kml</code> or <code>.kmz</code> file. Lite Flight reads every area, line and point in it and tells you what each can become: an area fits an Area or Circle mission, a line a Corridor, a point an Orbit.</p>
+    <div class="fig solo wide">
+      <figure class="shot"><img src="img/kml_dialog.webp" width="2082" height="890" loading="lazy" alt="The Import CAFS fields dialog: 2 areas, 1 line and 1 point, a note that some shapes were simplified, the project name, and Create all 4, Import and Show on map only buttons."></figure>
+      <ol class="legend">
+        <li><span><b>What's in the file</b> and the mission types each kind fits.</span></li>
+        <li><span><b>Simplified shapes.</b> A mission outline can have at most 60 corners. Bigger outlines are simplified, always outwards, so the simplified area still covers all of the original. Features over 500&nbsp;ha, or lines over 10&nbsp;km, are too big for one mission and are shown on the map only.</span></li>
+        <li><span><b>Project name.</b> Missions you make from this file are kept together in a group with this name in My missions.</span></li>
+        <li><span><b>Create all</b> makes one mission per feature straight away, each named after its feature. It's offered for files with up to 10 features.</span></li>
+        <li><span><b>Import</b> puts the features on the map and lets you choose which ones become missions.</span></li>
+        <li><span><b>Show on map only</b> keeps them as a guide, with no missions or project.</span></li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/kml_imported.webp" width="2400" height="1000" loading="lazy" alt="Four imported features shown as dashed teal outlines over the UPLB CAFS fields: a rice paddy, a mango orchard, a farm road and a weather station point."></figure>
+      <ol class="legend">
+        <li><span><b>Area</b> (a rice paddy).</span></li>
+        <li><span><b>Area</b> (a mango orchard).</span></li>
+        <li><span><b>Line</b> (a farm road).</span></li>
+        <li><span><b>Point</b> (a weather station).</span></li>
+      </ol>
+    </div>
+    <p><b>Make a mission from a feature.</b> <b>Double-tap</b> the outline (or inside an area). A box comes up with the feature's name and what it fits.</p>
+    <div class="fig tall wide">
+      <figure class="shot"><img src="img/feature_dialog.webp" width="838" height="735" loading="lazy" alt="The Rice paddy box: Area, fits an Area grid or Circle grid mission, with Move current mission here and New mission here, same settings."></figure>
+      <ol class="legend">
+        <li><span><b>Move current mission here</b> moves the mission you have open onto this feature, keeping its settings. If the feature is a different kind (say, a line under an Area mission), the mission changes type to fit and says so.</span></li>
+        <li><span><b>New mission here</b> asks for a name and makes a new mission on the feature. When a mission is open it copies that mission's settings (<i>same settings</i>), which is the quick way to fly several fields alike. A feature that already has a mission offers <b>Open</b> it instead.</span></li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/import_group.webp" width="2400" height="1000" loading="lazy" alt="My missions showing the CAFS fields project with four missions: Weather station orbit, Farm road corridor, Rice paddy area and Mango orchard area."></figure>
+      <ol class="legend">
+        <li><span><b>The project</b>, a group named after the file. It holds every mission made from it.</span></li>
+        <li><span><b>Its missions.</b> Each is an ordinary mission: open it, change it, send it. The feature outlines stay on the map while you work, so you can double-tap the next one.</span></li>
+      </ol>
+    </div>
+    <p>Tap <b>×</b> (where the KML button was) to clear the outlines from the map. Your missions stay.</p>
+  </div>
+
+  <div class="sub" id="load-plan">
+    <h3>Load a mission plan</h3>
+    <p>The <b>open-file</b> icon beside My missions (<i>Load mission plan</i>) opens a ready-to-fly mission file (KMZ) instead of plain shapes. What happens depends on where the file came from:</p>
+    <ul>
+      <li><b>Lite Flight or the <a href="planner/">web planner</a>.</b> The mission opens on the settings screen with all its settings, and is added to My missions (in its project group, if it has one). You can change it like any other mission. Loading the same file again opens the mission you already have instead of making a copy.</li>
+      <li><b>Other apps</b> (Litchi Hub, DJI's tools, Lite Flight before v1.4). These can't be edited here. The file goes to the <a href="#export">Export screen</a>, selected and ready to send to DJI Fly.</li>
+      <li><b>A plain KML file</b> isn't a mission. Lite Flight points you to the <a href="#import-kml">KML button</a>.</li>
+    </ul>
+    <p>To get a file onto the phone, use <b>Save to Downloads</b> on the Export screen of another device, the web planner's <b>Download KMZ</b>, a USB cable or a messaging app.</p>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/loaded_plan.webp" width="2400" height="1000" loading="lazy" alt="A mission from the web planner on the settings screen, with the message You're 436 m from the planned launch point and a Launch here button."></figure>
+      <ol class="legend">
+        <li><span><b>You're far from the planned launch point.</b> When your GPS position is more than 100&nbsp;m from where the plan takes off, Lite Flight says so. Tap <b>Launch here</b> to take off from where you stand, or move the take-off marker yourself.</span></li>
+        <li><span><b>The planned launch point.</b></span></li>
+      </ol>
+    </div>
+    <div class="fig wide">
+      <figure class="shot"><img src="img/launch_shift.webp" width="2400" height="1000" loading="lazy" alt="After Launch here: the panel says Launch 7 m higher than planned: waypoints lowered 7 m, and a dashed line runs from the new launch point to the mission."></figure>
+      <ol class="legend">
+        <li><span><b>The height change</b> Lite Flight made for the new launch point (see below).</span></li>
+        <li><span><b>The new launch point</b>, with the flight out to the mission dashed.</span></li>
+      </ol>
+    </div>
+    <div class="note"><span class="tag">Heights when the launch point moves</span><p>A plan made above take-off assumes the drone takes off where it was planned. If you launch from higher or lower ground, Lite Flight looks up the ground at both places and shifts every waypoint by the difference, so the drone still flies the planned lines at the planned height over the field. The panel says what it did, for example <i>Launch 4&nbsp;m lower than planned: waypoints raised 4&nbsp;m.</i> It needs terrain for both places; without it the mission isn't worked out until you go online or launch from the planned point.</p><p>A terrain-follow plan from the web planner may have been made on a detailed surface model. On the phone its heights are re-adjusted to the phone's own terrain data when you change the mission, and the panel says so. If the phone has no terrain for the site and you haven't changed the route, it flies the planner's heights as they are.</p></div>
+  </div>
+
+  <div class="sub" id="qr-share">
+    <h3>Scan or type a mission from the web planner</h3>
+    <p>The <a href="planner/">Lite Flight Planner</a> runs in a browser on a computer, with a bigger screen, your own orthophotos and a 3D preview. When a mission is ready there, click <b>Send to phone</b>. The planner shows a QR code and, under it, a 6-character code.</p>
+    <ol class="steps">
+      <li>On a phone, tap the <b>QR</b> icon beside My missions and point the camera at the QR code. On a DJI RC, which has no camera, tap the <b>keyboard</b> icon instead and type the code.</li>
+      <li>Lite Flight downloads the mission over the internet.</li>
+      <li>One mission opens on the settings screen, as with <a href="#load-plan">a mission file</a>. Several missions from one project are all added to My missions, in their project group, and the map zooms to them.</li>
+      <li>If the planner sent the area for offline maps and the phone has no imagery there yet, Lite Flight asks <b>Download imagery and terrain?</b> Tap <b>Download</b> while you're still online. See <a href="#offline-with-mission">Imagery that comes with a mission</a>.</li>
+    </ol>
+    <div class="fig tall wide">
+      <figure class="shot"><img src="img/code_dialog.webp" width="838" height="638" loading="lazy" alt="The Load from Lite Flight Planner dialog: type the 6-character code shown under the planner's QR code, a Share code field, and Cancel and Download."></figure>
+      <ol class="legend">
+        <li><span><b>Share code.</b> The 6 characters under the planner's QR code.</span></li>
+        <li><span><b>Download</b> does the same as a scan.</span></li>
+      </ol>
+    </div>
+    <div class="fig tall wide">
+      <figure class="shot"><img src="img/offline_offer.webp" width="838" height="624" loading="lazy" alt="Dialog: Download imagery and terrain? This phone has no imagery for Area mission (2). Imagery from the selected map source, about 2 MB. Buttons Not now and Download."></figure>
+      <ol class="legend">
+        <li><span><b>Source and size.</b> The imagery comes from the map source selected in Lite Flight, at the detail the planner asked for, with terrain for the same area.</span></li>
+        <li><span><b>Not now</b> skips it. You can still download the area yourself in <a href="#imagery">Imagery Download</a>.</span></li>
+        <li><span><b>Download</b> runs in the background; the mission opens straight away.</span></li>
+      </ol>
+    </div>
+    <p>The phone or RC needs internet for this, so do it at home. The planner keeps a shared mission for a week; loading the same code again opens the mission you already have. Lite Flight only accepts codes from the Lite Flight Planner.</p>
+  </div>
+
+  <div class="sub" id="license-kmz">
+    <h3>Licenses and mission files</h3>
+    <p>Anyone can make a mission file, so the license covers bringing them in. While your license or trial is valid, all three ways above work. Once the trial or a tester key has ended, Lite Flight refuses to load ready-to-fly mission KMZ files, from the open-file icon, a QR scan or typed code, or <b>Load KMZ</b> on the Export screen, and asks for a license. The check happens at the moment you load, so a trial that ends while the app is open is caught too. As before, the app itself also locks to the license screen when the trial ends; a full license unlocks everything again. Plain shapes from the <b>KML</b> button aren't affected. See <a href="#license">License &amp; trial</a>.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
 <section class="ch" id="export">
   <div class="ch-head">
-    <p class="eyebrow">10 · Files</p>
+    <p class="eyebrow">11 · Files</p>
     <h2>Export screen</h2>
     <p class="lede"><b>Next</b> on the settings panel leads here. Use it to keep a copy of the file, share it, or send a mission you received as a <code>.kmz</code>.</p>
   </div>
@@ -1015,7 +1168,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <li><span><b>Back</b> to the settings.</span></li>
       <li><span><b>File name</b> of the exported <code>.kmz</code>.</span></li>
       <li><span><b>Save to Downloads</b> puts a copy in <code>Download/LiteFlight</code>.</span></li>
-      <li><span><b>Load KMZ</b> adds DJI mission files from elsewhere to the list.</span></li>
+      <li><span><b>Load KMZ</b> adds DJI mission files from elsewhere to the list, ready to send. To edit a Lite Flight or web planner file instead, open it with the <a href="#load-plan">open-file icon</a> on the map screen.</span></li>
       <li><span><b>Home</b> returns to the map.</span></li>
       <li><span><b>Missions</b> ready to send. Tap one to select it.</span></li>
       <li><span><b>DJI Fly slots.</b> Tap one to send the selected mission.</span></li>
@@ -1051,7 +1204,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 <!-- ============================================================= -->
 <section class="ch" id="help">
   <div class="ch-head">
-    <p class="eyebrow">11 · When something's off</p>
+    <p class="eyebrow">12 · When something's off</p>
     <h2>Troubleshooting</h2>
   </div>
   <details class="faq"><summary>The map is blank or blurry at the field</summary><p>That area wasn't downloaded, or a different map source is selected. Open Imagery Download and check the area is listed. Tap it to switch back to the source it was saved from.</p></details>
@@ -1063,7 +1216,10 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <details class="faq"><summary>Shizuku won't start</summary><p>Wireless debugging needs Wi-Fi. Join a network (a phone hotspot with no data is fine), check wireless debugging is on, then tap Start again. After a reboot you always need to start Shizuku again.</p></details>
   <details class="faq"><summary>The speed hint turned red</summary><p>At this speed DJI Fly would need to shoot faster than every 2 seconds. Lower the speed to the value in the message, fly higher, or reduce front overlap.</p></details>
   <details class="faq"><summary>“Large waypoint count”, or DJI Fly lags with the mission</summary><p>Large missions still work, but DJI Fly gets slower as the waypoint count grows; 150 is a suggestion, not a limit. To make a mission lighter, split a big site into two missions, raise the altitude, lower side overlap, or (in Circle mode) use fewer waypoints per circle.</p></details>
-  <details class="faq"><summary>My tap moved the launch point instead of adding a corner</summary><p>Taps close to the green launch dot select it. Tap a little further away, or zoom in so there's more room.</p></details>
+  <details class="faq"><summary>My tap moved the launch point instead of adding a corner</summary><p>Taps close to the green take-off marker select it. Tap a little further away, or zoom in so there's more room.</p></details>
+  <details class="faq"><summary>A pop-up says the mission goes into or nearly touches the ground</summary><p>Part of the route is less than 5&nbsp;m above the terrain, usually because the field is higher than the launch point in <i>Take Off</i> mode. Tap <b>Fly N&nbsp;m above ground</b> to switch to terrain follow, or raise the height or move the launch point. See <a href="#ground-check">Ground check</a>.</p></details>
+  <details class="faq"><summary>“Your license has expired, so mission KMZ files can't be imported”</summary><p>Mission files can only be loaded with a valid license or trial. Enter a license on the license screen. See <a href="#license-kmz">Licenses and mission files</a>.</p></details>
+  <details class="faq"><summary>The QR scan or typed code says no share has that code, or it has expired</summary><p>Lite Flight only reads codes made by the planner's <b>Send to phone</b>, and they last a week. Check the 6 characters, or send the mission again from the planner and use the new code, with the phone or RC online.</p></details>
   <details class="faq"><summary>Terrain follow says there's no elevation data</summary><p>The site's elevation wasn't saved. Connect to the internet and pick Ground again, or re-download the area with <b>Include elevation data</b> ticked.</p></details>
 
 </section>
@@ -1071,7 +1227,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 <!-- ============================================================= -->
 <section class="ch" id="rc2">
   <div class="ch-head">
-    <p class="eyebrow">12 · DJI RC 2</p>
+    <p class="eyebrow">13 · DJI RC 2</p>
     <h2>Missions on the DJI RC&nbsp;2</h2>
     <p class="lede">Since Lite Flight 1.1 the RC&nbsp;2 works on its own, with no phone or cable. Lite Flight sends missions straight into DJI Fly's slots, and DJI Fly Refresher makes DJI Fly show them. Out of the box, though, the RC&nbsp;2 can't install apps. <b>FreeFCC's helper apps come first</b>; everything else builds on them.</p>
   </div>
@@ -1085,7 +1241,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
         <li>A <b>microSD card</b>. It gets formatted, so copy off anything on it first.</li>
         <li>A computer or phone that can copy files onto the card.</li>
         <li><b>FreeFCC's helper apps:</b> <a href="https://freefcc.pages.dev/downloads/freefcc-helpers.zip"><code>freefcc-helpers.zip</code></a>.</li>
-        <li><code>LiteFlight_v1.3.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> from the <a href="https://github.com/leobarua/liteflight/releases/latest">download page</a>.</li>
+        <li><code>LiteFlight_v1.4.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> from the <a href="https://github.com/leobarua/liteflight/releases/latest">download page</a>.</li>
       </ul>
     </div>
   </div>
@@ -1129,7 +1285,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
     <ol class="steps">
       <li>Take the card out and put it in your computer (or a card reader).</li>
       <li>Extract <code>freefcc-helpers.zip</code>.</li>
-      <li>Copy <code>LiteFlight_v1.3.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> into the extracted folder.</li>
+      <li>Copy <code>LiteFlight_v1.4.apk</code> and <code>DJI-Fly-Refresher-v1.1.apk</code> into the extracted folder.</li>
       <li>Copy that whole folder onto the card, then put the card back into the RC&nbsp;2.</li>
     </ol>
   </div>
@@ -1180,7 +1336,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <ol class="steps">
         <li>Swipe to open <b>ATV Launcher</b>, then open <b>Files</b> <span class="mono">①</span>.</li>
         <li>Go to your folder on the card.</li>
-        <li>Tap <code>LiteFlight_v1.3.apk</code> and install it.</li>
+        <li>Tap <code>LiteFlight_v1.4.apk</code> and install it.</li>
         <li>Tap <code>DJI-Fly-Refresher-v1.1.apk</code> and install it.</li>
         <li><b>Lite Flight</b> <span class="mono">②</span> and <b>DJI Fly Refresher</b> <span class="mono">③</span> now sit in the launcher next to <b>DJI Fly</b> <span class="mono">④</span>.</li>
       </ol>
@@ -1253,7 +1409,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 <!-- ============================================================= -->
 <section class="ch" id="liteflyer">
   <div class="ch-head">
-    <p class="eyebrow">13 · Companion app</p>
+    <p class="eyebrow">14 · Companion app</p>
     <h2>Lite Flyer, for older drones</h2>
     <p class="lede">DJI Fly can't fly waypoint missions on older drones. Lite Flyer can: plan the mission in Lite Flight as usual, <a href="#send-liteflyer">send it to Lite Flyer</a>, and Lite Flyer flies it and takes the photos. It runs on an Android phone or tablet plugged into the drone's remote controller.</p>
   </div>

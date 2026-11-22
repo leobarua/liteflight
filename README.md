@@ -14,7 +14,7 @@ New installs run as a 14-day trial. To get a license, email the device code show
 
 ## Manual
 
-Read the illustrated user manual at **<https://leobarua.github.io/liteflight/>** (source in [`docs/`](docs/)). It covers offline imagery, the five mission types (Area, Corridor, Circle, Quick and Orbit), mission settings including auto-capture, Shizuku setup, and sending missions to DJI Fly or Lite Flyer. The Lite Flyer manual is at **<https://leobarua.github.io/liteflight/liteflyer/>**.
+Read the illustrated user manual at **<https://leobarua.github.io/liteflight/>** (source in [`docs/`](docs/)). It covers offline imagery, the five mission types (Area, Corridor, Circle, Quick and Orbit), mission settings including auto-capture and the flight checks, importing KML/KMZ files and loading mission plans, Shizuku setup, and sending missions to DJI Fly or Lite Flyer. The Lite Flyer manual is at **<https://leobarua.github.io/liteflight/liteflyer/>**.
 
 ## Lite Flyer (limited release)
 
