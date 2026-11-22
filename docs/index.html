@@ -413,7 +413,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <div class="sub" id="license">
     <h3>License &amp; trial</h3>
     <p>A new install runs as a 14-day trial with every feature on. For the first week only a small <i>Trial ends in …</i> line shows. From day 8 a reminder pops up asking for a license, and comes back a minute after each <b>Later</b>; after day 14 the app locks until you activate. To get a license, open this screen from the red <b>Trial</b> line under the app name.</p>
-    <p>Ready-to-fly mission files (KMZ) can only be loaded while the license or trial is valid. See <a href="#license-kmz">Licenses and mission files</a>.</p>
+    <p>Ready-to-fly mission files (KMZ), including QR scans and typed codes, can only be loaded while the license or trial is valid. See <a href="#license-kmz">Licenses and mission files</a>.</p>
     <div class="fig wide">
       <figure class="shot"><img src="img/license.webp" width="1920" height="1100" loading="lazy" alt="The license screen with the device code blurred, a key field, and Activate and Load license file buttons."></figure>
       <ol class="legend">
@@ -658,13 +658,14 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   </div>
   <p>Version 1.4 adds a few things to this screen:</p>
   <div class="fig wide">
-    <figure class="shot"><img src="img/map_v14.webp" width="2400" height="1000" loading="lazy" alt="The v1.4 map screen on a phone: QR and Load mission plan buttons beside My missions, the KML button, the take-off marker, the Draw button and an imported outline."></figure>
+    <figure class="shot"><img src="img/map_v14.webp" width="2400" height="1000" loading="lazy" alt="The v1.4 map screen on a phone: scan QR, type code and open-file icons beside My missions, the KML button, the take-off marker, the Redraw button and imported outlines."></figure>
     <ol class="legend">
-      <li><span><b>Scan QR</b> loads a mission from the <a href="#qr-share">web planner</a>.</span></li>
-      <li><span><b>Load mission plan</b> opens a ready-made mission file. See <a href="#load-plan">Load a mission plan</a>.</span></li>
+      <li><span><b>Scan QR</b> loads a mission from the <a href="#qr-share">web planner</a>. Shown only on devices with a camera.</span></li>
+      <li><span><b>Type code</b> (keyboard icon) loads a web planner mission from its 6-character code. Use it on DJI RC controllers, which have no camera.</span></li>
+      <li><span><b>Open file</b> loads a ready-made mission file. See <a href="#load-plan">Load a mission plan</a>.</span></li>
       <li><span><b>KML</b> imports shapes from a file. Once a file is on the map, the button turns into <b>×</b>, which removes it again.</span></li>
       <li><span><b>Launch point</b>, now drawn as a green take-off marker: an arrow rising from a ring.</span></li>
-      <li><span><b>Draw</b> lets you trace the outline with your finger instead of tapping corners. See <a href="#draw-trace">Trace with your finger</a>.</span></li>
+      <li><span><b>Draw</b> (<b>Redraw</b> once a shape is on the map) lets you trace the outline with your finger instead of tapping corners. See <a href="#draw-trace">Trace with your finger</a>.</span></li>
       <li><span><b>Imported shapes</b> show as dashed teal outlines. Double-tap one to make it a mission.</span></li>
     </ol>
   </div>
@@ -1050,15 +1051,15 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   </div>
   <div class="modes three wide">
     <a class="mode" href="#import-kml"><div><b>KML button</b><span>Shapes only: field outlines, roads, points from Google Earth or QGIS. You make the missions.</span></div></a>
-    <a class="mode" href="#load-plan"><div><b>Load mission plan</b><span>A finished mission file (KMZ) from Lite Flight, the web planner, Litchi Hub or DJI's tools.</span></div></a>
-    <a class="mode" href="#qr-share"><div><b>Scan QR</b><span>Missions planned in the web planner, straight onto the phone. Can bring the offline maps too.</span></div></a>
+    <a class="mode" href="#load-plan"><div><b>Open file</b><span>A finished mission file (KMZ) from Lite Flight, the web planner, Litchi Hub or DJI's tools.</span></div></a>
+    <a class="mode" href="#qr-share"><div><b>Scan QR or type a code</b><span>Missions planned in the web planner, straight onto the phone or RC. Can bring the offline maps too.</span></div></a>
   </div>
 
   <div class="sub" id="import-kml">
     <h3>Import a KML or KMZ file</h3>
     <p>Tap <b>KML</b> on the map and pick a <code>.kml</code> or <code>.kmz</code> file. Lite Flight reads every area, line and point in it and tells you what each can become: an area fits an Area or Circle mission, a line a Corridor, a point an Orbit.</p>
-    <div class="fig tall wide">
-      <figure class="shot"><img src="img/kml_dialog.webp" width="838" height="1136" loading="lazy" alt="The Import CAFS fields dialog: 2 areas, 1 line and 1 point, a note that some shapes were simplified, the project name, and Create all 4, Import and Show on map only buttons."></figure>
+    <div class="fig solo wide">
+      <figure class="shot"><img src="img/kml_dialog.webp" width="2082" height="890" loading="lazy" alt="The Import CAFS fields dialog: 2 areas, 1 line and 1 point, a note that some shapes were simplified, the project name, and Create all 4, Import and Show on map only buttons."></figure>
       <ol class="legend">
         <li><span><b>What's in the file</b> and the mission types each kind fits.</span></li>
         <li><span><b>Simplified shapes.</b> A mission outline can have at most 60 corners. Bigger outlines are simplified, always outwards, so the simplified area still covers all of the original. Features over 500&nbsp;ha, or lines over 10&nbsp;km, are too big for one mission and are shown on the map only.</span></li>
@@ -1097,7 +1098,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
 
   <div class="sub" id="load-plan">
     <h3>Load a mission plan</h3>
-    <p><b>Load mission plan</b>, beside My missions, opens a ready-to-fly mission file (KMZ) instead of plain shapes. What happens depends on where the file came from:</p>
+    <p>The <b>open-file</b> icon beside My missions (<i>Load mission plan</i>) opens a ready-to-fly mission file (KMZ) instead of plain shapes. What happens depends on where the file came from:</p>
     <ul>
       <li><b>Lite Flight or the <a href="planner/">web planner</a>.</b> The mission opens on the settings screen with all its settings, and is added to My missions (in its project group, if it has one). You can change it like any other mission. Loading the same file again opens the mission you already have instead of making a copy.</li>
       <li><b>Other apps</b> (Litchi Hub, DJI's tools, Lite Flight before v1.4). These can't be edited here. The file goes to the <a href="#export">Export screen</a>, selected and ready to send to DJI Fly.</li>
@@ -1122,14 +1123,21 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   </div>
 
   <div class="sub" id="qr-share">
-    <h3>Scan a mission from the web planner</h3>
-    <p>The <a href="planner/">Lite Flight Planner</a> runs in a browser on a computer, with a bigger screen, your own orthophotos and a 3D preview. When a mission is ready there, click <b>Send to phone</b>. The planner shows a QR code.</p>
+    <h3>Scan or type a mission from the web planner</h3>
+    <p>The <a href="planner/">Lite Flight Planner</a> runs in a browser on a computer, with a bigger screen, your own orthophotos and a 3D preview. When a mission is ready there, click <b>Send to phone</b>. The planner shows a QR code and, under it, a 6-character code.</p>
     <ol class="steps">
-      <li>In Lite Flight, tap the <b>QR</b> button beside My missions.</li>
-      <li>Point the phone at the QR code on the computer screen. Lite Flight downloads the mission over the internet.</li>
-      <li>One mission opens on the settings screen, as with <a href="#load-plan">Load mission plan</a>. Several missions from one project are all added to My missions, in their project group, and the map zooms to them.</li>
+      <li>On a phone, tap the <b>QR</b> icon beside My missions and point the camera at the QR code. On a DJI RC, which has no camera, tap the <b>keyboard</b> icon instead and type the code.</li>
+      <li>Lite Flight downloads the mission over the internet.</li>
+      <li>One mission opens on the settings screen, as with <a href="#load-plan">a mission file</a>. Several missions from one project are all added to My missions, in their project group, and the map zooms to them.</li>
       <li>If the planner sent the area for offline maps and the phone has no imagery there yet, Lite Flight asks <b>Download imagery and terrain?</b> Tap <b>Download</b> while you're still online. See <a href="#offline-with-mission">Imagery that comes with a mission</a>.</li>
     </ol>
+    <div class="fig tall wide">
+      <figure class="shot"><img src="img/code_dialog.webp" width="838" height="638" loading="lazy" alt="The Load from Lite Flight Planner dialog: type the 6-character code shown under the planner's QR code, a Share code field, and Cancel and Download."></figure>
+      <ol class="legend">
+        <li><span><b>Share code.</b> The 6 characters under the planner's QR code.</span></li>
+        <li><span><b>Download</b> does the same as a scan.</span></li>
+      </ol>
+    </div>
     <div class="fig tall wide">
       <figure class="shot"><img src="img/offline_offer.webp" width="838" height="624" loading="lazy" alt="Dialog: Download imagery and terrain? This phone has no imagery for Area mission (2). Imagery from the selected map source, about 2 MB. Buttons Not now and Download."></figure>
       <ol class="legend">
@@ -1138,12 +1146,12 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
         <li><span><b>Download</b> runs in the background; the mission opens straight away.</span></li>
       </ol>
     </div>
-    <p>The phone needs internet for the scan, so do it at home. The planner keeps a shared mission for a week; scanning the same code again opens the mission you already have. Lite Flight only accepts codes from the Lite Flight Planner.</p>
+    <p>The phone or RC needs internet for this, so do it at home. The planner keeps a shared mission for a week; loading the same code again opens the mission you already have. Lite Flight only accepts codes from the Lite Flight Planner.</p>
   </div>
 
   <div class="sub" id="license-kmz">
     <h3>Licenses and mission files</h3>
-    <p>Anyone can make a mission file, so the license covers bringing them in. While your license or trial is valid, all three ways above work. Once the trial or a tester key has ended, Lite Flight refuses to load ready-to-fly mission KMZ files, from <b>Load mission plan</b>, the <b>QR</b> scan, or <b>Load KMZ</b> on the Export screen, and asks for a license. The check happens at the moment you load, so a trial that ends while the app is open is caught too. Plain shapes from the <b>KML</b> button aren't affected. See <a href="#license">License &amp; trial</a>.</p>
+    <p>Anyone can make a mission file, so the license covers bringing them in. While your license or trial is valid, all three ways above work. Once the trial or a tester key has ended, Lite Flight refuses to load ready-to-fly mission KMZ files, from the open-file icon, a QR scan or typed code, or <b>Load KMZ</b> on the Export screen, and asks for a license. The check happens at the moment you load, so a trial that ends while the app is open is caught too. As before, the app itself also locks to the license screen when the trial ends; a full license unlocks everything again. Plain shapes from the <b>KML</b> button aren't affected. See <a href="#license">License &amp; trial</a>.</p>
   </div>
 </section>
 
@@ -1160,7 +1168,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
       <li><span><b>Back</b> to the settings.</span></li>
       <li><span><b>File name</b> of the exported <code>.kmz</code>.</span></li>
       <li><span><b>Save to Downloads</b> puts a copy in <code>Download/LiteFlight</code>.</span></li>
-      <li><span><b>Load KMZ</b> adds DJI mission files from elsewhere to the list, ready to send. To edit a Lite Flight or web planner file instead, use <a href="#load-plan">Load mission plan</a>.</span></li>
+      <li><span><b>Load KMZ</b> adds DJI mission files from elsewhere to the list, ready to send. To edit a Lite Flight or web planner file instead, open it with the <a href="#load-plan">open-file icon</a> on the map screen.</span></li>
       <li><span><b>Home</b> returns to the map.</span></li>
       <li><span><b>Missions</b> ready to send. Tap one to select it.</span></li>
       <li><span><b>DJI Fly slots.</b> Tap one to send the selected mission.</span></li>
@@ -1211,7 +1219,7 @@ footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line
   <details class="faq"><summary>My tap moved the launch point instead of adding a corner</summary><p>Taps close to the green take-off marker select it. Tap a little further away, or zoom in so there's more room.</p></details>
   <details class="faq"><summary>A pop-up says the mission goes into or nearly touches the ground</summary><p>Part of the route is less than 5&nbsp;m above the terrain, usually because the field is higher than the launch point in <i>Take Off</i> mode. Tap <b>Fly N&nbsp;m above ground</b> to switch to terrain follow, or raise the height or move the launch point. See <a href="#ground-check">Ground check</a>.</p></details>
   <details class="faq"><summary>“Your license has expired, so mission KMZ files can't be imported”</summary><p>Mission files can only be loaded with a valid license or trial. Enter a license on the license screen. See <a href="#license-kmz">Licenses and mission files</a>.</p></details>
-  <details class="faq"><summary>The QR scan says the code isn't from Lite Flight Planner, or has expired</summary><p>Lite Flight only reads codes made by the planner's <b>Send to phone</b>, and they last a week. Send the mission again from the planner and scan the new code, with the phone online.</p></details>
+  <details class="faq"><summary>The QR scan or typed code says no share has that code, or it has expired</summary><p>Lite Flight only reads codes made by the planner's <b>Send to phone</b>, and they last a week. Check the 6 characters, or send the mission again from the planner and use the new code, with the phone or RC online.</p></details>
   <details class="faq"><summary>Terrain follow says there's no elevation data</summary><p>The site's elevation wasn't saved. Connect to the internet and pick Ground again, or re-download the area with <b>Include elevation data</b> ticked.</p></details>
 
 </section>
