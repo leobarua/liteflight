@@ -16,6 +16,8 @@ New installs run as a 14-day trial. To get a license, email the device code show
 
 Read the illustrated user manual at **<https://leobarua.github.io/liteflight/>** (source in [`docs/`](docs/)). It covers offline imagery, the five mission types (Area, Corridor, Circle, Quick and Orbit), mission settings including auto-capture and the flight checks, importing KML/KMZ files and loading mission plans, Shizuku setup, and sending missions to DJI Fly or Lite Flyer. The Lite Flyer manual is at **<https://leobarua.github.io/liteflight/liteflyer/>**.
 
+A companion browser-based flight planner is now live at **<https://liteflight-planner.pages.dev/>** to create flight plans with, and deploy wirelessly onto you device. For smart phones, just scan the QR code generated for the flight plan, or for DJI RC models, enter the short code to load the flight. The browser-based manual is available at **<https://leobarua.github.io/liteflight/planner/>**
+
 ## Lite Flyer (limited release)
 
 Lite Flyer is Lite Flight's companion app for older DJI drones that DJI Fly can't fly waypoint missions on. Lite Flight sends the mission across with one tap and Lite Flyer flies it and takes the photos.
